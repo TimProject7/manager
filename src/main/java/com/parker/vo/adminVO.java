@@ -1,5 +1,5 @@
 package com.parker.vo;
 
-public class adminVo {
+public class adminVO {
 
 }

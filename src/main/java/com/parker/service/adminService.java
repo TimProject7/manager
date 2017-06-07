@@ -1,5 +1,5 @@
 package com.parker.service;
 
-public class adminService implements adminServiceImpl{
+public interface adminService{
 
 }

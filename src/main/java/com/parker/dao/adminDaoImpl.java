@@ -1,5 +1,5 @@
 package com.parker.dao;
 
-public interface adminDaoImpl {
+public class adminDaoImpl implements adminDao {
 
 }
