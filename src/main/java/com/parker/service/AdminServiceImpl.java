@@ -13,9 +13,12 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDao adminDao;
 
 	@Override
-	public AdminVO selectOne(AdminVO avo) {
+	public int selectLogin(AdminVO avo) {
 		// TODO Auto-generated method stub
-		return adminDao.selectLogin(avo);
+		int result = 0;
+		result = adminDao.selectLogin(avo);
+		System.out.println("서비스 : " + result);
+		return result;
 	}
 
 }

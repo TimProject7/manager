@@ -24,17 +24,19 @@ public class AdminController {
 	@RequestMapping(value = "/adminmain", method = RequestMethod.POST)
 	public String login(@ModelAttribute AdminVO avo, Model model, HttpSession session) {
 		logger.info("adminmain 호출 설공");
+		int result = 0;
+		result = adminService.selectLogin(avo);
+		System.out.println("result= " + result);
+		String url = "";
 
-		avo = adminService.selectOne(avo);
-
-		model.addAttribute("avo", avo);
-
-		if (avo != null) {
+		if (result == 1) {
+			url = "admin/adminmain";
 			session.setAttribute("avo", avo);
+		} else {
+			System.out.println("실패");
+			url = "";
 		}
-
-		return "/admin/adminmain";
-
+		return url;
 	}
 
 	// 로그아웃

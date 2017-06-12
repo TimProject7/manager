@@ -13,10 +13,10 @@ public class AdminDaoImpl implements AdminDao {
 	SqlSession session;
 
 	@Override
-	public AdminVO selectLogin(AdminVO avo) {
+	public int selectLogin(AdminVO avo) {
 		// TODO Auto-generated method stub
 
-		return session.selectOne("selectLogin", avo);
+		return (Integer) session.selectOne("selectLogin", avo);
 	}
 
 }

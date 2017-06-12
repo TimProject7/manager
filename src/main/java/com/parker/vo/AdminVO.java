@@ -2,16 +2,16 @@ package com.parker.vo;
 
 public class AdminVO {
 
-	int admin_nmuber;
+	int admin_number;
 	String admin_id;
 	String admin_password;
 
 	public int getAdmin_nmuber() {
-		return admin_nmuber;
+		return admin_number;
 	}
 
-	public void setAdmin_nmuber(int admin_nmuber) {
-		this.admin_nmuber = admin_nmuber;
+	public void setAdmin_nmuber(int admin_number) {
+		this.admin_number = admin_number;
 	}
 
 	public String getAdmin_id() {

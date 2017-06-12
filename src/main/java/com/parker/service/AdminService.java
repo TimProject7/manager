@@ -4,6 +4,8 @@ import com.parker.vo.AdminVO;
 
 public interface AdminService{
 
-	public AdminVO selectOne(AdminVO avo);
+	
+
+	public int selectLogin(AdminVO avo);
 
 }
