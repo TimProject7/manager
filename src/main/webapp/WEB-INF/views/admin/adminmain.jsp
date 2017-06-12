@@ -4,22 +4,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link type="text/css" rel="stylesheet" href="css/adminmain.css" />
+<link type="text/css" rel="stylesheet"
+	href="/resources/css/adminmain.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
-
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="/resources/js/tap.js"></script>
 </head>
 <body>
-	<h2>ggg</h2>
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.avo }">
-			<h2>${sessionScope.avo.admin_id }님로그인</h2>
-			<a href="logout"><button>로그아웃</button> </a>
+			<table class="logout_table">
+				<tr>
+					<td>${sessionScope.avo.admin_id }님 로그인하셨습니다. 반갑습니다.</td>
+
+					<td><a href="logout"><button>로그아웃</button> </a></td>
+				</tr>
+			</table>
+
+			<br>
+			<br>
+
+			<center>
+				<ul class="tab">
+					<li><a href="#tab1" class="selected">상품관리</a></li>
+					<li><a href="#tab2">회원관리</a></li>
+					<li><a href="#tab3">게시판관리</a></li>
+					<li><a href="#tab4">통계</a></li>
+				</ul>
+			</center>
+
+			<br>
+
+			<div id="container2">
+
+				<ul class="panel">
+
+
+					<li id="tab1">
+						<h1>탭1</h1>
+					</li>
+
+					<li id="tab2">
+						<h1>탭2</h1>
+					</li>
+
+					<li id="tab3">
+						<h1>탭3</h1>
+					</li>
+
+					<li id="tab4">
+						<h1>탭4</h1>
+					</li>
+				</ul>
+			</div>
+
 		</c:when>
 	</c:choose>
 
