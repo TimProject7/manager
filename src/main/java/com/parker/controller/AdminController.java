@@ -41,6 +41,6 @@ public class AdminController {
 	@RequestMapping("/logout")
 	public String logout(HttpSession session, AdminVO avo) {
 		session.setAttribute("avo", null);
-		return "/";
+		return "redirect:/";
 	}
 }
