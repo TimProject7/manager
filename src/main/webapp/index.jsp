@@ -27,7 +27,7 @@
 				<td>아이디<input type="text" id="admin_id" name="admin_id"></td>
 			</tr>
 			<tr>
-				<td>비밀번호<input type="text" id="admin_password"
+				<td>비밀번호<input type="password" id="admin_password"
 					name="admin_password"></td>
 			</tr>
 		</table>

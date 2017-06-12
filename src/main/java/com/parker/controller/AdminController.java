@@ -21,8 +21,6 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 
-	
-
 	@RequestMapping(value = "/adminmain", method = RequestMethod.POST)
 	public String login(@ModelAttribute AdminVO avo, Model model, HttpSession session) {
 		logger.info("adminmain 호출 설공");
@@ -37,5 +35,12 @@ public class AdminController {
 
 		return "/admin/adminmain";
 
+	}
+
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session, AdminVO avo) {
+		session.setAttribute("avo", null);
+		return "/";
 	}
 }
