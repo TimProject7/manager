@@ -22,8 +22,8 @@ public class AdminController {
 	AdminService adminService;
 
 	@RequestMapping(value = "/adminmain", method = RequestMethod.POST)
-	public String login(@ModelAttribute AdminVO avo, Model model, HttpSession session) {
-		logger.info("adminmain 호출 설공");
+	public String loginPost(@ModelAttribute AdminVO avo, Model model, HttpSession session) {
+		logger.info("loginPost 호출 설공");
 		int result = 0;
 		result = adminService.selectLogin(avo);
 		System.out.println("result= " + result);
@@ -34,9 +34,22 @@ public class AdminController {
 			session.setAttribute("avo", avo);
 		} else {
 			System.out.println("실패");
-			url = "";
+			url = "redirect:/";
 		}
 		return url;
+	}
+
+	@RequestMapping(value = "/adminmain", method = RequestMethod.GET)
+	public String loginGet(@ModelAttribute AdminVO avo, Model model, HttpSession session) {
+		logger.info("loginGet 호출 설공");
+		/*
+		 * int result = 0; String url = "../../index"; result =
+		 * adminService.selectLogin(avo);
+		 * System.out.println("loginGet result = " + result); if (result == 1) {
+		 * url = "admin/adminmain"; }
+		 */
+
+		return "admin/adminmain";
 	}
 
 	// 로그아웃

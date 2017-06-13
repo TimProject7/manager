@@ -30,4 +30,10 @@ public class AdminVO {
 		this.admin_password = admin_password;
 	}
 
+	@Override
+	public String toString() {
+		return "AdminVO [admin_number=" + admin_number + ", admin_id=" + admin_id + ", admin_password=" + admin_password
+				+ "]";
+	}
+
 }

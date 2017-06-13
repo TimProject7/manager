@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true" %>x
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,20 +45,19 @@
 
 
 					<li id="tab1">
-						<h1>탭1</h1>
-						
+						<%@ include file="../product/product.jsp"%>
+
 					</li>
 
 					<li id="tab2">
-						<h1>탭2</h1>
+						<%@ include file="../usermanagement/usermanagement.jsp"%>
 					</li>
 
-					<li id="tab3">
-						<h1>탭3</h1>
+					<li id="tab3"><%@ include file="../notice/notice.jsp"%>
 					</li>
 
 					<li id="tab4">
-						<h1>탭4</h1>
+						<%@ include file="../notice/notice.jsp"%>
 					</li>
 				</ul>
 			</div>

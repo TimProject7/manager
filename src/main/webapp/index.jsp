@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,24 +32,34 @@
 </script>
 </head>
 <body>
-	<form id="login">
-		<table>
-			<tr>
-				<th>관리자 ID</th>
-				<td><input type="text" id="admin_id" name="admin_id"></td>
-			</tr>
+	<c:choose>
+		<c:when test="${not empty sessionScope.avo }">
+			<script type="text/javascript">
+			self.location="admin/adminmain"
+			</script>
+		</c:when>
+		<c:when test="${empty sessionScope.avo }">
+			<form id="login">
 
-			<tr>
-				<th>PASSWORD</th>
-				<td><input type="password" id="admin_password"
-					name="admin_password"></td>
-			</tr>
+				<table>
+					<tr>
+						<th>관리자 ID</th>
+						<td><input type="text" id="admin_id" name="admin_id"></td>
+					</tr>
+
+					<tr>
+						<th>PASSWORD</th>
+						<td><input type="password" id="admin_password"
+							name="admin_password"></td>
+					</tr>
 
 
-		</table>
-	</form>
-	<input type="button" id="loginBtn" value="로그인">
+				</table>
+			</form>
+			<input type="button" id="loginBtn" value="로그인">
+		</c:when>
 
+	</c:choose>
 
 </body>
 </html>
