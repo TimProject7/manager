@@ -53,11 +53,11 @@
 						<%@ include file="../usermanagement/usermanagement.jsp"%>
 					</li>
 
-					<li id="tab3"><%@ include file="../notice/notice.jsp"%>
+					<li id="tab3"><%@ include file="../board/notice/notice.jsp"%>
 					</li>
 
 					<li id="tab4">
-						<%@ include file="../notice/notice.jsp"%>
+						<%@ include file="../board/notice/notice.jsp"%>
 					</li>
 				</ul>
 			</div>
