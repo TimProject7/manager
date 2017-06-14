@@ -35,7 +35,7 @@
 	<c:choose>
 		<c:when test="${not empty sessionScope.avo }">
 			<script type="text/javascript">
-			self.location="admin/adminmain"
+				self.location = "admin/adminmain"
 			</script>
 		</c:when>
 		<c:when test="${empty sessionScope.avo }">
