@@ -44,7 +44,8 @@
 				<table>
 					<tr>
 						<th>관리자 ID</th>
-						<td><input type="text" id="admin_id" name="admin_id"></td>
+						<td><input type="text" id="admin_id" name="admin_id"
+							autofocus="autofocus"></td>
 					</tr>
 
 					<tr>
