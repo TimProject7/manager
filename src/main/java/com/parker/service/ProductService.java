@@ -6,8 +6,8 @@ import com.parker.vo.ProductVO;
 
 public interface ProductService {
 
-	public int productListCnt(ProductVO pvo);
+	public List<ProductVO> listProduct();
 
-	public List<ProductVO> productList(ProductVO pvo);
+	public ProductVO detailProduct(int productId);
 
 }

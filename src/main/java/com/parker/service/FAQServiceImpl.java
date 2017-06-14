@@ -1,5 +1,8 @@
 package com.parker.service;
 
-public class FAQServiceImpl implements NoticeService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class FAQServiceImpl implements FAQService	 {
 
 }

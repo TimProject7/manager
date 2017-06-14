@@ -6,6 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+	
+</script>
+
 <title>상품 목록</title>
 
 </head>
@@ -31,12 +35,12 @@
 						height="110px">
 				</a></td>
 				<td><a
-					href="${path}/product/detail/${productList.product_number}">${productList.product_name}</a>
+					href="${path}/productdetail/${productList.product_number}">${productList.product_name}</a>
 				</td>
 				<td>${productList.product_company }</td>
 				<td>${productList.product_origin }</td>
 				<td>${productList.product_addDate }</td>
-				<td><fmt:formatNumber value="${productList.product_price}"
+				<td><fmt:formatNumber value="${productList.product_	price}"
 						pattern="###,###,###" /></td>
 			</tr>
 		</c:forEach>

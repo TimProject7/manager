@@ -12,6 +12,7 @@ public class ProductVO extends PagingVO {
 	private String product_addDate;// 등록일자
 	private int admin_number; // 관리자 번호
 	private String product_content; // 내용
+	
 	// 조건검색시 사용할 필드
 	private String search = "";
 	private String keyword = "";

@@ -1,5 +1,8 @@
 package com.parker.dao;
 
-public class FAQDaoImpl implements NoticeDao {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class FAQDaoImpl implements FAQDao {
 
 }
