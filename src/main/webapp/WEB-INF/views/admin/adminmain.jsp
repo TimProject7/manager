@@ -84,31 +84,22 @@
 							<div class="jq_cont tab_cont">
 								<!-- //탭1-1 -->
 								<div class="cont">
-									<strong>1. 확증편향 (confirmation bias)</strong><br> <br>
-									<p>
-										자신의 신념과 일치하는 정보들은 쉽게 믿고 받아들이고, 신념과 일치하지 않는 정보는 무시하거나 덜 찾는 경향<br>
-										<br> 예: 소심한 사람에게 혈액형을 물어 A형이 아니라고 하면 금방 잊어버리고,<br>
-										A형이 맞다고 하면 호들갑을 떨며 "맞지? A형일것 같았어."라고 말하는 것.
-									</p>
+									<strong>상품목록</strong><br> <br>
+									<%@ include file="../product/productlist.jsp"%>
 								</div>
 								<!-- 탭1-1// -->
 
 								<!-- //탭1-2 -->
 								<div class="cont">
-									<strong>2. 바넘효과 (Barnum effect)</strong><br> <br>
-									대부분의 사람들이 보편적으로 가지고 있는 성격이나 심리적 특징을<br> 자신만의 고유한 특성으로 여기는
-									경향.<br> <br> 예: "당신은 대체로 싸움을 싫어하지만 때로는 강하게 나갈 때도
-									있다.", "당신은 기본적으로 외향적인 성격이지만 때때로 소심하거나 내향적인 모습을 보이기도 한다"와 같은 당연한
-									소리를 자신의 성격이라고 믿는 것.
+									<strong>상품등록</strong><br> <br>
+									<%@ include file="../product/productreg.jsp"%>
 								</div>
 								<!-- 탭1-2// -->
 
 								<!-- //탭1-3 -->
 								<div class="cont">
 									<strong>3. 자기실행적 예언(Self-fulfilling prophecy)</strong><br>
-									<br> 자신에 대해 특정한 기대를 갖게 되면, 그러한 기대에 부응하는 쪽으로<br> 변하려고
-									노력하게 되어, 행동을 그러한 단서에 맞게 바꿔가는 경향.<br> <br> 예: 별자리 운세에
-									나온 "오늘은 좋은 일이 생긴다"라는 말을 보고 기분이 좋아져 실제로도 좋은 하루를 보내게 되는 것.
+									
 								</div>
 								<!-- 탭1-3// -->
 
