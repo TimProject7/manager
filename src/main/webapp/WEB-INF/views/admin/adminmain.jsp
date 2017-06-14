@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page session="true" %>x
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="/resources/js/tap.js"></script>
+<script src="/resources/js/tab.js"></script>
 </head>
 <body>
 
@@ -53,11 +53,11 @@
 						<%@ include file="../usermanagement/usermanagement.jsp"%>
 					</li>
 
-					<li id="tab3"><%@ include file="../board/notice/notice.jsp"%>
+					<li id="tab3"><%@ include file="../board/board.jsp"%>
 					</li>
 
 					<li id="tab4">
-						<%@ include file="../board/notice/notice.jsp"%>
+						<%@ include file="../status/status.jsp"%>
 					</li>
 				</ul>
 			</div>

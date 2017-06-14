@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-상품관리
+1:1문의
 </body>
 </html>

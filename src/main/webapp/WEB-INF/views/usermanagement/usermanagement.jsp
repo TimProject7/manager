@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-고객관리 새꺄
+고객관리
 </body>
 </html>

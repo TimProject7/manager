@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>노티스라네</h1>
+	노티스라네
 </body>
 </html>
