@@ -3,6 +3,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.parker.dao.ProductDao">
-
+	<select id="listProduct" resultType="com.parker.vo.ProductVO">
+		SELECT
+		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
+		product_regdate
+		FROM products_tb
+		ORDER BY product_number
+	</select>
+	<select id="detailProduct" resultType="com.parker.vo.ProductVO">
+		SELECT
+		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
+		product_regdate
+		FROM products_tb
+		where product_number=#{product_number}
+	</select>
 
 </mapper>

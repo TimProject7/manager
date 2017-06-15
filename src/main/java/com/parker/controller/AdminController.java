@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.parker.service.AdminService;
 import com.parker.vo.AdminVO;
@@ -21,33 +22,9 @@ public class AdminController {
 	@Autowired
 	AdminService adminService;
 
-	@RequestMapping(value = "/adminmain", method = RequestMethod.POST)
-	public String loginPost(@ModelAttribute AdminVO avo, Model model, HttpSession session) {
-		logger.info("loginPost 호출 설공");
-		int result = 0;
-		result = adminService.selectLogin(avo);
-		System.out.println("result= " + result);
-		String url = "";
-
-		if (result == 1) {
-			url = "admin/adminmain";
-			session.setAttribute("avo", avo);
-		} else {
-			System.out.println("실패");
-			url = "redirect:/";
-		}
-		return url;
-	}
-
 	@RequestMapping(value = "/adminmain", method = RequestMethod.GET)
 	public String loginGet(@ModelAttribute AdminVO avo, Model model, HttpSession session) {
 		logger.info("loginGet 호출 설공");
-		/*
-		 * int result = 0; String url = "../../index"; result =
-		 * adminService.selectLogin(avo);
-		 * System.out.println("loginGet result = " + result); if (result == 1) {
-		 * url = "admin/adminmain"; }
-		 */
 
 		return "admin/adminmain";
 	}
@@ -58,4 +35,22 @@ public class AdminController {
 		session.setAttribute("avo", null);
 		return "redirect:/";
 	}
+
+	@RequestMapping("/adminmain")
+	public ModelAndView loginCheck(HttpSession session, AdminVO avo, ModelAndView mav) {
+		String Avo = adminService.loginCheck(avo);
+
+		// 로그인 성공
+		if (Avo != null) {
+			session.setAttribute("avo", avo.getAdmin_id());
+			mav.setViewName("/admin/adminmain"); // 관리자 페이지 이동
+			mav.addObject("msg", "success");
+			// 로그인 실패
+		} else {
+			mav.setViewName("redirect:/"); // 로그인 페이지 이동
+			mav.addObject("msg", "failure");
+		}
+		return mav;
+	}
+
 }

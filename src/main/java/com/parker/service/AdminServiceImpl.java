@@ -10,15 +10,11 @@ import com.parker.vo.AdminVO;
 public class AdminServiceImpl implements AdminService {
 
 	@Autowired
-	private AdminDao adminDao;
+	AdminDao adminDao;
 
 	@Override
-	public int selectLogin(AdminVO avo) {
-		// TODO Auto-generated method stub
-		int result = 0;
-		result = adminDao.selectLogin(avo);
-		System.out.println("서비스 : " + result);
-		return result;
+	public String loginCheck(AdminVO avo) {
+		return adminDao.loginCheck(avo);
 	}
 
 }

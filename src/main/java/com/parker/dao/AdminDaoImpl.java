@@ -10,13 +10,12 @@ import com.parker.vo.AdminVO;
 public class AdminDaoImpl implements AdminDao {
 
 	@Autowired
-	SqlSession session;
+	SqlSession sqlSession;
 
+	// 관리자 로그인체크
 	@Override
-	public int selectLogin(AdminVO avo) {
-		// TODO Auto-generated method stub
-
-		return (Integer) session.selectOne("selectLogin", avo);
+	public String loginCheck(AdminVO avo) {
+		return sqlSession.selectOne("loginCheck", avo);
 	}
 
 }

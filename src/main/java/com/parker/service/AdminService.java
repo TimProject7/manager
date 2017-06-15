@@ -2,10 +2,8 @@ package com.parker.service;
 
 import com.parker.vo.AdminVO;
 
-public interface AdminService{
+public interface AdminService {
 
-	
-
-	public int selectLogin(AdminVO avo);
+	public String loginCheck(AdminVO vo);
 
 }

@@ -8,6 +8,6 @@ public interface ProductService {
 
 	public List<ProductVO> listProduct();
 
-	public ProductVO detailProduct(int productId);
+	public ProductVO detailProduct(int product_number);
 
 }

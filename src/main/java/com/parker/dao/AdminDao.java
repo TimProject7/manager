@@ -4,5 +4,5 @@ import com.parker.vo.AdminVO;
 
 public interface AdminDao {
 
-	public int selectLogin(AdminVO avo);
+	public String loginCheck(AdminVO avo);
 }

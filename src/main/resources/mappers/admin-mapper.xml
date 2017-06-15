@@ -4,14 +4,11 @@
 
 <mapper namespace="com.parker.dao.AdminDAO">
 
-	<!-- <select id="selectLogin" parameterType="com.parker.vo.AdminVO" resultType="com.parker.vo.AdminVO"> 
-		SELECT admin_number, admin_id, admin_password FROM admin_tb WHERE admin_id 
-		= #{admin_id} and admin_password = #{admin_password} </select> -->
-	<select id="selectLogin" parameterType="com.parker.vo.AdminVO"
-		resultType="int">
-		select nvl(( select 1 from admin_tb where admin_id
-		=#{admin_id} and
-		admin_password =#{admin_password} ),0)as state from
-		dual
+	<select id="loginCheck" resultType="String">
+		SELECT admin_id
+		FROM admin_tb
+		WHERE admin_id = #{admin_id} AND admin_password
+		=
+		#{admin_password}
 	</select>
 </mapper>
