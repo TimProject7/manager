@@ -40,7 +40,7 @@
 				<td>${productList.product_company }</td>
 				<td>${productList.product_origin }</td>
 				<td>${productList.product_addDate }</td>
-				<td><fmt:formatNumber value="${productList.product_	price}"
+				<td><fmt:formatNumber value="${productList.product_price}"
 						pattern="###,###,###" /></td>
 			</tr>
 		</c:forEach>
