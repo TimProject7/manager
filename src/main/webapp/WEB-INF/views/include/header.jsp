@@ -13,11 +13,10 @@
 <a href="#">통계</a>
 |
 
-
 <!-- 로그인, 로그아웃 -->
 <c:choose>
-	<c:when test="${sessionScope.admin_id != null}">
-         ${sessionScope.admin_id}님이 로그인중입니다.
+	<c:when test="${not empty sessionScope.avo.admin_id}">
+         ${sessionScope.avo.admin_id}님이 로그인중입니다.
         <a href="/admin/logout">로그아웃</a>
 	</c:when>
 

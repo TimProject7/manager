@@ -9,10 +9,10 @@ public class ProductVO extends PagingVO {
 	private String product_origin; // 원산지
 	private String product_image; // 이미지
 	private int product_price; // 가격
-	private String product_regdate;// 등록일자
+	private String product_addDate;// 등록일자
 	private int admin_number; // 관리자 번호
 	private String product_content; // 내용
-
+	
 	// 조건검색시 사용할 필드
 	private String search = "";
 	private String keyword = "";
@@ -69,12 +69,12 @@ public class ProductVO extends PagingVO {
 		this.product_price = product_price;
 	}
 
-	public String getProduct_regdate() {
-		return product_regdate;
+	public String getProduct_addDate() {
+		return product_addDate;
 	}
 
-	public void setProduct_regdate(String product_regdate) {
-		this.product_regdate = product_regdate;
+	public void setProduct_addDate(String product_addDate) {
+		this.product_addDate = product_addDate;
 	}
 
 	public int getAdmin_number() {
@@ -123,6 +123,14 @@ public class ProductVO extends PagingVO {
 
 	public void setOrder_sc(String order_sc) {
 		this.order_sc = order_sc;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductVO [product_number=" + product_number + ", product_name=" + product_name + ", product_company="
+				+ product_company + ", product_origin=" + product_origin + ", product_image=" + product_image
+				+ ", product_price=" + product_price + ", product_addDate=" + product_addDate + ", admin_number="
+				+ admin_number + ", product_content=" + product_content + "]";
 	}
 
 }

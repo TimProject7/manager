@@ -5,10 +5,11 @@
 <mapper namespace="com.parker.dao.AdminDAO">
 
 	<select id="loginCheck" resultType="String">
-		SELECT admin_id
+		SELECT admin_id, admin_number
 		FROM admin_tb
-		WHERE admin_id = #{admin_id} AND admin_password
-		=
+		WHERE
+		admin_id = #{admin_id} AND
+		admin_password =
 		#{admin_password}
 	</select>
 </mapper>

@@ -22,8 +22,8 @@ public class ProductServiceImpl implements ProductService {
 
 	// 02. 상품상세
 	@Override
-	public ProductVO detailProduct(int product_number) {
-		return productDao.detailProduct(product_number);
+	public ProductVO detailProduct(int productId) {
+		return productDao.detailProduct(productId);
 	}
 
 	

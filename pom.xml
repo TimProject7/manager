@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.parker</groupId>
 	<artifactId>controller</artifactId>
-	<name>fountainpen</name>
+	<name>manager</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -21,11 +21,7 @@
 		</repository>
 	</repositories>
 
-
-
 	<dependencies>
-
-
 		<!-- MultipartHttpServletRequset -->
 		<dependency>
 			<groupId>commons-io</groupId>

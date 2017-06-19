@@ -2,6 +2,7 @@ package com.parker.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.parker.dao.AdminDao;
 import com.parker.vo.AdminVO;
@@ -10,7 +11,7 @@ import com.parker.vo.AdminVO;
 public class AdminServiceImpl implements AdminService {
 
 	@Autowired
-	AdminDao adminDao;
+	private AdminDao adminDao;
 
 	@Override
 	public String loginCheck(AdminVO avo) {

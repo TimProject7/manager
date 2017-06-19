@@ -23,10 +23,17 @@ public class AdminController {
 	AdminService adminService;
 
 	@RequestMapping(value = "/adminmain", method = RequestMethod.GET)
-	public String loginGet(@ModelAttribute AdminVO avo, Model model, HttpSession session) {
+	public String loginGet(@ModelAttribute AdminVO avo, Model model) {
 		logger.info("loginGet 호출 설공");
 
 		return "admin/adminmain";
+	}
+
+	@RequestMapping(value = "/adminlogin", method = RequestMethod.GET)
+	public String adminlogin(@ModelAttribute AdminVO avo, Model model) {
+		logger.info("adminlogin 호출 설공");
+
+		return "admin/adminlogin";
 	}
 
 	// 로그아웃
@@ -36,20 +43,21 @@ public class AdminController {
 		return "redirect:/";
 	}
 
-	@RequestMapping("/adminmain")
-	public ModelAndView loginCheck(HttpSession session, AdminVO avo, ModelAndView mav) {
+	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+	public ModelAndView loginCheck(HttpSession session, @ModelAttribute AdminVO avo, ModelAndView mav) {
 		String Avo = adminService.loginCheck(avo);
 
 		// 로그인 성공
 		if (Avo != null) {
-			session.setAttribute("avo", avo.getAdmin_id());
+			session.setAttribute("avo", avo);
 			mav.setViewName("/admin/adminmain"); // 관리자 페이지 이동
 			mav.addObject("msg", "success");
 			// 로그인 실패
 		} else {
-			mav.setViewName("redirect:/"); // 로그인 페이지 이동
+			mav.setViewName("/admin/adminlogin"); // 로그인 페이지 이동
 			mav.addObject("msg", "failure");
 		}
+
 		return mav;
 	}
 

@@ -17,13 +17,15 @@ public class ProductDAOImpl implements ProductDao {
 	// 01. 상품목록
 	@Override
 	public List<ProductVO> listProduct() {
-		return sqlSession.selectList("listProduct");
+		return sqlSession.selectList("product.listProduct");
 	}
 
 	// 02. 상품상세
 	@Override
-	public ProductVO detailProduct(int product_number) {
-		return sqlSession.selectOne("detailProduct", product_number);
+	public ProductVO detailProduct(int productId) {
+		return sqlSession.selectOne("product.detailProduct", productId);
 	}
+
+
 
 }

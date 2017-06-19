@@ -1,100 +1,77 @@
 package com.parker.vo;
 
+import java.util.Date;
+
 public class FAQVO {
-	private String page; // 페이지 번호
-	private String pageSize; // 페이지에 보여주는 줄수
-	private String start_row; // 시작 레코드 번호
-	private String end_row; // 종료 레코드 번호
 
-	// 조건검색시 사용할 속성
-	private String search = "";
-	private String keyword = "";
+	private int faq_no; // 게시글 번호
+	private String faq_title; // 게시글 제목
+	private String faq_content; // 게시글 내용
+	private String faq_writer; // 게시글 작성자
+	private Date faq_regdate; // 게시글 작성일자 util.Date
+	private int faq_viewcnt; // 게시글 조회수
+	private String admin_id;
 
-	// 제목 클릭시 정렬을 위한 속성
-	private String order_by;
-	private String order_sc;
-
-	private String result_cd;
-	private String result_msg;
-
-	public String getSearch() {
-		return search;
+	public String getAdmin_id() {
+		return admin_id;
 	}
 
-	public void setSearch(String search) {
-		this.search = search;
+	public void setAdmin_id(String admin_id) {
+		this.admin_id = admin_id;
 	}
 
-	public String getKeyword() {
-		return keyword;
+	public int getFaq_no() {
+		return faq_no;
 	}
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
+	public void setFaq_no(int faq_no) {
+		this.faq_no = faq_no;
 	}
 
-	public String getOrder_by() {
-		return order_by;
+	public String getFaq_title() {
+		return faq_title;
 	}
 
-	public void setOrder_by(String order_by) {
-		this.order_by = order_by;
+	public void setFaq_title(String faq_title) {
+		this.faq_title = faq_title;
 	}
 
-	public String getOrder_sc() {
-		return order_sc;
+	public String getFaq_content() {
+		return faq_content;
 	}
 
-	public void setOrder_sc(String order_sc) {
-		this.order_sc = order_sc;
+	public void setFaq_content(String faq_content) {
+		this.faq_content = faq_content;
 	}
 
-	public String getResult_cd() {
-		return result_cd;
+	public String getFaq_writer() {
+		return faq_writer;
 	}
 
-	public void setResult_cd(String result_cd) {
-		this.result_cd = result_cd;
+	public void setFaq_writer(String faq_writer) {
+		this.faq_writer = faq_writer;
 	}
 
-	public String getResult_msg() {
-		return result_msg;
+	public Date getFaq_regdate() {
+		return faq_regdate;
 	}
 
-	public void setResult_msg(String result_msg) {
-		this.result_msg = result_msg;
+	public void setFaq_regdate(Date faq_regdate) {
+		this.faq_regdate = faq_regdate;
 	}
 
-	public String getPage() {
-		return page;
+	public int getFaq_viewcnt() {
+		return faq_viewcnt;
 	}
 
-	public void setPage(String page) {
-		this.page = page;
+	public void setFaq_viewcnt(int faq_viewcnt) {
+		this.faq_viewcnt = faq_viewcnt;
 	}
 
-	public String getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(String pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	public String getStart_row() {
-		return start_row;
-	}
-
-	public void setStart_row(String start_row) {
-		this.start_row = start_row;
-	}
-
-	public String getEnd_row() {
-		return end_row;
-	}
-
-	public void setEnd_row(String end_row) {
-		this.end_row = end_row;
+	@Override
+	public String toString() {
+		return "FAQVO [faq_no=" + faq_no + ", faq_title=" + faq_title + ", faq_content=" + faq_content + ", faq_writer="
+				+ faq_writer + ", faq_regdate=" + faq_regdate + ", faq_viewcnt=" + faq_viewcnt + "]";
 	}
 
 }
