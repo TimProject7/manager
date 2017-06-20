@@ -4,5 +4,38 @@
 
 <mapper namespace="com.parker.dao.ProductDao">
 
+	<select id="listProduct" resultType="com.parker.vo.ProductVO">
+		SELECT
+		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
+		product_regdate
+		FROM products_tb
+		ORDER BY product_number
+	</select>
 
+	<!-- <select id="detailProduct" resultType="com.parker.vo.ProductVO"> SELECT 
+		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD') 
+		product_regdate FROM products_tb where product_number=#{product_number} </select> -->
+
+	<select id="detailProduct" resultType="com.parker.vo.ProductVO">
+		SELECT
+		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
+		product_regdate
+		FROM products_tb
+		where product_number =
+		#{product_number}
+
+	</select>
+	<insert id="insertProduct">
+		insert into products_tb(
+		PRODUCT_NUMBER,
+		PRODUCT_NAME,
+		PRODUCT_CONTENT,
+		PRODUCT_COMPANY,
+		PRODUCT_ORIGIN,
+		PRODUCT_IMAGE,
+		ADMIN_NUMBER,
+		PRODUCT_PRICE,
+		PRODUCT_REGDATE)
+		values(seq_product_tb.nextval,#{product_name},#{product_content},#{product_company},#{product_origin},#{product_image},'2',#{product_price},sysdate)
+	</insert>
 </mapper>

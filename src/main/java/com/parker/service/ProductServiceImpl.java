@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.parker.dao.ProductDao;
 import com.parker.vo.ProductVO;
@@ -12,7 +13,7 @@ import com.parker.vo.ProductVO;
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
-	ProductDao productDao;
+	private ProductDao productDao;
 
 	// 01. 상품목록
 	@Override
@@ -20,12 +21,23 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.listProduct();
 	}
 
-	// 02. 상품상세
 	@Override
-	public ProductVO detailProduct(int productId) {
-		return productDao.detailProduct(productId);
+	public ProductVO detailProduct(int product_number) {
+		// TODO Auto-generated method stub
+		return productDao.detailProduct(product_number);
 	}
 
-	
+	@Override
+	public void insertProduct(ProductVO pvo) {
+		// TODO Auto-generated method stub
+		productDao.insertProduct(pvo);
+	}
+
+	@Override
+	public void deleteProduct(int product_number) {
+		// TODO Auto-generated method stub
+		productDao.deleteProduct(product_number);
+
+	}
 
 }

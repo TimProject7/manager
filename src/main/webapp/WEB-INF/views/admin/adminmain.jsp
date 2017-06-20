@@ -95,6 +95,13 @@
 
 							$("#adminmain").submit();
 						})
+						$("#btn_product_main").click(function() {
+							$("#adminmain").attr({
+								"action" : "/product/productlist"
+							});
+
+							$("#adminmain").submit();
+						})
 
 					});
 </script>
