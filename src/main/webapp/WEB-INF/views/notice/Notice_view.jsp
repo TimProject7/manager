@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="true"%> 	
+<%@ page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
 			document.form1.submit();
 
 		});
-		
+
 		$("#btnUpdete").click(function() {
 			//var title = document.form1.title.value; ==> name속성으로 처리할 경우
 			//var content = document.form1.content.value;
@@ -48,10 +48,8 @@
 			// 폼에 입력한 데이터를 서버로 전송
 			document.form1.submit();
 		});
-		
-	});
 
-	
+	});
 </script>
 
 </head>
@@ -60,18 +58,21 @@
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.avo }">
-			<table class="logout_table">
-				<tr>
-					<td>${sessionScope.avo.admin_id }님로그인 하셨습니다.반갑습니다.</td>
+			<%@include file="../include/header.jsp"%>
+			<BR>
 
-					<td><a href="logout"><button>로그아웃</button> </a></td>
-				</tr>
-			</table>
+
+
 		</c:when>
-	</c:choose>	
+		<c:otherwise>
+			<script type="text/javascript">
+				self.location = "/"
+			</script>
+		</c:otherwise>
+	</c:choose>
 
 	<h2>게시글 보기</h2>
-	
+
 	<form name="form1" method="post">
 		<div>
 			<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
@@ -87,8 +88,8 @@
 		</div>
 		<div>
 			내용
-			<textarea name="notice_content" id="notice_content" rows="4" cols="80"
-				placeholder="내용을 입력해주세요">${dto.notice_content}</textarea>
+			<textarea name="notice_content" id="notice_content" rows="4"
+				cols="80" placeholder="내용을 입력해주세요">${dto.notice_content}</textarea>
 		</div>
 		<div>
 			이름 <input name="notice_writer" id="notice_writer" size="80"

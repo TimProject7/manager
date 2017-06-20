@@ -37,7 +37,7 @@
 				return;
 			}
 			// 폼에 입력한 데이터를 서버로 전송
-			document.form1.action="/notice/Notice_insert"
+			document.form1.action = "/notice/Notice_insert"
 			document.form1.submit();
 		});
 	});
@@ -49,14 +49,17 @@
 
 	<c:choose>
 		<c:when test="${not empty sessionScope.avo }">
-			<table class="logout_table">
-				<tr>
-					<td>${sessionScope.avo.admin_id }님로그인하셨습니다.반갑습니다.</td>
+			<%@include file="../include/header.jsp"%>
+			<BR>
 
-					<td><a href="logout"><button>로그아웃</button> </a></td>
-				</tr>
-			</table>
+
+
 		</c:when>
+		<c:otherwise>
+			<script type="text/javascript">
+				self.location = "/"
+			</script>
+		</c:otherwise>
 	</c:choose>
 
 	<h2>게시글 작성</h2>

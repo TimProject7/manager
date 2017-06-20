@@ -60,30 +60,32 @@ label{
 
 	<div class="div1">
 
-	<c:choose>
-		<c:when test="${not empty sessionScope.avo }">
-			<table class="logout_table" border="1">
-				<tr>
-					<td>${sessionScope.avo.admin_id }님로그인하셨습니다.반갑습니다.</td>
+<c:choose>
+			<c:when test="${not empty sessionScope.avo }">
+				<%@include file="../include/header.jsp"%>
+				<BR>
 
-					<td><a href="logout"><button>로그아웃</button> </a></td>
-				</tr>
-			</table>
-		</c:when>
-	</c:choose>
-	
+
+
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					self.location = "/"
+				</script>
+			</c:otherwise>
+		</c:choose>
 	<br><br>
 
 	<h2>FAQ 게시글 목록</h2>
 	
 	<br>
 	
-	<center>
+	<div align="center">
 		<label><a href="/notice/Notice_list">공지사항</a></label>
 		<label><a href="/faq/FAQ_list">FAQ</a></label>
 		<label><a href="#">유저게시판</a></label>
 		<label><a href="#">1:1문의</a></label>
-	</center>
+	</div>
 	<br><br>
 	
 	

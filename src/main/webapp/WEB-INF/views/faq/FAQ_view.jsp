@@ -59,16 +59,19 @@
 <body>
 	
 	<c:choose>
-		<c:when test="${not empty sessionScope.avo }">
-			<table class="logout_table">
-				<tr>
-					<td>${sessionScope.avo.admin_id }님로그인 하셨습니다.반갑습니다.</td>
+			<c:when test="${not empty sessionScope.avo }">
+				<%@include file="../include/header.jsp"%>
+				<BR>
 
-					<td><a href="logout"><button>로그아웃</button> </a></td>
-				</tr>
-			</table>
-		</c:when>
-	</c:choose>	
+
+
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					self.location = "/"
+				</script>
+			</c:otherwise>
+		</c:choose>
 	
 	<h2>게시글 보기</h2>
 	
