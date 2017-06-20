@@ -65,7 +65,7 @@
 		<input type="hidden" id="admin_id" name="admin_id"
 			value="${ sessionScope.avo.admin_id}">
 		<div>
-			제목 <input name="nocite_title" id="notice_title" size="80"
+			제목 <input name="notice_title" id="notice_title" size="80"
 				placeholder="제목을 입력해주세요">
 		</div>
 		<div>

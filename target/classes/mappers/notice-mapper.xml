@@ -39,6 +39,7 @@
 		sysdate
 		)
 	</insert>
+	
 	<!--03. 게시글 상세보기 조회 -->
 	<select id="noticeview" resultType="com.parker.vo.NoticeVO">
 		SELECT * FROM notice_tb

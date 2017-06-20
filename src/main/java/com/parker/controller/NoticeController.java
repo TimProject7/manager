@@ -51,6 +51,7 @@ public class NoticeController {
 		// 02_02. 게시글 작성처리
 		@RequestMapping(value = "Notice_insert", method = RequestMethod.POST)
 		public String insertNotice(@ModelAttribute NoticeVO No) throws Exception {
+			logger.info("Notice 00호출 성공");
 			noticeService.create(No);
 			return "redirect:Notice_list";
 		}

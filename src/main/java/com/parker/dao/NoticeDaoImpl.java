@@ -19,6 +19,7 @@ public class NoticeDaoImpl implements NoticeDao {
 	// 01. 게시글 작성
 	@Override
 	public void create(NoticeVO No) throws Exception {
+		
 		SqlSession.insert("noticeinsert", No);
 	}
 	// 02. 게시글 상세보기
