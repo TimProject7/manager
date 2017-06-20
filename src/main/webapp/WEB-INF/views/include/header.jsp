@@ -6,9 +6,9 @@
 <!-- 일반 메뉴 -->
 <a href="/product/productlist">상품관리(목록)</a>
 |
-<a href="#">회원관리</a>
+<a href="/user/userlist">회원관리</a>
 |
-<a href="#">게시판관리</a>
+<a href="/notice/Notice_list">게시판관리</a>
 |
 <a href="#">통계</a>
 |
