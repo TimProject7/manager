@@ -39,7 +39,7 @@
 		<table border="1" width="400px">
 			<tr>
 				<td>아이디</td>
-				<td><input name="admin_id" id="admin_id"></td>
+				<td><input name="admin_id" id="admin_id" autofocus="autofocus"></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>

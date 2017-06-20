@@ -1,19 +1,22 @@
 package com.parker.vo;
 
-public class NoticeVO {
-	private int notice_number;
-	private String notice_title;
-	private String notice_content;
-	private String notice_date;
-	private String notice_image;
-	private int admin_number;
+import java.util.Date;
 
-	public int getNotice_number() {
-		return notice_number;
+public class NoticeVO {
+	private int notice_no; // 게시글 번호
+	private String notice_title; // 게시글 제목
+	private String notice_content; // 게시글 내용
+	private String notice_writer; // 게시글 작성자
+	private Date notice_regdate; // 게시글 작성일자 util.Date
+	private int notice_viewcnt; // 게시글 조회수
+	private String admin_id; // 관리자 ID
+
+	public int getNotice_no() {
+		return notice_no;
 	}
 
-	public void setNotice_number(int notice_number) {
-		this.notice_number = notice_number;
+	public void setNotice_no(int notice_no) {
+		this.notice_no = notice_no;
 	}
 
 	public String getNotice_title() {
@@ -32,35 +35,43 @@ public class NoticeVO {
 		this.notice_content = notice_content;
 	}
 
-	public String getNotice_date() {
-		return notice_date;
+	public String getNotice_writer() {
+		return notice_writer;
 	}
 
-	public void setNotice_date(String notice_date) {
-		this.notice_date = notice_date;
+	public void setNotice_writer(String notice_writer) {
+		this.notice_writer = notice_writer;
 	}
 
-	public String getNotice_image() {
-		return notice_image;
+	public Date getNotice_regdate() {
+		return notice_regdate;
 	}
 
-	public void setNotice_image(String notice_image) {
-		this.notice_image = notice_image;
+	public void setNotice_regdate(Date notice_regdate) {
+		this.notice_regdate = notice_regdate;
 	}
 
-	public int getAdmin_number() {
-		return admin_number;
+	public int getNotice_viewcnt() {
+		return notice_viewcnt;
 	}
 
-	public void setAdmin_number(int admin_number) {
-		this.admin_number = admin_number;
+	public void setNotice_viewcnt(int notice_viewcnt) {
+		this.notice_viewcnt = notice_viewcnt;
+	}
+
+	public String getAdmin_id() {
+		return admin_id;
+	}
+
+	public void setAdmin_id(String admin_id) {
+		this.admin_id = admin_id;
 	}
 
 	@Override
 	public String toString() {
-		return "NoticeVO [notice_number=" + notice_number + ", notice_title=" + notice_title + ", notice_content="
-				+ notice_content + ", notice_date=" + notice_date + ", notice_image=" + notice_image + ", admin_number="
-				+ admin_number + "]";
+		return "NoticeVO [notice_no=" + notice_no + ", notice_title=" + notice_title + ", notice_content="
+				+ notice_content + ", notice_writer=" + notice_writer + ", notice_regdate=" + notice_regdate
+				+ ", notice_viewcnt=" + notice_viewcnt + ", admin_id=" + admin_id + "]";
 	}
 
 }
