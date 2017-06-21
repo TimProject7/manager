@@ -1,5 +1,7 @@
 package com.parker.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.parker.paging.PagingVO;
 
 public class ProductVO extends PagingVO {
@@ -7,12 +9,13 @@ public class ProductVO extends PagingVO {
 	private String product_name; // 상품명
 	private String product_company; // 제조사
 	private String product_origin; // 원산지
-	private String product_image; // 이미지
+	private MultipartFile product_photo; // 이미지
 	private int product_price; // 가격
 	private String product_regdate;// 등록일자
-	private int admin_number; // 관리자 번호
+	private String admin_id; // 관리자 번호
 	private String product_content; // 내용
-	
+	private String product_image; // 이미지 경로
+
 	// 조건검색시 사용할 필드
 	private String search = "";
 	private String keyword = "";
@@ -53,6 +56,14 @@ public class ProductVO extends PagingVO {
 		this.product_origin = product_origin;
 	}
 
+	public MultipartFile getProduct_photo() {
+		return product_photo;
+	}
+
+	public void setProduct_photo(MultipartFile product_photo) {
+		this.product_photo = product_photo;
+	}
+
 	public String getProduct_image() {
 		return product_image;
 	}
@@ -77,12 +88,12 @@ public class ProductVO extends PagingVO {
 		this.product_regdate = product_regdate;
 	}
 
-	public int getAdmin_number() {
-		return admin_number;
+	public String getAdmin_id() {
+		return admin_id;
 	}
 
-	public void setAdmin_number(int admin_number) {
-		this.admin_number = admin_number;
+	public void setAdmin_id(String admin_id) {
+		this.admin_id = admin_id;
 	}
 
 	public String getProduct_content() {
@@ -129,8 +140,8 @@ public class ProductVO extends PagingVO {
 	public String toString() {
 		return "ProductVO [product_number=" + product_number + ", product_name=" + product_name + ", product_company="
 				+ product_company + ", product_origin=" + product_origin + ", product_image=" + product_image
-				+ ", product_price=" + product_price + ", product_addDate=" + product_regdate + ", admin_number="
-				+ admin_number + ", product_content=" + product_content + "]";
+				+ ", product_price=" + product_price + ", product_regdate=" + product_regdate + ", admin_id="
+				+ admin_id + ", product_content=" + product_content + "]";
 	}
 
 }

@@ -9,7 +9,9 @@
 		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
 		product_regdate
 		FROM products_tb
-		ORDER BY product_number
+		where product_status='Y'
+		ORDER BY
+		product_number
 	</select>
 
 	<!-- <select id="detailProduct" resultType="com.parker.vo.ProductVO"> SELECT 
@@ -36,6 +38,27 @@
 		ADMIN_NUMBER,
 		PRODUCT_PRICE,
 		PRODUCT_REGDATE)
-		values(seq_product_tb.nextval,#{product_name},#{product_content},#{product_company},#{product_origin},#{product_image},'2',#{product_price},sysdate)
+		values(seq_product_tb.nextval,#{product_name},#{product_content},#{product_company},#{product_origin},#{product_image},(select
+		admin_number from admin_tb where
+		admin_id=#{admin_id}),#{product_price},sysdate)
 	</insert>
+	<update id="deleteProduct">
+		UPDATE products_tb SET
+		product_status = 'N'
+		where
+		product_number=#{product_number}
+	</update>
+	<update id="updateProduct">
+		UPDATE products_tb SET
+		product_name = #{product_name},
+		product_content = #{product_content},
+		product_company =
+		#{product_company},
+		product_origin = #{product_origin},
+		product_image =
+		#{product_image},
+		product_price = #{product_price}
+		where
+		product_number=#{product_number}
+	</update>
 </mapper>

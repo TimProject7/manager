@@ -12,6 +12,8 @@ public interface ProductService {
 
 	public void insertProduct(ProductVO pvo);
 
-	public void deleteProduct(int product_number);
+	public int deleteProduct(int product_number);
+
+	public int updateProduct(ProductVO pvo);
 
 }

@@ -12,11 +12,29 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#addBtn").click(function() {
+			var productName = $("#product_name").val();
+			var productPrice = $("#product_price").val();
+			var productContent = $("#product_content").val();
+			var productImage = $("#product_image").val();
 
-			// 폼 내부의 데이터를 전송할 주소
-			document.form2.action = "/product/productinsert"
-			// 제출
-			document.form2.submit();
+			if (productName == "") {
+				alert("상품명을 입력해주세요");
+				productName.foucs();
+			} else if (productPrice == "") {
+				alert("상품 가격을 입력해주세요");
+				productPrice.focus();
+			} else if (productContent == "") {
+				alert("상품 설명을 입력해주세요");
+				productContent.focus();
+			} else if (productImage == "") {
+				alert("상품 사진을 입력해주세요");
+				productImage.focus();
+			} else {
+				// 폼 내부의 데이터를 전송할 주소
+				document.form.action = "/product/productinsert"
+				// 제출
+				document.form.submit();
+			}
 		});
 	});
 </script>
@@ -39,15 +57,16 @@
 			</script>
 		</c:otherwise>
 	</c:choose>
-	<form id="form2" name="form2" method="post">
-		<input type="hidden" value="${sessionScope.avo.admin_id }">
+	<form id="form" name="form" enctype="multipart/form-data" method="post">
+		<input type="hidden" id="admin_id" name="admin_id"
+			value="${sessionScope.avo.admin_id }">
 
 		<h2>상품목록</h2>
 		<table border="1">
 			<tr>
 				<th>상품 이미지</th>
-				<td colspan="3"><input type="text" id="product_image"
-					name="product_image"></td>
+				<td colspan="3"><input type="file" id="product_photo"
+					name="product_photo"></td>
 			</tr>
 			<tr>
 				<th>상품명</th>

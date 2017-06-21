@@ -9,6 +9,24 @@
 <title>상품 목록</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#deleteBtn").click(function() {
+
+			// 폼 내부의 데이터를 전송할 주소
+			document.form.action = "/product/productdelete"
+			// 제출
+			document.form.submit();
+		});
+		$("#editBtn").click(function() {
+			// 폼 내부의 데이터를 전송할 주소
+			document.form.action = "/product/productedit"
+			// 제출
+			document.form.submit();
+		});
+
+	});
+</script>
 </head>
 <body>
 	<c:choose>
@@ -28,7 +46,7 @@
 	<h2>상품목록</h2>
 	<a href="/product/productwrite"><button>상품등록</button></a>
 
-	<form>
+	<form id="form" name="form">
 		<table border="1">
 			<tr>
 				<th>상품번호</th>
@@ -53,8 +71,8 @@
 						<tr>
 							<td><a href="productdetail/${productList.product_number}">${productList.product_number}</a></td>
 							<td><a href="productdetail/${productList.product_number}">
-									<img src="/images/${productList.product_image}" width="120px"
-									height="110px">
+									<img src="/resources/images/${productList.product_image}"
+									width="120px" height="110px">
 							</a></td>
 							<td><a href="productdetail/${productList.product_number}">${productList.product_name}</a>
 							</td>
@@ -65,6 +83,7 @@
 									pattern="###,###,###" />원</td>
 
 						</tr>
+
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
