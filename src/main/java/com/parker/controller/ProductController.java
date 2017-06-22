@@ -65,9 +65,8 @@ public class ProductController {
 			filename = file.getOriginalFilename();
 			System.out.println("sys :" + filename);
 
-			String path = "D:\\sts\\github\\manager\\src\\main\\webapp\\resources\\images\\";
+			String path = request.getSession().getServletContext().getRealPath("/resources/images/");
 
-			/* String path = "C:\\Temp\\"; */
 			try {
 				new File(path).mkdirs();
 				pvo.getProduct_photo().transferTo(new File(path + filename));
@@ -98,14 +97,15 @@ public class ProductController {
 	}
 
 	@RequestMapping("/productedit")
-	public String productEdit(@ModelAttribute ProductVO pvo) {
+	public String productEdit(@ModelAttribute ProductVO pvo, @RequestParam("product_photo") MultipartFile file,
+			HttpServletRequest request, Model model) {
 
 		String filename = "";
 
 		if (!pvo.getProduct_image().isEmpty()) {
 			filename = pvo.getProduct_photo().getOriginalFilename();
 
-			String path = "D:\\sts\\github\\manager\\src\\main\\webapp\\resources\\images\\";
+			String path = request.getSession().getServletContext().getRealPath("/resources/images/");
 			try {
 				new File(path).mkdirs();
 				pvo.getProduct_photo().transferTo(new File(path + filename));
