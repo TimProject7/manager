@@ -16,4 +16,8 @@ public interface ProductService {
 
 	public int updateProduct(ProductVO pvo);
 
+	public int productName(ProductVO pvo);
+
+	public int nameChkProduct(ProductVO pvo);
+
 }

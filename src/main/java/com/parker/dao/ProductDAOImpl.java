@@ -44,4 +44,17 @@ public class ProductDAOImpl implements ProductDao {
 		return sqlSession.update("updateProduct", pvo);
 	}
 
+	@Override
+	public int productName(ProductVO pvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("productName", pvo);
+	}
+
+	@Override
+	public int nameChkProduct(ProductVO pvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("productNameChk", pvo);
+
+	}
+
 }

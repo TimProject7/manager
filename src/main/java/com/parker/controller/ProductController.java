@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,6 +56,16 @@ public class ProductController {
 		return "/product/productwrite";
 	}
 
+	@RequestMapping(value = "/productNameChk", method = RequestMethod.POST)
+	public String productNameChk(@ModelAttribute ProductVO pvo, Model model) {
+		logger.info("productNameChk 호출 성공");
+
+		int result;
+		result = productService.nameChkProduct(pvo);
+		model.addAttribute("result", result);
+		return "product/productNameChk";
+	}
+
 	@RequestMapping("/productinsert")
 	public String productInsert(@ModelAttribute ProductVO pvo, @RequestParam("product_photo") MultipartFile file,
 			HttpServletRequest request, Model model) {
@@ -63,7 +74,6 @@ public class ProductController {
 
 		if (!pvo.getProduct_photo().isEmpty()) {
 			filename = file.getOriginalFilename();
-			System.out.println("sys :" + filename);
 
 			String path = request.getSession().getServletContext().getRealPath("/resources/images/");
 

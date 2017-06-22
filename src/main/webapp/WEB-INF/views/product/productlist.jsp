@@ -48,16 +48,16 @@ h2 {
 	text-align: center;
 }
 
-.div1{
+.div1 {
 	width: 43%;
 }
 
-th{
+th {
 	color: white;
 	background-color: black;
 }
 
-td{
+td {
 	text-align: center;
 }
 </style>
@@ -93,6 +93,7 @@ td{
 					<th>원산지</th>
 					<th>등록일자</th>
 					<th>가격</th>
+					<th>상태</th>
 				</tr>
 
 				<c:choose>
@@ -106,7 +107,8 @@ td{
 
 						<c:forEach var="productList" items="${productList}">
 							<tr>
-								<td class="no"><a href="productdetail/${productList.product_number}">${productList.product_number}</a></td>
+								<td class="no"><a
+									href="productdetail/${productList.product_number}">${productList.product_number}</a></td>
 								<td><a href="productdetail/${productList.product_number}">
 										<img src="/resources/images/${productList.product_image}"
 										width="120px" height="110px">
@@ -118,9 +120,17 @@ td{
 								<td>${productList.product_regdate}</td>
 								<td><fmt:formatNumber value="${productList.product_price}"
 										pattern="###,###,###" />원</td>
-								
+								<td><c:choose>
+
+										<c:when test="${productList.product_status == 'Y' }">
+											<font style="color: black;">판매중</font>
+										</c:when>
+										<c:otherwise>
+											<font style="color: red;">판매중지</font>
+										</c:otherwise>
+									</c:choose></td>
 							</tr>
-							
+
 
 						</c:forEach>
 					</c:otherwise>

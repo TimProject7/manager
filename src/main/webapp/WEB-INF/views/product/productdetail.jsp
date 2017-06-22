@@ -19,6 +19,11 @@
 			// 제출
 			document.form.submit();
 		});
+
+		$("#product_name").keyup(function() {
+
+		})
+
 	});
 </script>
 </head>
@@ -36,6 +41,7 @@
 	</c:choose>
 	<h2>상품 상세정보</h2>
 	<a href="/product/productlist"><button>상품목록</button></a>
+
 	<form id="form" name="form">
 		<input type="hidden" id="product_number" name="product_number"
 			value="${productDetail.product_number }">

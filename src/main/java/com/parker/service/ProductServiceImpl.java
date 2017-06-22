@@ -45,4 +45,16 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.updateProduct(pvo);
 	}
 
+	@Override
+	public int productName(ProductVO pvo) {
+		// TODO Auto-generated method stub
+		return productDao.productName(pvo);
+	}
+
+	@Override
+	public int nameChkProduct(ProductVO pvo) {
+		// TODO Auto-generated method stub
+		return productDao.nameChkProduct(pvo);
+	}
+
 }

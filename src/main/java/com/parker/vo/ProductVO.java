@@ -15,6 +15,7 @@ public class ProductVO extends PagingVO {
 	private String admin_id; // 관리자 번호
 	private String product_content; // 내용
 	private String product_image; // 이미지 경로
+	private String product_status;
 
 	// 조건검색시 사용할 필드
 	private String search = "";
@@ -104,6 +105,14 @@ public class ProductVO extends PagingVO {
 		this.product_content = product_content;
 	}
 
+	public String getProduct_status() {
+		return product_status;
+	}
+
+	public void setProduct_status(String product_status) {
+		this.product_status = product_status;
+	}
+
 	public String getSearch() {
 		return search;
 	}
@@ -140,8 +149,8 @@ public class ProductVO extends PagingVO {
 	public String toString() {
 		return "ProductVO [product_number=" + product_number + ", product_name=" + product_name + ", product_company="
 				+ product_company + ", product_origin=" + product_origin + ", product_image=" + product_image
-				+ ", product_price=" + product_price + ", product_regdate=" + product_regdate + ", admin_id="
-				+ admin_id + ", product_content=" + product_content + "]";
+				+ ", product_price=" + product_price + ", product_regdate=" + product_regdate + ", admin_id=" + admin_id
+				+ ", product_content=" + product_content + "]";
 	}
 
 }

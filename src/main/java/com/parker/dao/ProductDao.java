@@ -16,4 +16,8 @@ public interface ProductDao {
 
 	public int updateProduct(ProductVO pvo);
 
+	public int productName(ProductVO pvo);
+
+	public int nameChkProduct(ProductVO pvo);
+
 }

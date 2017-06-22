@@ -7,36 +7,71 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#addBtn").click(function() {
-			var productName = $("#product_name").val();
-			var productPrice = $("#product_price").val();
-			var productContent = $("#product_content").val();
-			var productImage = $("#product_image").val();
+	$(document).ready(
+			function() {
+				$("#addBtn").click(function() {
+					var productName = $("#product_name").val();
+					var productPrice = $("#product_price").val();
+					var productContent = $("#product_content").val();
+					var productImage = $("#product_image").val();
 
-			if (productName == "") {
-				alert("상품명을 입력해주세요");
-				productName.foucs();
-			} else if (productPrice == "") {
-				alert("상품 가격을 입력해주세요");
-				productPrice.focus();
-			} else if (productContent == "") {
-				alert("상품 설명을 입력해주세요");
-				productContent.focus();
-			} else if (productImage == "") {
-				alert("상품 사진을 입력해주세요");
-				productImage.focus();
-			} else {
-				// 폼 내부의 데이터를 전송할 주소
-				document.form.action = "/product/productinsert"
-				// 제출
-				document.form.submit();
-			}
-		});
-	});
+					if (productName == "") {
+						alert("상품명을 입력해주세요");
+						productName.foucs();
+						return;
+					} else if (productPrice == "") {
+						alert("상품 가격을 입력해주세요");
+						productPrice.focus();
+						return;
+					} else if (productContent == "") {
+						alert("상품 설명을 입력해주세요");
+						productContent.focus();
+						return;
+					} else if (productImage == "") {
+						alert("상품 사진을 입력해주세요");
+						productImage.focus();
+						return;
+					} else {
+						// 폼 내부의 데이터를 전송할 주소
+						document.form.action = "/product/productinsert"
+						// 제출
+						document.form.submit();
+					}
+				});
+				$("#product_name_chk").click(
+						function() {
+							if (!chkSubmit($("#product_name"))) {
+								return;
+							} else {
+								$.ajax({
+									url : "/product/productNameChk", //전송url
+									type : "POST", //전송방식
+									data : $("#product_name").serialize(),
+									error : function(result) {
+										alert('시스템오류')
+									},
+									success : function(result) {
+										if (result == 0) {
+											alert('사용가능한 상품명입니다')
+											$("#msg").text("사용가능한 상품명입니다").css(
+													"color", "blue");
+											$("#product_price").select();
+										} else if (result == 1) {
+											$("#msg").text("중복된 상품명입니다").css(
+													"color", "red");
+											$("#product_name").select();
+											alert('이미사용한 상품명입니다');
+										}
+									}
+								});
+							}
+						})
+
+			});
 </script>
 <title>상품 목록</title>
 
@@ -71,7 +106,9 @@
 			<tr>
 				<th>상품명</th>
 				<td colspan="3"><input type="text" id="product_name"
-					name="product_name"></td>
+					name="product_name">
+					<button type="button" id="product_name_chk" name="product_name_chk">중복확인</button>
+					<span id="msg"></span></td>
 			</tr>
 
 			<tr>

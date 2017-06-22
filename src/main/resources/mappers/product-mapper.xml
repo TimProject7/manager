@@ -7,9 +7,8 @@
 	<select id="listProduct" resultType="com.parker.vo.ProductVO">
 		SELECT
 		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
-		product_regdate
+		product_regdate,product_status
 		FROM products_tb
-		where product_status='Y'
 		ORDER BY
 		product_number
 	</select>
@@ -61,4 +60,13 @@
 		where
 		product_number=#{product_number}
 	</update>
+
+	<select id="productNameChk" parameterType="com.parker.vo.ProductVO"
+		resultType="int">
+		select count(product_name)
+		from
+		products_tb
+		where
+		product_name=#{product_name}
+	</select>
 </mapper>
