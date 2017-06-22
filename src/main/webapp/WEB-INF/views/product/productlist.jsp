@@ -27,68 +27,108 @@
 
 	});
 </script>
+
+<style type="text/css">
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+a:HOVER {
+	font-size: 1.1em;
+	color: teal;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+h2 {
+	text-align: center;
+}
+
+.div1{
+	width: 43%;
+}
+
+th{
+	color: white;
+	background-color: black;
+}
+
+td{
+	text-align: center;
+}
+</style>
+
 </head>
 <body>
-	<c:choose>
-		<c:when test="${not empty sessionScope.avo }">
-			<%@include file="../include/header.jsp"%>
-			<BR>
+
+	<div class="div1">
+
+		<c:choose>
+			<c:when test="${not empty sessionScope.avo }">
+				<%@include file="../include/header.jsp"%>
+				<BR>
 
 
 
-		</c:when>
-		<c:otherwise>
-			<script type="text/javascript">
-				self.location = "/"
-			</script>
-		</c:otherwise>
-	</c:choose>
-	<h2>상품목록</h2>
-	<a href="/product/productwrite"><button>상품등록</button></a>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					self.location = "/"
+				</script>
+			</c:otherwise>
+		</c:choose>
+		<h2>상품목록</h2>
+		<a href="/product/productwrite"><button>상품등록</button></a>
+		<form id="form" name="form">
+			<table border="1" style="width: 660px;">
+				<tr>
+					<th>상품번호</th>
+					<th>상품이미지</th>
+					<th>상품명</th>
+					<th>제조사</th>
+					<th>원산지</th>
+					<th>등록일자</th>
+					<th>가격</th>
+				</tr>
 
-	<form id="form" name="form">
-		<table border="1">
-			<tr>
-				<th>상품번호</th>
-				<th>상품이미지</th>
-				<th>상품명</th>
-				<th>제조사</th>
-				<th>원산지</th>
-				<th>등록일자</th>
-				<th>가격</th>
-			</tr>
-
-			<c:choose>
-				<c:when test="${productList==null }">
-					<tr>
-						<td colspan="7" align="center">등록된 상품이 없습니다.</td>
-					</tr>
-
-				</c:when>
-				<c:otherwise>
-
-					<c:forEach var="productList" items="${productList}">
+				<c:choose>
+					<c:when test="${productList==null }">
 						<tr>
-							<td><a href="productdetail/${productList.product_number}">${productList.product_number}</a></td>
-							<td><a href="productdetail/${productList.product_number}">
-									<img src="/resources/images/${productList.product_image}"
-									width="120px" height="110px">
-							</a></td>
-							<td><a href="productdetail/${productList.product_number}">${productList.product_name}</a>
-							</td>
-							<td>${productList.product_company}</td>
-							<td>${productList.product_origin}</td>
-							<td>${productList.product_regdate}</td>
-							<td><fmt:formatNumber value="${productList.product_price}"
-									pattern="###,###,###" />원</td>
-
+							<td colspan="7" align="center">등록된 상품이 없습니다.</td>
 						</tr>
 
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
-	</form>
+					</c:when>
+					<c:otherwise>
+
+						<c:forEach var="productList" items="${productList}">
+							<tr>
+								<td class="no"><a href="productdetail/${productList.product_number}">${productList.product_number}</a></td>
+								<td><a href="productdetail/${productList.product_number}">
+										<img src="/resources/images/${productList.product_image}"
+										width="120px" height="110px">
+								</a></td>
+								<td><a href="productdetail/${productList.product_number}">${productList.product_name}</a>
+								</td>
+								<td>${productList.product_company}</td>
+								<td>${productList.product_origin}</td>
+								<td>${productList.product_regdate}</td>
+								<td><fmt:formatNumber value="${productList.product_price}"
+										pattern="###,###,###" />원</td>
+								
+							</tr>
+							
+
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</table>
+		</form>
+
+	</div>
 
 
 </body>

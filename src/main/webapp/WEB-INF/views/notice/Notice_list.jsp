@@ -32,7 +32,7 @@ h2 {
 }
 
 .div1 {
-	width: 40%;
+	width: 43%;
 }
 
 .logout_table {
@@ -43,10 +43,23 @@ a {
 	text-decoration: none;
 	color: black;
 }
+a:HOVER{
+	font-size: 1.1em;
+	color: teal;
+}
 
 label {
 	padding-left: 3%;
 	padding-right: 3%;
+}
+
+th{
+	color: white;
+	background-color: black;
+}
+
+.no{
+	text-align: center;
 }
 </style>
 
@@ -74,13 +87,13 @@ label {
 		<br>
 
 		<center>
-			<label><a href="/notice/Notice_List">공지사항</a></label> <label><a
+			<label><a href="/notice/Notice_list">공지사항</a></label> <label><a
 				href="/faq/FAQ_list">FAQ</a></label> <label><a href="#">유저게시판</a></label> <label><a
 				href="#">1:1문의</a></label>
 		</center>
 		<br> <br>
 
-		<table border="1" width="600px">
+		<table border="1" width="660px">
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
@@ -98,20 +111,20 @@ label {
 				<c:otherwise>
 					<c:forEach var="row" items="${Notice_list}">
 						<tr>
-							<td>${row.notice_no}</td>
-							<td><a href="Notice_view?notice_no=${row.notice_no}">${row.notice_title}</a></td>
-							<td>${row.notice_writer}</td>
-							<td>
+							<td class="no">${row.notice_no}</td>
+							<td style="width: 50%;"><a href="Notice_view?notice_no=${row.notice_no}">${row.notice_title}</a></td>
+							<td style="width: 9%;">${row.notice_writer}</td>
+							<td style="width: 25%;">
 								<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 --> <fmt:formatDate
 									value="${row.notice_regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
 							</td>
-							<td>${row.notice_viewcnt}</td>
+							<td class="no" style="width: 8%;">${row.notice_viewcnt}</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 			<tr>
-				<td><button type="button" id="btnWrite" style="width: 100%;">글쓰기</button></td>
+				<td style="width: 8%;"><button type="button" id="btnWrite" style="width: 100%;">글쓰기</button></td>
 			</tr>
 		</table>
 

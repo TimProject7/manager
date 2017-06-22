@@ -59,6 +59,13 @@
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,
 		startColorstr=#82bbd1, endColorstr=#193b61);
 }
+
+table{
+
+	margin-right: 2%;
+
+}
+
 </style>
 
 <script type="text/javascript"

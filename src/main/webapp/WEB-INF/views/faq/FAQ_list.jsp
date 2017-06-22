@@ -35,7 +35,7 @@ h2{
 }
 
 .div1{
-	width: 40%;
+	width: 43%;
 }
 
 .logout_table{
@@ -48,11 +48,24 @@ a{
 	color: black;
 }
 
+a:HOVER{
+	font-size: 1.1em;
+	color: teal;
+}
+
 label{
 	padding-left: 3%;
 	padding-right: 3%;
 }
 
+th{
+	color: white;
+	background-color: black;
+}
+
+.no{
+	text-align: center;
+}
 </style>
 
 </head>
@@ -89,7 +102,7 @@ label{
 	<br><br>
 	
 	
-	<table border="1" width="600px">
+	<table border="1" width="660px">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -107,20 +120,20 @@ label{
 			<c:otherwise>
 				<c:forEach var="row" items="${faq_list}">
 					<tr>
-						<td>${row.faq_no}</td>
-						<td><a href="FAQ_view?faq_no=${row.faq_no}">${row.faq_title}</a></td>
-						<td>${row.faq_writer}</td>
-						<td>
+						<td class="no">${row.faq_no}</td>
+						<td style="width: 50%;"><a href="FAQ_view?faq_no=${row.faq_no}">${row.faq_title}</a></td>
+						<td style="width: 9%;">${row.faq_writer}</td>
+						<td style="width: 25;%;">
 							<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 --> <fmt:formatDate
 								value="${row.faq_regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
 						</td>
-						<td>${row.faq_viewcnt}</td>
+						<td class="no" style="width: 8%;">${row.faq_viewcnt}</td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 		<tr>
-			<td><button type="button" id="btnWrite" style="width: 100%;">글쓰기</button></td>
+			<td style="width: 8%;"><button type="button" id="btnWrite" style="width: 100%;">글쓰기</button></td>
 		</tr>
 	</table>
 	
