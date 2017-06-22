@@ -68,6 +68,18 @@
 
 						</tr>
 						<tr align="center">
+							<td>판매상태</tb>
+							<td colspan="3"><c:choose>
+
+									<c:when test="${productDetail.product_status == 'Y' }">
+										<font style="color: black;">판매중</font>
+									</c:when>
+									<c:otherwise>
+										<font style="color: red;">판매중지</font>
+									</c:otherwise>
+								</c:choose></td>
+						</tr>
+						<tr align="center">
 							<td>상품소개</td>
 							<td colspan="3">${productDetail.product_content}</td>
 						</tr>

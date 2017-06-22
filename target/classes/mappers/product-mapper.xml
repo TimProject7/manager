@@ -20,7 +20,7 @@
 	<select id="detailProduct" resultType="com.parker.vo.ProductVO">
 		SELECT
 		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
-		product_regdate
+		product_regdate,product_status
 		FROM products_tb
 		where product_number =
 		#{product_number}
