@@ -34,7 +34,7 @@ public class FAQController {
 		System.out.println(list.toString());
 		// ModelAndView - 모델과 뷰
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("faq/FAQ_list"); // 뷰를 list.jsp로 설정
+		mav.setViewName("faq/FAQlist"); // 뷰를 list.jsp로 설정
 		mav.addObject("faq_list", list); // 데이터를 저장
 
 		return mav; // list.jsp로 List가 전달된다.
@@ -65,7 +65,7 @@ public class FAQController {
 		// 모델(데이터)+뷰(화면)를 함께 전달하는 객체
 		ModelAndView mav = new ModelAndView();
 		// 뷰의 이름
-		mav.setViewName("faq/FAQ_view");
+		mav.setViewName("faq/FAQview");
 		// 뷰에 전달할 데이터
 		mav.addObject("dto", faqService.read(faq_no));
 		return mav;
@@ -77,14 +77,14 @@ public class FAQController {
 	@RequestMapping(value = "FAQ_update", method = RequestMethod.POST)
 	public String update(@ModelAttribute FAQVO vo) throws Exception {
 		faqService.update(vo);
-		return "redirect:FAQ_list";
+		return "redirect:FAQlist";
 	}
 
 	// 05. 게시글 삭제
 	@RequestMapping("FAQ_delete")
 	public String delete(@RequestParam int faq_no) throws Exception {
 		faqService.delete(faq_no);
-		return "redirect:FAQ_list";
+		return "redirect:FAQlist";
 	}
 
 }

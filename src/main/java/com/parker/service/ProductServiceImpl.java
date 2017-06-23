@@ -34,9 +34,16 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int deleteProduct(int product_number) {
+	public int salesProduct(int product_number) {
 		// TODO Auto-generated method stub
-		return productDao.deleteProduct(product_number);
+		return productDao.salesProduct(product_number);
+	}
+
+	@Override
+	public int salesStopProduct(int product_number) {
+		// TODO Auto-generated method stub
+		return productDao.salesStopProduct(product_number);
+
 	}
 
 	@Override

@@ -41,7 +41,15 @@
 		admin_number from admin_tb where
 		admin_id=#{admin_id}),#{product_price},sysdate)
 	</insert>
-	<update id="deleteProduct">
+	<update id="salesProduct">
+
+		UPDATE products_tb SET
+		product_status = 'Y'
+		where
+		product_number=#{product_number}
+	</update>
+	<update id="salesStopProduct">
+
 		UPDATE products_tb SET
 		product_status = 'N'
 		where

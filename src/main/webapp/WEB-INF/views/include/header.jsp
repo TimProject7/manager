@@ -11,7 +11,7 @@
 |
 <a href="/user/userlist">회원관리</a>
 |
-<a href="/notice/Notice_list">게시판관리</a>
+<a href="/notice/noticelist">게시판관리</a>
 |
 <a href="#">통계</a>
 |

@@ -12,10 +12,10 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#deleteBtn").click(function() {
+		$("#salesBtn").click(function() {
 
 			// 폼 내부의 데이터를 전송할 주소
-			document.form.action = "/product/productdelete"
+			document.form.action = "/product/productsalesmanagement"
 			// 제출
 			document.form.submit();
 		});
@@ -44,7 +44,13 @@
 
 	<form id="form" name="form">
 		<input type="hidden" id="product_number" name="product_number"
-			value="${productDetail.product_number }">
+			value="${productDetail.product_number }"> <input
+			type="hidden" id="product_status" name="product_status"
+			value="${productDetail.product_status }"> <select name="zzz">
+			<c:forEach begin="1" end="10" var="i">
+				<option value="${i}">${i}</option>
+			</c:forEach>
+		</select>
 		<table border="1">
 			<tr>
 				<td><img src="/resources/images/${productDetail.product_image}"
@@ -88,7 +94,17 @@
 			</tr>
 		</table>
 		<button id=editBtn>수정</button>
-		<button id=deleteBtn>삭제</button>
+		<button id=salesBtn>
+			<c:choose>
+
+				<c:when test="${productDetail.product_status == 'Y' }">
+					<font style="color: red;">판매중지</font>
+				</c:when>
+				<c:otherwise>
+					<font style="color: black;">판매</font>
+				</c:otherwise>
+			</c:choose>
+		</button>
 
 	</form>
 </body>

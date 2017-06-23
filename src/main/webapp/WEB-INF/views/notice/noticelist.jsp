@@ -15,7 +15,7 @@
 	$(document).ready(function() {
 		$("#btnWrite").click(function() {
 			// 페이지 주소 변경(이동)
-			location.href = "/notice/Notice_write";
+			location.href = "/notice/noticewrite";
 		});
 	});
 </script>
@@ -86,11 +86,11 @@ th{
 
 		<br>
 
-		<center>
-			<label><a href="/notice/Notice_list">공지사항</a></label> <label><a
+		<div align="center">
+			<label><a href="/notice/noticelist">공지사항</a></label> <label><a
 				href="/faq/FAQ_list">FAQ</a></label> <label><a href="#">유저게시판</a></label> <label><a
 				href="#">1:1문의</a></label>
-		</center>
+		</div>
 		<br> <br>
 
 		<table border="1" width="660px">
@@ -112,7 +112,7 @@ th{
 					<c:forEach var="row" items="${Notice_list}">
 						<tr>
 							<td class="no">${row.notice_no}</td>
-							<td style="width: 50%;"><a href="Notice_view?notice_no=${row.notice_no}">${row.notice_title}</a></td>
+							<td style="width: 50%;"><a href="noticeview?notice_no=${row.notice_no}">${row.notice_title}</a></td>
 							<td style="width: 9%;">${row.notice_writer}</td>
 							<td style="width: 25%;">
 								<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 --> <fmt:formatDate

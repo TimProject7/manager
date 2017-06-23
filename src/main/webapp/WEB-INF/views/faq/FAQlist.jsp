@@ -94,8 +94,8 @@ th{
 	<br>
 	
 	<div align="center">
-		<label><a href="/notice/Notice_list">공지사항</a></label>
-		<label><a href="/faq/FAQ_list">FAQ</a></label>
+		<label><a href="/notice/noticelist">공지사항</a></label>
+		<label><a href="/faq/FAQlist">FAQ</a></label>
 		<label><a href="#">유저게시판</a></label>
 		<label><a href="#">1:1문의</a></label>
 	</div>

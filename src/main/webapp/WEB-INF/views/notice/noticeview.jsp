@@ -49,13 +49,13 @@ td{
 
 		$("#btnDelete").click(function() {
 			if (confirm("삭제하시겠습니까?")) {
-				document.form1.action = "Notice_delete";
+				document.form1.action = "noticedelete";
 				document.form1.submit();
 			}
 		});
 
 		$("#btnlist").click(function() {
-			document.form1.action = "Notice_list";
+			document.form1.action = "noticelist";
 			document.form1.submit();
 
 		});
@@ -76,7 +76,7 @@ td{
 				document.form1.content.focus();
 				return;
 			}
-			document.form1.action = "Notice_update"
+			document.form1.action = "noticeupdate"
 			// 폼에 입력한 데이터를 서버로 전송
 			document.form1.submit();
 		});

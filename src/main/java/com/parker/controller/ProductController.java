@@ -92,18 +92,35 @@ public class ProductController {
 
 	}
 
-	@RequestMapping("/productdelete")
-	public String productDelete(@RequestParam int product_number) {
-		productService.deleteProduct(product_number);
+	@RequestMapping("/productsalesmanagement")
+	public String productDelete(@RequestParam int product_number, @RequestParam String product_status,@RequestParam int zzz) {
 		int result = 0;
-		result = productService.deleteProduct(product_number);
-		if (result != 0) {
-			System.out.println("상품 상태값 N으로 변경 성공");
+		System.out.println("zzz : "+zzz );
+		System.out.println(product_status);
+		if (product_status.equals("N")) {
+			System.out.println("상품 판매");
+			result = productService.salesProduct(product_number);
+			if (result != 0) {
+				
+				System.out.println("상품 상태값 Y으로 변경 성공");
+			} else {
+				System.out.println("상품 상태 변경 실패");
+			}
+			return "redirect:/product/productlist";
+		} else if (product_status.equals("Y")) {
+			System.out.println("상품 판매중지");
+			result = productService.salesStopProduct(product_number);
+			if (result != 0) {
+				System.out.println("상품 상태값 N으로 변경 성공");
+			} else {
+				System.out.println("상품 상태 변경 실패");
+			}
+			return "redirect:/product/productlist";
 		} else {
-			System.out.println("상품 상태 변경 실패");
-		}
-		return "redirect:/product/productlist";
+			System.out.println("뭘 잘못누른거냐?");
+			return "redirect:/product/productlist";
 
+		}
 	}
 
 	@RequestMapping("/productedit")

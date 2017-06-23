@@ -15,7 +15,7 @@
 	$(document).ready(function() {
 
 		$("#btnList").click(function() {
-			document.form1.action = "Notice_list";
+			document.form1.action = "noticelist";
 			document.form1.submit();
 
 		});
@@ -37,7 +37,7 @@
 				return;
 			}
 			// 폼에 입력한 데이터를 서버로 전송
-			document.form1.action = "/notice/Notice_insert"
+			document.form1.action = "/notice/noticeinsert"
 			document.form1.submit();
 		});
 	});
