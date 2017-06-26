@@ -60,12 +60,9 @@
 		startColorstr=#82bbd1, endColorstr=#193b61);
 }
 
-table{
-
+table {
 	margin-right: 2%;
-
 }
-
 </style>
 
 <script type="text/javascript"
@@ -105,6 +102,13 @@ table{
 						$("#btn_product_main").click(function() {
 							$("#adminmain").attr({
 								"action" : "/product/productlist"
+							});
+
+							$("#adminmain").submit();
+						})
+						$("#btn_users_main").click(function() {
+							$("#adminmain").attr({
+								"action" : "/user/userlist"
 							});
 
 							$("#adminmain").submit();

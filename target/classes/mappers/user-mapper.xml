@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.parker.dao.UserDao">
+
+	<select id="userList" resultType="com.parker.vo.UserVO">
+		select * from users_tb
+
+	</select>
+	<select id="userDetail" resultType="com.parker.vo.UserVO">
+		select * from users_tb
+		where
+		user_number = #{user_number}
+	</select>
+
+	<update id="userRestoration">
+		UPDATE users_tb SET
+		user_status = 'Y'
+		where
+		user_number=#{user_number}
+	</update>
+	<update id="userDropOut">
+		UPDATE users_tb SET
+		user_status = 'D'
+		where
+		user_number=#{user_number}
+	</update>
+</mapper>

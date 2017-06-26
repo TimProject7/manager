@@ -43,7 +43,8 @@ a {
 	text-decoration: none;
 	color: black;
 }
-a:HOVER{
+
+a:HOVER {
 	font-size: 1.1em;
 	color: teal;
 }
@@ -53,12 +54,12 @@ label {
 	padding-right: 3%;
 }
 
-th{
+th {
 	color: white;
 	background-color: black;
 }
 
-.no{
+.no {
 	text-align: center;
 }
 </style>
@@ -112,7 +113,8 @@ th{
 					<c:forEach var="row" items="${Notice_list}">
 						<tr>
 							<td class="no">${row.notice_no}</td>
-							<td style="width: 50%;"><a href="noticeview?notice_no=${row.notice_no}">${row.notice_title}</a></td>
+							<td style="width: 50%;"><a
+								href="noticeview?notice_no=${row.notice_no}">${row.notice_title}</a></td>
 							<td style="width: 9%;">${row.notice_writer}</td>
 							<td style="width: 25%;">
 								<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 --> <fmt:formatDate
@@ -124,7 +126,8 @@ th{
 				</c:otherwise>
 			</c:choose>
 			<tr>
-				<td style="width: 8%;"><button type="button" id="btnWrite" style="width: 100%;">글쓰기</button></td>
+				<td style="width: 8%;"><button type="button" id="btnWrite"
+						style="width: 100%;">글쓰기</button></td>
 			</tr>
 		</table>
 

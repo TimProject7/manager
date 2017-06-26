@@ -46,11 +46,7 @@
 		<input type="hidden" id="product_number" name="product_number"
 			value="${productDetail.product_number }"> <input
 			type="hidden" id="product_status" name="product_status"
-			value="${productDetail.product_status }"> <select name="zzz">
-			<c:forEach begin="1" end="10" var="i">
-				<option value="${i}">${i}</option>
-			</c:forEach>
-		</select>
+			value="${productDetail.product_status }">
 		<table border="1">
 			<tr>
 				<td><img src="/resources/images/${productDetail.product_image}"

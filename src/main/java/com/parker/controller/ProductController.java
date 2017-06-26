@@ -93,15 +93,13 @@ public class ProductController {
 	}
 
 	@RequestMapping("/productsalesmanagement")
-	public String productDelete(@RequestParam int product_number, @RequestParam String product_status,@RequestParam int zzz) {
+	public String productDelete(@RequestParam int product_number, @RequestParam String product_status) {
 		int result = 0;
-		System.out.println("zzz : "+zzz );
-		System.out.println(product_status);
 		if (product_status.equals("N")) {
 			System.out.println("상품 판매");
 			result = productService.salesProduct(product_number);
 			if (result != 0) {
-				
+
 				System.out.println("상품 상태값 Y으로 변경 성공");
 			} else {
 				System.out.println("상품 상태 변경 실패");

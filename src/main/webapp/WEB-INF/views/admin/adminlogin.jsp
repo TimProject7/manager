@@ -34,51 +34,60 @@
 </script>
 
 <style type="text/css">
-
-*{
+* {
 	margin: 0 auto;
 	padding: 0;
 }
 
-table{
+table {
 	border-style: solid;
 }
 
-#btnLogin{
+#btnLogin {
 	width: 100%;
 	height: 50px;
 	margin: 0;
 	padding: 0;
 }
 
-h2{
+h2 {
 	text-align: center;
 }
-
 </style>
 
 </head>
 <body>
-	<br><br><br><br><br><br><br><br><br><br>
-	<h2>관리자 로그인</h2><br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h2>관리자 로그인</h2>
+	<br>
 	<form name="form1" method="post">
 		<table width="400px">
 			<tr>
 				<td>아이디</td>
 				<td><input name="admin_id" id="admin_id" autofocus="autofocus"></td>
 				<td rowspan="2"><button type="button" id="btnLogin">로그인</button>
-					<c:if test="${msg == 'failure'}">
-						<div style="color: red">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-					</c:if> <c:if test="${msg == 'logout'}">
-						<div style="color: red">로그아웃되었습니다.</div>
-					</c:if></td>
+				</td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
 				<td><input type="password" name="admin_password"
 					id="admin_password"></td>
 			</tr>
-			<tr>
+			<tr align="center">
+				<td colspan="2"><c:if test="${msg == 'failure'}">
+						<div style="color: red">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+					</c:if> <c:if test="${msg == 'logout'}">
+						<div style="color: red">로그아웃되었습니다.</div>
+					</c:if></td>
 			</tr>
 		</table>
 	</form>
