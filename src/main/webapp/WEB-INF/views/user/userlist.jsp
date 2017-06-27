@@ -22,6 +22,7 @@
 			</script>
 		</c:otherwise>
 	</c:choose>
+	<%@ include file="../include/boardheader.jsp"%>
 	<form>
 		<div align="center">
 			<table border="1">
@@ -37,7 +38,8 @@
 				<c:choose>
 					<c:when test="${not empty userList }">
 						<c:forEach var="userList" items="${userList}">
-						<input type="hidden" id="user_number" name="user_number" value="${userList.user_number }">
+							<input type="hidden" id="user_number" name="user_number"
+								value="${userList.user_number }">
 							<tr>
 
 								<td><a href="userdetail/${userList.user_number }">${userList.user_id }</a></td>

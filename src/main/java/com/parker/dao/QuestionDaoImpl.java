@@ -22,4 +22,16 @@ public class QuestionDaoImpl implements QuestionDao {
 		return sqlSession.selectList("questionList");
 	}
 
+	@Override
+	public QuestionVO questionDetail(int question_number) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("questionDetail", question_number);
+	}
+
+	@Override
+	public UserVO userInfo(int user_number) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("userInfo",user_number);
+	}
+
 }

@@ -93,13 +93,7 @@ th{
 	
 	<br>
 	
-	<div align="center">
-		<label><a href="/notice/noticelist">공지사항</a></label>
-		<label><a href="/faq/FAQlist">FAQ</a></label>
-		<label><a href="#">유저게시판</a></label>
-		<label><a href="#">1:1문의</a></label>
-	</div>
-	<br><br>
+		<%@ include file="../include/boardheader.jsp" %>
 	
 	
 	<table border="1" width="660px">

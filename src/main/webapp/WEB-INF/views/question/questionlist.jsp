@@ -22,38 +22,36 @@
 			</script>
 		</c:otherwise>
 	</c:choose>
+
+	<%@ include file="../include/boardheader.jsp"%>
 	<form>
 		<div align="center">
 			<table border="1">
 				<tr>
-					<Th>아이디</Th>
-					<Th>회원명</Th>
-					<Th>휴대전화</Th>
-					<Th>이메일</Th>
-					<Th>가입일자</Th>
-					<th>상태</th>
+					<Th>문의번호</Th>
+					<Th>제목</Th>
+					<Th>등록일자</Th>
+
 				</tr>
 
 				<c:choose>
-					<c:when test="${not empty userList }">
-						<c:forEach var="userList" items="${userList}">
-						<input type="hidden" id="user_number" name="user_number" value="${userList.user_number }">
-							<tr>
+					<c:when test="${not empty questionList }">
 
-								<td><a href="userdetail/${userList.user_number }">${userList.user_id }</a></td>
-								<td><a href="userdetail/${userList.user_number }">${userList.user_name }</a></td>
-								<td>${userList.user_phone }</td>
-								<td>${userList.user_email }</td>
-								<td>${userList.user_regdate }</td>
-								<td><c:choose>
-										<c:when test="${userList.user_status == 'Y'}">
-											<font style="color: black">일반회원</font>
-										</c:when>
-										<c:otherwise>
-											<font style="color: red"> 탈퇴회원</font>
-										</c:otherwise>
-									</c:choose></td>
+						<c:forEach var="questionList" items="${questionList}">
+							<input type="hidden" name="user_number" id="user_number"
+								value="${questionList.user_number }">
+							<tr align="center">
+								<td><a
+									href="/question/questiondetail/${questionList.question_number}?user_number=${questionList.user_number}">${questionList.question_number}</a></td>
+								<td><a
+									href="/question/questiondetail/${questionList.question_number}">${questionList.question_title}</a></td>
+								<td><a
+									href="/question/questiondetail/${questionList.question_number}">${questionList.question_regdate}</a></td>
+
+
+
 							</tr>
+
 						</c:forEach>
 
 					</c:when>

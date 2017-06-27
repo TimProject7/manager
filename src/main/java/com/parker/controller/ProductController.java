@@ -43,7 +43,7 @@ public class ProductController {
 	// 2. 상품 상세보기
 
 	@RequestMapping("/productdetail/{product_number}")
-	public ModelAndView productDetail(@PathVariable("product_number") int product_number, ModelAndView mav) {
+	public ModelAndView productDetail(@PathVariable int product_number, ModelAndView mav) {
 		logger.info("productDetail 호출 성공");
 		mav.setViewName("/product/productdetail");
 		mav.addObject("productDetail", productService.detailProduct(product_number));

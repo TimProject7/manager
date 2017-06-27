@@ -5,8 +5,17 @@
 <mapper namespace="com.parker.dao.QuestionDao">
 
 	<select id="questionList" resultType="com.parker.vo.QuestionVO">
-		select * from question_tb;
+		select * from question_tb
 
 	</select>
 
+	<select id="questionDetail" resultType="com.parker.vo.QuestionVO">
+		select * from question_tb
+		where question_number =#{question_number}
+	</select>
+
+	<select id="userInfo" resultType="com.parker.vo.UserVO">
+		select *from users_tb
+		where user_number =#{user_number}
+	</select>
 </mapper>

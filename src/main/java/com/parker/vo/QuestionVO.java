@@ -1,39 +1,69 @@
 package com.parker.vo;
 
+import java.sql.Date;
+
 public class QuestionVO {
 
-	int admin_number;
-	String admin_id;
-	String admin_password;
+	private int question_number;
+	private String question_title;
+	private String question_content;
+	private Date question_regdate;
+	private String question_image;
+	private int user_number;
 
-	public int getAdmin_nmuber() {
-		return admin_number;
+	public int getQuestion_number() {
+		return question_number;
 	}
 
-	public void setAdmin_nmuber(int admin_number) {
-		this.admin_number = admin_number;
+	public void setQuestion_number(int question_number) {
+		this.question_number = question_number;
 	}
 
-	public String getAdmin_id() {
-		return admin_id;
+	public String getQuestion_title() {
+		return question_title;
 	}
 
-	public void setAdmin_id(String admin_id) {
-		this.admin_id = admin_id;
+	public void setQuestion_title(String question_title) {
+		this.question_title = question_title;
 	}
 
-	public String getAdmin_password() {
-		return admin_password;
+	public String getQuestion_content() {
+		return question_content;
 	}
 
-	public void setAdmin_password(String admin_password) {
-		this.admin_password = admin_password;
+	public void setQuestion_content(String question_content) {
+		this.question_content = question_content;
+	}
+
+	public Date getQuestion_regdate() {
+		return question_regdate;
+	}
+
+	public void setQuestion_regdate(Date question_regdate) {
+		this.question_regdate = question_regdate;
+	}
+
+	public String getQuestion_image() {
+		return question_image;
+	}
+
+	public void setQuestion_image(String question_image) {
+		this.question_image = question_image;
+	}
+
+	public int getUser_number() {
+		return user_number;
+	}
+
+	public void setUser_number(int user_number) {
+		this.user_number = user_number;
 	}
 
 	@Override
 	public String toString() {
-		return "AdminVO [admin_number=" + admin_number + ", admin_id=" + admin_id + ", admin_password=" + admin_password
-				+ "]";
+		return "QuestionVO [question_number=" + question_number + ", question_title=" + question_title
+				+ ", question_content=" + question_content + ", question_regdate=" + question_regdate
+				+ ", question_image=" + question_image + ", user_number=" + user_number + "]";
 	}
 
 }
