@@ -13,4 +13,6 @@ public interface QuestionService {
 
 	public UserVO questionUserInfo(int user_number);
 
+	public int questionReply(int question_number);
+
 }

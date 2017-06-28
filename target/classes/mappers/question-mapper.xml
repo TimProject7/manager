@@ -15,7 +15,18 @@
 	</select>
 
 	<select id="userInfo" resultType="com.parker.vo.UserVO">
-		select *from users_tb
-		where user_number =#{user_number}
+		select * from users_tb
+		where
+		user_number =#{user_number}
+	</select>
+
+	<insert id="questionReply">
+		insert into questionReply_tb
+		values(seq_questionreply_tb.nextval,#{questionReply_content},sysdate,#{question_image},#{question_number},#{admin_number})
+
+	</insert>
+	<select id="questionReplySuccess" resultType="int">
+		select * from questionreply_tb
+		where question_number=#{question_number}
 	</select>
 </mapper>

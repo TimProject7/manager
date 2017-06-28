@@ -24,9 +24,7 @@
 			// 제출
 			document.form.submit();
 		});
-		function combobox(combo) {
-			alert(combo.value + "전원욱 쩔었다");
-		}
+
 	});
 </script>
 
@@ -84,11 +82,7 @@ td {
 			</c:otherwise>
 		</c:choose>
 		<h2>상품목록</h2>
-		<select name="select" onchange="javascript:combobox(this)">
-			<option value="menu1" selected="selected">메뉴1</option>
-			<option value="menu2">메뉴2</option>
-			<option value="menu3">메뉴3</option>
-		</select> <a href="/product/productwrite"><button>상품등록</button></a>
+		<a href="/product/productwrite"><button>상품등록</button></a>
 		<form id="form" name="form">
 			<table border="1" style="width: 660px;">
 				<tr>
@@ -126,7 +120,7 @@ td {
 								<td>${productList.product_regdate}</td>
 								<td><fmt:formatNumber value="${productList.product_price}"
 										pattern="###,###,###" />원</td>
-								<td> <c:choose>
+								<td><c:choose>
 
 										<c:when test="${productList.product_status == 'Y' }">
 											<font style="color: black;">판매중</font>
@@ -134,7 +128,7 @@ td {
 										<c:otherwise>
 											<font style="color: red;">판매중지</font>
 										</c:otherwise>
-							
+
 									</c:choose></td>
 							</tr>
 						</c:forEach>

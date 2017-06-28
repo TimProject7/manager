@@ -6,11 +6,11 @@ public class AdminVO {
 	String admin_id;
 	String admin_password;
 
-	public int getAdmin_nmuber() {
+	public int getAdmin_number() {
 		return admin_number;
 	}
 
-	public void setAdmin_nmuber(int admin_number) {
+	public void setAdmin_number(int admin_number) {
 		this.admin_number = admin_number;
 	}
 

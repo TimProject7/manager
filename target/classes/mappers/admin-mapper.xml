@@ -4,7 +4,7 @@
 
 <mapper namespace="com.parker.dao.AdminDAO">
 
-	<select id="loginCheck" resultType="String">
+	<select id="loginCheck" parameterType="com.parker.vo.AdminVO" resultType="com.parker.vo.AdminVO">
 		SELECT admin_id, admin_number
 		FROM admin_tb
 		WHERE

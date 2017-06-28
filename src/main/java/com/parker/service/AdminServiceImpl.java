@@ -14,7 +14,7 @@ public class AdminServiceImpl implements AdminService {
 	private AdminDao adminDao;
 
 	@Override
-	public String loginCheck(AdminVO avo) {
+	public AdminVO loginCheck(AdminVO avo) {
 		return adminDao.loginCheck(avo);
 	}
 

@@ -45,11 +45,11 @@ public class AdminController {
 
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public ModelAndView loginCheck(HttpSession session, @ModelAttribute AdminVO avo, ModelAndView mav) {
-		String Avo = adminService.loginCheck(avo);
+		
 
 		// 로그인 성공
-		if (Avo != null) {
-			session.setAttribute("avo", avo);
+		if (adminService.loginCheck(avo) != null) {
+			session.setAttribute("avo", adminService.loginCheck(avo));
 			mav.setViewName("/admin/adminmain"); // 관리자 페이지 이동
 			mav.addObject("msg", "success");
 			// 로그인 실패

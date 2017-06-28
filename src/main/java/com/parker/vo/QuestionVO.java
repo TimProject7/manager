@@ -7,9 +7,10 @@ public class QuestionVO {
 	private int question_number;
 	private String question_title;
 	private String question_content;
-	private Date question_regdate;
+	private Date question_writedate;
 	private String question_image;
 	private int user_number;
+	private int questionReply_success;
 
 	public int getQuestion_number() {
 		return question_number;
@@ -35,12 +36,12 @@ public class QuestionVO {
 		this.question_content = question_content;
 	}
 
-	public Date getQuestion_regdate() {
-		return question_regdate;
+	public Date getQuestion_writedate() {
+		return question_writedate;
 	}
 
-	public void setQuestion_regdate(Date question_regdate) {
-		this.question_regdate = question_regdate;
+	public void setQuestion_writedate(Date question_writedate) {
+		this.question_writedate = question_writedate;
 	}
 
 	public String getQuestion_image() {
@@ -59,10 +60,18 @@ public class QuestionVO {
 		this.user_number = user_number;
 	}
 
+	public int getQuestionReply_success() {
+		return questionReply_success;
+	}
+
+	public void setQuestionReply_success(int questionReply_success) {
+		this.questionReply_success = questionReply_success;
+	}
+
 	@Override
 	public String toString() {
 		return "QuestionVO [question_number=" + question_number + ", question_title=" + question_title
-				+ ", question_content=" + question_content + ", question_regdate=" + question_regdate
+				+ ", question_content=" + question_content + ", question_writedate=" + question_writedate
 				+ ", question_image=" + question_image + ", user_number=" + user_number + "]";
 	}
 

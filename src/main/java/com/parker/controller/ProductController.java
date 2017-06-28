@@ -68,7 +68,7 @@ public class ProductController {
 
 	@RequestMapping("/productinsert")
 	public String productInsert(@ModelAttribute ProductVO pvo, @RequestParam("product_photo") MultipartFile file,
-			HttpServletRequest request, Model model) {
+			HttpServletRequest request) {
 		logger.info("productinsert 호출 성공");
 		String filename = "";
 
