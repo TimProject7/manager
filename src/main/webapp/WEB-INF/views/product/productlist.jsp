@@ -67,20 +67,7 @@ td {
 
 	<div class="div1">
 
-		<c:choose>
-			<c:when test="${not empty sessionScope.avo }">
-				<%@include file="../include/header.jsp"%>
-				<BR>
-
-
-
-			</c:when>
-			<c:otherwise>
-				<script type="text/javascript">
-					self.location = "/"
-				</script>
-			</c:otherwise>
-		</c:choose>
+	<%@include file="../include/header.jsp"%>
 		<h2>상품목록</h2>
 		<a href="/product/productwrite"><button>상품등록</button></a>
 		<form id="form" name="form">

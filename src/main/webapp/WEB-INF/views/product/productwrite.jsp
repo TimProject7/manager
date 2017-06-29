@@ -78,20 +78,7 @@
 </head>
 
 <body>
-	<c:choose>
-		<c:when test="${not empty sessionScope.avo }">
-			<%@include file="../include/header.jsp"%>
-			<BR>
-
-
-
-		</c:when>
-		<c:otherwise>
-			<script type="text/javascript">
-				self.location = "/"
-			</script>
-		</c:otherwise>
-	</c:choose>
+	<%@include file="../include/header.jsp"%>
 	<form id="form" name="form" enctype="multipart/form-data" method="post">
 		<input type="hidden" id="admin_id" name="admin_id"
 			value="${sessionScope.avo.admin_id }">

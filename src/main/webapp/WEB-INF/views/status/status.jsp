@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-통계
+<%@include file="../include/header.jsp"%>
 </body>
 </html>

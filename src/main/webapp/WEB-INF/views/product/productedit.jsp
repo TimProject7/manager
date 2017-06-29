@@ -23,17 +23,8 @@
 </script>
 </head>
 <body>
-	<c:choose>
-		<c:when test="${not empty sessionScope.avo }">
-			<%@include file="../include/header.jsp"%>
-			<BR>
-		</c:when>
-		<c:otherwise>
-			<script type="text/javascript">
-				self.location = "/"
-			</script>
-		</c:otherwise>
-	</c:choose>
+	<%@include file="../include/header.jsp"%>
+
 	<h2>상품 상세정보</h2>
 	<a href="/product/productlist"><button>상품목록</button></a>
 	<form id="form" name="form">

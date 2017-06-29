@@ -37,7 +37,7 @@
 				return;
 			}
 			// 폼에 입력한 데이터를 서버로 전송
-			document.form1.action = "/notice/noticeinsert"
+			document.form1.action = "notice/noticeinsert"
 			document.form1.submit();
 		});
 	});
@@ -47,21 +47,7 @@
 </head>
 <body>
 
-	<c:choose>
-		<c:when test="${not empty sessionScope.avo }">
-			<%@include file="../include/header.jsp"%>
-			<BR>
-
-
-
-		</c:when>
-		<c:otherwise>
-			<script type="text/javascript">
-				self.location = "/"
-			</script>
-		</c:otherwise>
-	</c:choose>
-
+<%@include file="../include/header.jsp"%>
 	<h2>게시글 작성</h2>
 	<form id="form1" name="form1" method="post"
 		action="/notice/Notice_insert">

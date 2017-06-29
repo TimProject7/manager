@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.parker.dao.QuestionDao">
+<mapper namespace="com.parker.admin.dao.QuestionDao">
 
-	<select id="questionList" resultType="com.parker.vo.QuestionVO">
+	<select id="questionList" resultType="com.parker.admin.vo.QuestionVO">
 		select * from question_tb
 
 	</select>
 
-	<select id="questionDetail" resultType="com.parker.vo.QuestionVO">
+	<select id="questionDetail" resultType="com.parker.admin.vo.QuestionVO">
 		select * from question_tb
 		where question_number =#{question_number}
 	</select>
 
-	<select id="userInfo" resultType="com.parker.vo.UserVO">
+	<select id="userInfo" resultType="com.parker.admin.vo.UserVO">
 		select * from users_tb
 		where
 		user_number =#{user_number}
@@ -26,7 +26,8 @@
 
 	</insert>
 	<select id="questionReplySuccess" resultType="int">
-		select * from questionreply_tb
+		select * from
+		questionreply_tb
 		where question_number=#{question_number}
 	</select>
 </mapper>

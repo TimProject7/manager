@@ -47,20 +47,7 @@
 </head>
 <body>
 
-	<c:choose>
-		<c:when test="${not empty sessionScope.avo }">
-			<%@include file="../include/header.jsp"%>
-			<BR>
-
-
-
-		</c:when>
-		<c:otherwise>
-			<script type="text/javascript">
-				self.location = "/"
-			</script>
-		</c:otherwise>
-	</c:choose>
+		<%@include file="../include/header.jsp"%>
 
 	<h2>게시글 작성</h2>
 	<form name="form1" method="post" action="/faq/FAQ_insert">

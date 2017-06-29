@@ -13,7 +13,7 @@
 		$("#userRNDBtn").click(function() {
 
 			// 폼 내부의 데이터를 전송할 주소
-			document.form.action = "/user/userrnd"
+			document.form.action = "user/userrnd"
 			// 제출
 			document.form.submit();
 		});
@@ -22,21 +22,10 @@
 </script>
 </head>
 <body>
-	<c:choose>
-		<c:when test="${not empty sessionScope.avo }">
-			<%@include file="../include/header.jsp"%>
-			<BR>
-
-		</c:when>
-		<c:otherwise>
-			<script type="text/javascript">
-				self.location = "/"
-			</script>
-		</c:otherwise>
-	</c:choose>
+	<%@include file="../include/header.jsp"%>
 	<div align="center">
 		<form name="form" id="form">
-		
+
 			<table border="1">
 
 				<tr>
@@ -57,10 +46,10 @@
 
 				</tr>
 				<tr>
-					<td><input type="text" name="user_number" value="${userDetail.user_number }"
-						readonly="readonly">
-						<input type="hidden" name="user_status" value="${userDetail.user_status }">
-						</td>
+					<td><input type="text" name="user_number"
+						value="${userDetail.user_number }" readonly="readonly"> <input
+						type="hidden" name="user_status"
+						value="${userDetail.user_status }"></td>
 					<td>${userDetail.user_name }</td>
 					<td>${userDetail.user_id }</td>
 					<td>${userDetail.user_email }</td>

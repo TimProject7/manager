@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.parker.dao.ProductDao">
+<mapper namespace="com.parker.admin.dao.ProductDao">
 
-	<select id="listProduct" resultType="com.parker.vo.ProductVO">
+	<select id="listProduct" resultType="com.parker.admin.vo.ProductVO">
 		SELECT
 		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
 		product_regdate,product_status
@@ -13,11 +13,11 @@
 		product_number
 	</select>
 
-	<!-- <select id="detailProduct" resultType="com.parker.vo.ProductVO"> SELECT 
+	<!-- <select id="detailProduct" resultType="com.parker.admin.vo.ProductVO"> SELECT 
 		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD') 
 		product_regdate FROM products_tb where product_number=#{product_number} </select> -->
 
-	<select id="detailProduct" resultType="com.parker.vo.ProductVO">
+	<select id="detailProduct" resultType="com.parker.admin.vo.ProductVO">
 		SELECT
 		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
 		product_regdate,product_status
@@ -69,7 +69,7 @@
 		product_number=#{product_number}
 	</update>
 
-	<select id="productNameChk" parameterType="com.parker.vo.ProductVO"
+	<select id="productNameChk" parameterType="com.parker.admin.vo.ProductVO"
 		resultType="int">
 		select count(product_name)
 		from

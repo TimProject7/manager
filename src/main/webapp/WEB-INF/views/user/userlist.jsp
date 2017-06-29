@@ -10,19 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:choose>
-		<c:when test="${not empty sessionScope.avo }">
-			<%@include file="../include/header.jsp"%>
-			<BR>
-
-		</c:when>
-		<c:otherwise>
-			<script type="text/javascript">
-				self.location = "/"
-			</script>
-		</c:otherwise>
-	</c:choose>
-	<%@ include file="../include/boardheader.jsp"%>
+<%@include file="../include/header.jsp"%>
 	<form>
 		<div align="center">
 			<table border="1">

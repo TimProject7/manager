@@ -67,7 +67,6 @@ table {
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-<!-- <script src="/resources/js/tab.js"></script> -->
 <script type="text/javascript">
 	$(document)
 			.ready(
@@ -94,21 +93,21 @@ table {
 
 						$("#btn_board_main").click(function() {
 							$("#adminmain").attr({
-								"action" : "/faq/FAQ_list"
+								"action" : "faq/FAQ_list"
 							});
 
 							$("#adminmain").submit();
 						})
 						$("#btn_product_main").click(function() {
 							$("#adminmain").attr({
-								"action" : "/product/productlist"
+								"action" : "product/productlist"
 							});
 
 							$("#adminmain").submit();
 						})
 						$("#btn_users_main").click(function() {
 							$("#adminmain").attr({
-								"action" : "/user/userlist"
+								"action" : "user/userlist"
 							});
 
 							$("#adminmain").submit();
@@ -150,7 +149,7 @@ table {
 		</c:when>
 		<c:when test="${empty sessionScope.avo }">
 			<script type="text/javascript">
-				self.location = "/"
+				self.location = "/adminlogin"
 			</script>
 		</c:when>
 	</c:choose>

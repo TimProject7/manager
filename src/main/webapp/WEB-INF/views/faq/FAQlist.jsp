@@ -73,20 +73,7 @@ th{
 
 	<div class="div1">
 
-<c:choose>
-			<c:when test="${not empty sessionScope.avo }">
-				<%@include file="../include/header.jsp"%>
-				<BR>
-
-
-
-			</c:when>
-			<c:otherwise>
-				<script type="text/javascript">
-					self.location = "/"
-				</script>
-			</c:otherwise>
-		</c:choose>
+		<%@include file="../include/header.jsp"%>
 	<br><br>
 
 	<h2>FAQ 게시글 목록</h2>
