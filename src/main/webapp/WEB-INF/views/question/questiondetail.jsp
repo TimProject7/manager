@@ -21,7 +21,7 @@
 				return;
 			} else {
 				// 폼 내부의 데이터를 전송할 주소
-				document.form1.action = "/question/questionreply"
+				document.form1.action = "question/questionreply"
 				// 제출
 				document.form1.submit();
 
@@ -38,7 +38,7 @@
 
 			<tr>
 				<th>${questionDetail.question_title }</th>
-				<td colspan="3" align="right">${questionDetail.question_regdate }</td>
+				<td colspan="3" align="right">${questionDetail.question_writedate }</td>
 			</tr>
 			<tr>
 				<td><hr></td>

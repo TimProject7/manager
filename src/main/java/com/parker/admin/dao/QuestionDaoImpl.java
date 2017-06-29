@@ -34,10 +34,5 @@ public class QuestionDaoImpl implements QuestionDao {
 		return sqlSession.selectOne("userInfo",user_number);
 	}
 
-	@Override
-	public int questionReply(int question_number) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("questionReplySuccess",question_number);
-	}
 
 }

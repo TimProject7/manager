@@ -37,7 +37,6 @@ public class QuestionController {
 	public ModelAndView questionList(ModelAndView mav) {
 		logger.info("1:1문의 리스트 호출 성공");
 		List<QuestionVO> questionList = questionService.questionList();
-		
 		mav.addObject("questionList", questionList);
 		mav.setViewName("/question/questionlist");
 
@@ -49,9 +48,9 @@ public class QuestionController {
 	public ModelAndView questionDetail(ModelAndView mav, @PathVariable("question_number") int question_number,
 			@RequestParam int usernumber) {
 		logger.info("1:1문의 상세 호출 성공");
-	
+
 		mav.addObject("questionDetail", questionService.questionDetail(question_number));
-		
+
 		mav.addObject("userInfo", questionService.questionUserInfo(usernumber));
 		mav.setViewName("question/questiondetail");
 

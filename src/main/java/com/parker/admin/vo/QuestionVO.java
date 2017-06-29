@@ -10,7 +10,7 @@ public class QuestionVO {
 	private Date question_writedate;
 	private String question_image;
 	private int user_number;
-	private int questionReply_success;
+	private String question_status;
 
 	public int getQuestion_number() {
 		return question_number;
@@ -60,19 +60,20 @@ public class QuestionVO {
 		this.user_number = user_number;
 	}
 
-	public int getQuestionReply_success() {
-		return questionReply_success;
+	public String getQuestion_status() {
+		return question_status;
 	}
 
-	public void setQuestionReply_success(int questionReply_success) {
-		this.questionReply_success = questionReply_success;
+	public void setQuestion_status(String question_status) {
+		this.question_status = question_status;
 	}
 
 	@Override
 	public String toString() {
 		return "QuestionVO [question_number=" + question_number + ", question_title=" + question_title
 				+ ", question_content=" + question_content + ", question_writedate=" + question_writedate
-				+ ", question_image=" + question_image + ", user_number=" + user_number + "]";
+				+ ", question_image=" + question_image + ", user_number=" + user_number + ", question_status="
+				+ question_status + "]";
 	}
 
 }

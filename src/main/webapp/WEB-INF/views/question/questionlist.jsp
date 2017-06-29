@@ -25,7 +25,7 @@
 </script>
 </head>
 <body>
-<%@include file="../include/header.jsp"%>
+	<%@include file="../include/header.jsp"%>
 
 	<%@ include file="../include/boardheader.jsp"%>
 	<form>
@@ -46,17 +46,19 @@
 
 							<tr align="center">
 								<td><a
-									href="/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_number}</a></td>
+									href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_number}</a></td>
 								<td><a
-									href="/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_title}</a></td>
+									href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_title}</a></td>
 								<td><a
-									href="/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_writedate}</a></td>
+									href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_writedate}</a></td>
 								<td><a
-									href="/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}"><c:choose>
-											<c:when test="${questionReply == 0 }">
+									href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}"><c:choose>
+											<c:when test="${questionList.question_status == 'N' }">
 												<font style="color: red">답변중</font>
+
 											</c:when>
 											<c:otherwise>
+
 												<font style="color: black;">답변완료</font>
 											</c:otherwise>
 										</c:choose> </a></td>

@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class QuestionReplyVO {
 	private int questionReply_number;
 	private String questionReply_content;
-	private Date questionReply_regdate;
+	private Date questionReply_writedate;
 	private String questionReply_image;
 	private MultipartFile questionReply_photo;
 	private int question_number;
@@ -29,12 +29,12 @@ public class QuestionReplyVO {
 		this.questionReply_content = questionReply_content;
 	}
 
-	public Date getQuestionReply_regdate() {
-		return questionReply_regdate;
+	public Date getQuestionReply_writedate() {
+		return questionReply_writedate;
 	}
 
-	public void setQuestionReply_regdate(Date questionReply_regdate) {
-		this.questionReply_regdate = questionReply_regdate;
+	public void setQuestionReply_writedate(Date questionReply_writedate) {
+		this.questionReply_writedate = questionReply_writedate;
 	}
 
 	public String getQuestionReply_image() {
@@ -72,9 +72,9 @@ public class QuestionReplyVO {
 	@Override
 	public String toString() {
 		return "QuestionReplyVO [questionReply_number=" + questionReply_number + ", questionReply_content="
-				+ questionReply_content + ", questionReply_regdate=" + questionReply_regdate + ", questionReply_image="
-				+ questionReply_image + ", questionReply_photo=" + questionReply_photo + ", question_number="
-				+ question_number + ", admin_number=" + admin_number + "]";
+				+ questionReply_content + ", questionReply_writedate=" + questionReply_writedate
+				+ ", questionReply_image=" + questionReply_image + ", questionReply_photo=" + questionReply_photo
+				+ ", question_number=" + question_number + ", admin_number=" + admin_number + "]";
 	}
 
 }

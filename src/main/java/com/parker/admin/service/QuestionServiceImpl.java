@@ -33,10 +33,6 @@ public class QuestionServiceImpl implements QuestionService {
 		return questionDao.userInfo(user_number);
 	}
 
-	@Override
-	public int questionReply(int question_number) {
-		// TODO Auto-generated method stub
-		return questionDao.questionReply(question_number);
-	}
+	
 
 }
