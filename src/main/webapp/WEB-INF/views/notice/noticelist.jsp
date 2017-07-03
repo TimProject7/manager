@@ -15,7 +15,7 @@
 	$(document).ready(function() {
 		$("#btnWrite").click(function() {
 			// 페이지 주소 변경(이동)
-			location.href = "/notice/noticewrite";
+			location.href = "/admin/notice/noticewrite";
 		});
 	});
 </script>
@@ -87,7 +87,7 @@ th {
 				<th>조회수</th>
 			</tr>
 			<c:choose>
-				<c:when test="${Notice_list == null}">
+				<c:when test="${empty Notice_list}">
 
 					<tr>
 						<td colspan="5">등록된 Notice가 없다</td>

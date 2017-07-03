@@ -23,57 +23,109 @@
 		}
 	});
 </script>
+<style type="text/css">
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+h2 {
+	text-align: left;
+}
+
+.div1 {
+	width: 43%;
+}
+
+.logout_table {
+	width: 55%;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:HOVER {
+	font-size: 1.1em;
+	color: teal;
+}
+
+label {
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
+th {
+	color: white;
+	background-color: black;
+}
+
+.no {
+	text-align: center;
+}
+</style>
 </head>
 <body>
-	<%@include file="../include/header.jsp"%>
+	<div class="div1">
+		<%@include file="../include/header.jsp"%>
+		<br> <br>
 
-	<%@ include file="../include/boardheader.jsp"%>
-	<form>
-		<div align="center">
-			<table border="1">
-				<tr>
-					<Th>문의번호</Th>
-					<Th>제목</Th>
-					<Th>등록일자</Th>
-					<th>답변여부</th>
 
-				</tr>
+		<h2>1:1문의 게시글 목록</h2>
 
-				<c:choose>
-					<c:when test="${not empty questionList }">
+		<br>
+		<%@ include file="../include/boardheader.jsp"%>
+		<form>
+			<div align="center">
+				<table border="1" style="width: 660px;">
+					<tr>
+						<Th>문의번호</Th>
+						<Th>제목</Th>
+						<Th>등록일자</Th>
+						<th>답변여부</th>
 
-						<c:forEach var="questionList" items="${questionList}">
+					</tr>
 
-							<tr align="center">
-								<td><a
-									href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_number}</a></td>
-								<td><a
-									href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_title}</a></td>
-								<td><a
-									href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_writedate}</a></td>
-								<td><a
-									href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}"><c:choose>
-											<c:when test="${questionList.question_status == 'N' }">
-												<font style="color: red">답변중</font>
+					<c:choose>
+						<c:when test="${not empty questionList }">
 
-											</c:when>
-											<c:otherwise>
+							<c:forEach var="questionList" items="${questionList}">
 
-												<font style="color: black;">답변완료</font>
-											</c:otherwise>
-										</c:choose> </a></td>
-							</tr>
+								<tr align="center">
+									<td><a
+										href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_number}</a></td>
+									<td><a
+										href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_title}</a></td>
+									<td><a
+										href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}">${questionList.question_writedate}</a></td>
+									<td><a
+										href="/admin/question/questiondetail/${questionList.question_number}?usernumber=${questionList.user_number}"><c:choose>
+												<c:when test="${questionList.question_status == 'N' }">
+													<font style="color: red">답변대기</font>
 
-						</c:forEach>
+												</c:when>
+												<c:when test="${questionList.question_status == 'Y' }">
+													<font style="color: black;">답변완료</font>
+												</c:when>
+												<c:otherwise>
 
-					</c:when>
-					<c:otherwise>
-						<td colspan="5">등록된 회원이 없습니다.</td>
-					</c:otherwise>
-				</c:choose>
 
-			</table>
-		</div>
-	</form>
+												</c:otherwise>
+											</c:choose> </a></td>
+								</tr>
+
+							</c:forEach>
+
+						</c:when>
+						<c:otherwise>
+							<td colspan="4">등록된 회원이 없습니다.</td>
+						</c:otherwise>
+					</c:choose>
+
+				</table>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

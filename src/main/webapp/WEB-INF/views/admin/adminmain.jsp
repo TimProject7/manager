@@ -93,7 +93,7 @@ table {
 
 						$("#btn_board_main").click(function() {
 							$("#adminmain").attr({
-								"action" : "faq/FAQ_list"
+								"action" : "faq/FAQlist"
 							});
 
 							$("#adminmain").submit();

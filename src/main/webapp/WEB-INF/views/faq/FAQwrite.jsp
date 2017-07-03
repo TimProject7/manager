@@ -16,7 +16,7 @@
 	$(document).ready(function() {
 
 		$("#btnList").click(function() {
-			document.form1.action = "FAQ_list";
+			document.form1.action = "FAQlist";
 			document.form1.submit();
 
 		});

@@ -18,4 +18,16 @@ public class QuestionReplyServiceImpl implements QuestionReplyService {
 
 	}
 
+	@Override
+	public int questionUpdate(QuestionReplyVO qvo) {
+		// TODO Auto-generated method stub
+		return questionReplyDao.questionUpdate(qvo);
+	}
+
+	@Override
+	public QuestionReplyVO questionReplyDetail(int question_number) {
+		// TODO Auto-generated method stub
+		return questionReplyDao.questionReplyDetail(question_number);
+	}
+
 }

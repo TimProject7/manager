@@ -18,4 +18,16 @@ public class QuestionReplyDaoImpe implements QuestionReplyDao {
 		return sqlSession.insert("questionReply", qvo);
 	}
 
+	@Override
+	public int questionUpdate(QuestionReplyVO qvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("questionUpdate", qvo);
+	}
+
+	@Override
+	public QuestionReplyVO questionReplyDetail(int question_number) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("questionReplyDetail", question_number);
+	}
+
 }

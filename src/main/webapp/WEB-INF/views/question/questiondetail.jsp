@@ -21,7 +21,7 @@
 				return;
 			} else {
 				// 폼 내부의 데이터를 전송할 주소
-				document.form1.action = "question/questionreply"
+				document.form1.action = "/admin/question/questionreply"
 				// 제출
 				document.form1.submit();
 
@@ -54,43 +54,56 @@
 			<tr>
 
 				<td><c:if test="${questionDetail.question_image != null }">
-						<img src="/resources/images/${questionDetail.question_image }">
+						<a href="/resources/images/${questionDetail.question_image }"
+							target="_blank"><img
+							src="/resources/images/${questionDetail.question_image }"
+							style="width: 200px; height: 200px;"></a>
 					</c:if></td>
 			</tr>
 			<tr align="right">
-				<td align="right"><a href="/question/questionlist"><button
+				<td align="right"><a href="/admin/question/questionlist"><button
 							type="button" name="listBtn" id="listBtn">목록</button></a></td>
 			</tr>
 		</table>
+		<c:choose>
+			<c:when test="${questionDetail.question_status=='Y' }">
 
-		<form name="form1" id="form1" method="post"
-			enctype="multipart/form-data">
-			<hr>
-			<input type="hidden" name="question_number" id="question_number"
-				value="${questionDetail.question_number }"> <input
-				type="hidden" name="admin_number" id="admin_number"
-				value="${sessionScope.avo.admin_number }">
-			<table style="width: 500px;">
+			</c:when>
 
-				<tr>
-					<td>답변</td>
-				</tr>
-				<tr>
+			<c:otherwise>
+				<a href="02"> <button type="button">문의 삭제</button> </a>
+				<form name="form1" id="form1" method="post"
+					enctype="multipart/form-data">
+					<hr>
+					<input type="hidden" name="question_number" id="question_number"
+						value="${questionDetail.question_number }"> <input
+						type="hidden" name="admin_number" id="admin_number"
+						value="${sessionScope.avo.admin_number }">
+					<table style="width: 500px;">
 
-					<td><textarea name="questionReply_content"
-							id="questionReply_content" style="width: 100%; height: 250px;"></textarea></td>
-				</tr>
-				<tr align="right">
-					<td align="right"><input type="file"
-						name="questionReply_photo" id="questionReply_photo"></td>
-				</tr>
-				<tr align="right">
-					<td align="right">
-						<button type="button" name="addBtn" id="addBtn">답변 등록</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+						<tr>
+							<td>답변</td>
+						</tr>
+						<tr>
+
+							<td><textarea name="questionReply_content"
+									id="questionReply_content" style="width: 100%; height: 250px;"></textarea></td>
+						</tr>
+						<tr align="right">
+							<td align="right"><input type="file"
+								name="questionReply_photo" id="questionReply_photo"></td>
+						</tr>
+						<tr align="right">
+							<td align="right">
+								<button type="button" name="addBtn" id="addBtn">답변 등록</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</c:otherwise>
+		</c:choose>
+
+
 	</div>
 </body>
 </html>

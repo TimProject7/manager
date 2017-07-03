@@ -50,8 +50,9 @@ public class QuestionController {
 		logger.info("1:1문의 상세 호출 성공");
 
 		mav.addObject("questionDetail", questionService.questionDetail(question_number));
-
 		mav.addObject("userInfo", questionService.questionUserInfo(usernumber));
+		System.out.println(usernumber);
+		mav.addObject("questionReplyDetail", questionReplyService.questionReplyDetail(question_number));
 		mav.setViewName("question/questiondetail");
 
 		return mav;
@@ -77,13 +78,19 @@ public class QuestionController {
 			}
 			qvo.setQuestionReply_image(filename);
 			result = questionReplyService.questionReply(qvo);
+			System.out.println("questionReply1 : " + result);
 			if (result == 1) {
-				model.addAttribute("msg", true);
+				System.out.println("questionReply2 : " + result);
+				result = questionReplyService.questionUpdate(qvo);
+				if (result == 1) {
+					System.out.println("questionReply3 : " + result);
+					model.addAttribute("msg", true);
+				}
 			} else {
 				model.addAttribute("msg", false);
 			}
 
 		}
-		return "redirect:question/questionlist";
+		return "redirect:/question/questionlist";
 	}
 }

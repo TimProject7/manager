@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.parker.admin.dao.AdminDAO">
+<mapper namespace="com.parker.admin.dao.AdminDao">
 
 	<select id="loginCheck" parameterType="com.parker.admin.vo.AdminVO" resultType="com.parker.admin.vo.AdminVO">
 		SELECT admin_id, admin_number

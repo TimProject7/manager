@@ -27,7 +27,7 @@ public class FAQController {
 	Logger logger = Logger.getLogger(FAQController.class);
 
 	// 01. 게시글 목록
-	@RequestMapping("/FAQ_list")
+	@RequestMapping("/FAQlist")
 	public ModelAndView list() throws Exception {
 		logger.info("FAQ 리스트 호출 성공");
 		List<FAQVO> list = faqService.listAll();
@@ -43,22 +43,22 @@ public class FAQController {
 	// 02_01. 게시글 작성화면
 	// @RequestMapping("board/write.do")
 	// value="", method="전송방식"
-	@RequestMapping(value = "FAQ_write", method = RequestMethod.GET)
+	@RequestMapping(value = "/FAQwrite", method = RequestMethod.GET)
 	public String write() {
-		return "faq/FAQ_write"; // write.jsp로 이동
+		return "faq/FAQwrite"; // write.jsp로 이동
 	}
 
 	// 02_02. 게시글 작성처리
-	@RequestMapping(value = "FAQ_insert", method = RequestMethod.POST)
+	@RequestMapping(value = "/FAQinsert", method = RequestMethod.POST)
 	public String insertFAQ(@ModelAttribute FAQVO vo) throws Exception {
 		faqService.create(vo);
-		return "redirect:FAQ_list";
+		return "redirect:FAQlist";
 	}
 
 	// 03. 게시글 상세내용 조회, 게시글 조회수 증가 처리
 	// @RequestParam : get/post방식으로 전달된 변수 1개
 	// HttpSession 세션객체
-	@RequestMapping(value = "FAQ_view", method = RequestMethod.GET)
+	@RequestMapping(value = "/FAQview", method = RequestMethod.GET)
 	public ModelAndView view(@RequestParam int faq_no, HttpSession session) throws Exception {
 		// 조회수 증가 처리
 		faqService.increaseViewcnt(faq_no, session);
@@ -74,14 +74,14 @@ public class FAQController {
 
 	// 04. 게시글 수정
 	// 폼에서 입력한 내용들은 @ModelAttribute BoardVO vo로 전달됨
-	@RequestMapping(value = "FAQ_update", method = RequestMethod.POST)
+	@RequestMapping(value = "/FAQupdate", method = RequestMethod.POST)
 	public String update(@ModelAttribute FAQVO vo) throws Exception {
 		faqService.update(vo);
 		return "redirect:FAQlist";
 	}
 
 	// 05. 게시글 삭제
-	@RequestMapping("FAQ_delete")
+	@RequestMapping("/FAQdelete")
 	public String delete(@RequestParam int faq_no) throws Exception {
 		faqService.delete(faq_no);
 		return "redirect:FAQlist";

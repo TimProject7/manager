@@ -11,7 +11,7 @@ public interface QuestionDao {
 
 	public QuestionVO questionDetail(int question_number);
 
-	public UserVO userInfo(int user_number);
+	public UserVO userInfo(int usernumber);
 
 	
 }

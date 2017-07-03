@@ -18,13 +18,13 @@
 
 		$("#btnDelete").click(function() {
 			if (confirm("삭제하시겠습니까?")) {
-				document.form1.action = "FAQ_delete";
+				document.form1.action = "FAQdelete";
 				document.form1.submit();
 			}
 		});
 
 		$("#btnlist").click(function() {
-			document.form1.action = "FAQ_list";
+			document.form1.action = "FAQlist";
 			document.form1.submit();
 
 		});
@@ -45,7 +45,7 @@
 				document.form1.content.focus();
 				return;
 			}
-			document.form1.action = "FAQ_update"
+			document.form1.action = "FAQupdate"
 			// 폼에 입력한 데이터를 서버로 전송
 			document.form1.submit();
 		});

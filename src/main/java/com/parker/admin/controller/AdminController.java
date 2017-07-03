@@ -26,21 +26,21 @@ public class AdminController {
 	public String loginGet(@ModelAttribute AdminVO avo) {
 		logger.info("loginGet 호출 설공");
 
-		return "admin/adminlogin";
+		return "/admin/adminlogin";
 	}
 
 	@RequestMapping(value = "/adminlogin", method = RequestMethod.GET)
 	public String adminlogin(@ModelAttribute AdminVO avo) {
 		logger.info("adminlogin 호출 설공");
 
-		return "admin/adminlogin";
+		return "/admin/adminlogin";
 	}
 
 	// 로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpSession session, AdminVO avo) {
 		session.setAttribute("avo", null);
-		return "/adminlogin";
+		return "/admin/adminlogin";
 	}
 
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)

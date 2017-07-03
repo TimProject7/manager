@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.parker.admin.dao.UserBoardDao">
+
+	<select id="userBoardList" parameterType="com.parker.admin.vo.UserBoardVO"
+		resultType="com.parker.admin.vo.UserBoardVO">
+		select * from userboard_tb
+	</select>
+</mapper>

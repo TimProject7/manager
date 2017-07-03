@@ -29,9 +29,9 @@ public class QuestionDaoImpl implements QuestionDao {
 	}
 
 	@Override
-	public UserVO userInfo(int user_number) {
+	public UserVO userInfo(int usernumber) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("userInfo",user_number);
+		return sqlSession.selectOne("userInfo",usernumber);
 	}
 
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.parker.admin.dao.DeliveryDao">
+	<select id="deliveryList" resultType="com.parker.admin.vo.DeliveryVO">
+		select * from buy_tb
+	</select>
+	<select id="deliveryDetail" resultType="com.parker.admin.vo.DeliveryVO">
+		select * from buy_tb
+		where buy_number = #{delivery_number}
+	</select>
+</mapper>

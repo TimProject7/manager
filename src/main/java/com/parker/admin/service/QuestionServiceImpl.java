@@ -28,9 +28,9 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public UserVO questionUserInfo(int user_number) {
+	public UserVO questionUserInfo(int usernumber) {
 		// TODO Auto-generated method stub
-		return questionDao.userInfo(user_number);
+		return questionDao.userInfo(usernumber);
 	}
 
 	

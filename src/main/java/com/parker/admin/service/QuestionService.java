@@ -11,6 +11,6 @@ public interface QuestionService {
 
 	public QuestionVO questionDetail(int question_number);
 
-	public UserVO questionUserInfo(int user_number);
+	public UserVO questionUserInfo(int usernumber);
 
 }

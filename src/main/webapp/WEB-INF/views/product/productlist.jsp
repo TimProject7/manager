@@ -67,9 +67,9 @@ td {
 
 	<div class="div1">
 
-	<%@include file="../include/header.jsp"%>
+		<%@include file="../include/header.jsp"%>
 		<h2>상품목록</h2>
-		<a href="/product/productwrite"><button>상품등록</button></a>
+		<a href="/admin/product/productwrite"><button>상품등록</button></a>
 		<form id="form" name="form">
 			<table border="1" style="width: 660px;">
 				<tr>
@@ -84,7 +84,7 @@ td {
 				</tr>
 
 				<c:choose>
-					<c:when test="${productList==null }">
+					<c:when test="${empty productList }">
 						<tr>
 							<td colspan="7" align="center">등록된 상품이 없습니다.</td>
 						</tr>

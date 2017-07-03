@@ -37,7 +37,7 @@
 						return;
 					} else {
 						// 폼 내부의 데이터를 전송할 주소
-						document.form.action = "/product/productinsert"
+						document.form.action = "/admin/product/productinsert"
 						// 제출
 						document.form.submit();
 					}
@@ -48,7 +48,7 @@
 								return;
 							} else {
 								$.ajax({
-									url : "/product/productNameChk", //전송url
+									url : "/admin/product/productNameChk", //전송url
 									type : "POST", //전송방식
 									data : $("#product_name").serialize(),
 									error : function(result) {

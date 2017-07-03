@@ -18,7 +18,7 @@
 	$(document).ready(function() {
 		$("#btnWrite").click(function() {
 			// 페이지 주소 변경(이동)
-			location.href = "/faq/FAQ_write";
+			location.href = "/admin/faq/FAQwrite";
 		});
 	});
 </script>
@@ -92,7 +92,7 @@ th{
 			<th>조회수</th>
 		</tr>
 		<c:choose>
-			<c:when test="${faq_list == null}">
+			<c:when test="${not empty faq_list}">
 
 				<tr>
 					<td colspan="5">등록된 FAQ가 없다</td>
@@ -102,7 +102,7 @@ th{
 				<c:forEach var="row" items="${faq_list}">
 					<tr>
 						<td class="no">${row.faq_no}</td>
-						<td style="width: 50%;"><a href="FAQ_view?faq_no=${row.faq_no}">${row.faq_title}</a></td>
+						<td style="width: 50%;"><a href="FAQview?faq_no=${row.faq_no}">${row.faq_title}</a></td>
 						<td style="width: 9%;">${row.faq_writer}</td>
 						<td style="width: 25;%;">
 							<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 --> <fmt:formatDate
