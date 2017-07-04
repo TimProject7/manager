@@ -19,5 +19,7 @@ public interface FAQService {
     public List<FAQVO> listAll() throws Exception;
     // 06. 게시글 조회
     public void increaseViewcnt(int faq_no, HttpSession session) throws Exception;
+    // 07. 게시물 갯수
+	public int listCnt(FAQVO fvo);
 	
 }

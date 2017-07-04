@@ -1,6 +1,7 @@
 package com.parker.admin.paging;
 
 public class PagingVO {
+
 	private String page; // 페이지 번호
 	private String pageSize; // 페이지에 보여주는 줄수
 	private String start_row; // 시작 레코드 번호
@@ -95,6 +96,13 @@ public class PagingVO {
 
 	public void setEnd_row(String end_row) {
 		this.end_row = end_row;
+	}
+
+	@Override
+	public String toString() {
+		return "PagingVO [page=" + page + ", pageSize=" + pageSize + ", start_row=" + start_row + ", end_row=" + end_row
+				+ ", search=" + search + ", keyword=" + keyword + ", order_by=" + order_by + ", order_sc=" + order_sc
+				+ ", result_cd=" + result_cd + ", result_msg=" + result_msg + "]";
 	}
 
 }

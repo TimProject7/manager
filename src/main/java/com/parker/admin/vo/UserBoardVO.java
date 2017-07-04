@@ -2,7 +2,9 @@ package com.parker.admin.vo;
 
 import java.sql.Date;
 
-public class UserBoardVO {
+import com.parker.admin.paging.PagingVO;
+
+public class UserBoardVO extends PagingVO {
 	private int userboard_number;
 	private String userboard_title;
 	private String userboard_content;
@@ -10,6 +12,26 @@ public class UserBoardVO {
 	private String userboard_image;
 	private int user_number;
 	private int userboard_viewcnt;
+
+	// 조건검색시 사용할 필드
+	private String search = "";
+	private String keyword = "";
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	public int getUserboard_number() {
 		return userboard_number;

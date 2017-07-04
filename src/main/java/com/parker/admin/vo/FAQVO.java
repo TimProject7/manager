@@ -2,7 +2,9 @@ package com.parker.admin.vo;
 
 import java.util.Date;
 
-public class FAQVO {
+import com.parker.admin.paging.PagingVO;
+
+public class FAQVO extends PagingVO {
 
 	private int faq_no; // 게시글 번호
 	private String faq_title; // 게시글 제목
@@ -11,6 +13,26 @@ public class FAQVO {
 	private Date faq_regdate; // 게시글 작성일자 util.Date
 	private int faq_viewcnt; // 게시글 조회수
 	private String admin_id;
+
+	// 조건검색시 사용할 필드
+	private String search = "";
+	private String keyword = "";
+
+		public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	public String getAdmin_id() {
 		return admin_id;

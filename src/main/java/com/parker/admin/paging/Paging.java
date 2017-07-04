@@ -1,12 +1,15 @@
 package com.parker.admin.paging;
 
-import com.parker.admin.vo.ProductVO;
 
-public class ProductPaging {
-	public static void set(ProductVO pvo) {
+
+public class Paging {
+	public static void set(PagingVO pvo) {
+		// 한페이지
 		int page = Util.nvl(pvo.getPage(), 1);
+		// 총페이지수
 		int pageSize = Util.nvl(pvo.getPageSize(), 10);
 
+		// 널값일때 조건
 		if (pvo.getPage() == null) {
 			pvo.setPage(page + "");
 		}
@@ -20,4 +23,6 @@ public class ProductPaging {
 		pvo.setStart_row(start_row + "");
 		pvo.setEnd_row(end_row + "");
 	}
+
+	
 }

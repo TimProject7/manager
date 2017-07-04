@@ -3,6 +3,7 @@ package com.parker.admin.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.parker.admin.paging.Paging;
+import com.parker.admin.paging.Util;
 import com.parker.admin.service.FAQService;
 import com.parker.admin.vo.FAQVO;
 
@@ -28,13 +31,19 @@ public class FAQController {
 
 	// 01. 게시글 목록
 	@RequestMapping("/FAQlist")
-	public ModelAndView list() throws Exception {
+	public ModelAndView list(ModelAndView mav, @ModelAttribute FAQVO fvo) throws Exception {
 		logger.info("FAQ 리스트 호출 성공");
-		List<FAQVO> list = faqService.listAll();
-		System.out.println(list.toString());
+		Paging.set(fvo);
 		// ModelAndView - 모델과 뷰
-		ModelAndView mav = new ModelAndView();
+		int total = faqService.listCnt(fvo);
+		int count = total - (Util.nvl(fvo.getPage()) - 1) * Util.nvl(fvo.getPageSize());
+
+		List<FAQVO> list = faqService.listAll();
+
+		mav.addObject("count", count);
+		mav.addObject("data", fvo);
 		mav.setViewName("faq/FAQlist"); // 뷰를 list.jsp로 설정
+		mav.addObject("total", total);
 		mav.addObject("faq_list", list); // 데이터를 저장
 
 		return mav; // list.jsp로 List가 전달된다.

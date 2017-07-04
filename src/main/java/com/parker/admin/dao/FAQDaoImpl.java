@@ -55,4 +55,10 @@ public class FAQDaoImpl implements FAQDao {
 		SqlSession.update("faqincreaseViewcnt", faq_no);
 	}
 
+	@Override
+	public int listCnt(FAQVO fvo) {
+		// TODO Auto-generated method stub
+		return SqlSession.selectOne("listCnt",fvo);
+	}
+
 }

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,18 +12,59 @@
 <script type="text/javascript">
 	$(function() {
 
-		$(".tab_content").hide();
-		$(".tab_content:first").show();
+		/* 검색후 검색 대상과 검색단어 출력 */
+		if ("<c:out value='${data.keyword}'/>" != "") {
+			$("#keyword").val("<c:out value='${data.keyword}'/>");
+			$("#search").val("<c:out value='${data.search}'/>");
+		}
+		/* /* 한페이지에 보여줄 레코드 수 조회후 선택한 값 그대로 유지하기 위한 설정 */
+		if ("<c:out value='${data.pageSize}'/>" != "") {
+			$("#pageSize").val("<c:out value='${data.pageSize}'/>");
+		}
 
-		$("ul.tabs li").click(function() {
-			$("ul.tabs li").removeClass("active").css("color", "#333");
-			//$(this).addClass("active").css({"color": "darkred","font-weight": "bolder"});
-			$(this).addClass("active").css("color", "darkred");
-			$(".tab_content").hide()
-			var activeTab = $(this).attr("rel");
-			$("#" + activeTab).fadeIn()
+		/* 한페이지에 보여줄 레코드 수를 변경될 때마다 처리 이벤트 */
+		$("#pageSize").change(function() {
+			goPage(1);
 		});
+		/* 검색 대상이 변경될 때마다 처리 이벤트 */
+		$("#search").change(function() {
+			if ($("#search").val() == "all") {
+				$("#keyword").val("글 목록 전체");
+			} else if ($("#search").val() != "all") {
+				$("#keyword").val("");
+				$("#keyword").focus();
+			}
+			;
+		});
+
+		//검색버튼
+		$("#searchData").click(function() {
+			//검색조건이 전체가 아닐시 키워드로 검색
+			if ($("#search").val() == "all") {
+				$("#keyword").val("");
+			} else {
+				if (!chkSubmit($('#keyword'), "검색어를")) {
+					return;
+				}
+			}
+			goPage(1);
+		});
+
 	});
+
+	//검색한페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수
+	function goPage(page) {
+		if ($("#search").val() == "all") {
+			$("#keyword").val("");
+		}
+		$("#page").val(page);
+		$("#f_search").attr({
+			"method" : "get",
+			"action" : "/admin/delivery/deliverylist"
+		});
+		$("#f_search").submit();
+
+	}
 </script>
 <meta http-equiv="Content_Type" content="text/html; charset=UTF-8">
 <title>배송관리</title>
@@ -50,6 +91,7 @@ h2 {
 a {
 	text-decoration: none;
 	color: black;
+	padding: 2px;
 }
 
 a:HOVER {
@@ -79,6 +121,12 @@ th {
 
 		<%@include file="../include/header.jsp"%>
 		<br> <br>
+		<!-- 페이지 넘버 -->
+		<form id="f_search" name="f_search">
+			<input type="hidden" id="page" name="page" value="${data.page}" /> <input
+				type="hidden" id="pageSize" name="pageSize" value="${data.pageSize}" />
+		</form>
+
 
 
 		<div id="container">
@@ -131,143 +179,14 @@ th {
 						</c:choose>
 					</table>
 				</div>
+				<div id="buyListPage" align="center">
+					<tag:paging page="${param.page}" total="${total}"
+						list_size="${data.pageSize}" />
+				</div>
+
+				<br>
+
 				<!-- #tab1 -->
-				<div id="tab2" class="tab_content">
-					<table border="1">
-						<tr>
-							<td></td>
-							<td>회원번호</td>
-							<td>상품명</td>
-							<td>상품이미지</td>
-							<td>가격</td>
-							<td>수량</td>
-							<td>구매신청일</td>
-							<td>배송지</td>
-							<td>배송상태</td>
-
-						</tr>
-						<c:choose>
-							<c:when test="${not empty deliveryList}">
-								<c:forEach var="deliveryList" items="${deliveryList }">
-									<c:if test="${deliveryList.buy_status == '배송전' }">
-										<tr>
-											<td><input type="checkbox" id="chk" name="chk"></td>
-											<td>${deliveryList.user_number }</td>
-											<td>${deliveryList.buy_product }</td>
-											<td>${deliveryList.buy_image }</td>
-											<td>${deliveryList.buy_price }</td>
-											<td>${deliveryList.buy_quantity }</td>
-											<td>${deliveryList.buy_day }</td>
-											<td>${deliveryList.buy_address}</td>
-											<td>${deliveryList.buy_status }</td>
-										</tr>
-									</c:if>
-								</c:forEach>
-								<tr>
-									<td><button type="button" name="deleteBtn" id="deleteBtn">선택
-											삭제</button></td>
-								</tr>
-							</c:when>
-							<c:otherwise>
-								<tr>
-									<td colspan="9">등록된 배송요청이 없습니다.</td>
-								</tr>
-							</c:otherwise>
-						</c:choose>
-					</table>
-				</div>
-				<!-- #tab2 -->
-				<div id="tab3" class="tab_content">
-					<table border="1">
-						<tr>
-							<td></td>
-							<td>회원번호</td>
-							<td>상품명</td>
-							<td>상품이미지</td>
-							<td>가격</td>
-							<td>수량</td>
-							<td>구매신청일</td>
-							<td>배송지</td>
-							<td>배송상태</td>
-
-						</tr>
-						<c:choose>
-							<c:when test="${not empty deliveryList}">
-								<c:forEach var="deliveryList" items="${deliveryList }">
-									<c:if test="${deliveryList.buy_status == '배송중' }">
-										<tr>
-											<td><input type="checkbox" id="chk" name="chk"></td>
-											<td>${deliveryList.user_number }</td>
-											<td>${deliveryList.buy_product }</td>
-											<td>${deliveryList.buy_image }</td>
-											<td>${deliveryList.buy_price }</td>
-											<td>${deliveryList.buy_quantity }</td>
-											<td>${deliveryList.buy_day }</td>
-											<td>${deliveryList.buy_address}</td>
-											<td>${deliveryList.buy_status }</td>
-										</tr>
-									</c:if>
-								</c:forEach>
-								<tr>
-									<td><button type="button" name="deleteBtn" id="deleteBtn">선택
-											삭제</button></td>
-								</tr>
-							</c:when>
-							<c:otherwise>
-								<tr>
-									<td colspan="9">등록된 배송요청이 없습니다.</td>
-								</tr>
-							</c:otherwise>
-						</c:choose>
-					</table>
-				</div>
-				<!-- #tab3 -->
-
-				<div id="tab4" class="tab_content">
-					<table border="1">
-						<tr>
-							<td></td>
-							<td>회원번호</td>
-							<td>상품명</td>
-							<td>상품이미지</td>
-							<td>가격</td>
-							<td>수량</td>
-							<td>구매신청일</td>
-							<td>배송지</td>
-							<td>배송상태</td>
-
-						</tr>
-						<c:choose>
-							<c:when test="${not empty deliveryList}">
-								<c:forEach var="deliveryList" items="${deliveryList }">
-									<c:if test="${deliveryList.buy_status == '배송완료' }">
-										<tr>
-											<td><input type="checkbox" id="chk" name="chk"></td>
-											<td>${deliveryList.user_number }</td>
-											<td>${deliveryList.buy_product }</td>
-											<td>${deliveryList.buy_image }</td>
-											<td>${deliveryList.buy_price }</td>
-											<td>${deliveryList.buy_quantity }</td>
-											<td>${deliveryList.buy_day }</td>
-											<td>${deliveryList.buy_address}</td>
-											<td>${deliveryList.buy_status }</td>
-										</tr>
-									</c:if>
-								</c:forEach>
-								<tr>
-									<td><button type="button" name="deleteBtn" id="deleteBtn">선택
-											삭제</button></td>
-								</tr>
-							</c:when>
-							<c:otherwise>
-								<tr>
-									<td colspan="9">등록된 배송요청이 없습니다.</td>
-								</tr>
-							</c:otherwise>
-						</c:choose>
-					</table>
-				</div>
-				<!-- #tab4 -->
 			</div>
 			<!-- .tab_container -->
 		</div>

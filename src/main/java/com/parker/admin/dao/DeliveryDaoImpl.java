@@ -15,15 +15,21 @@ public class DeliveryDaoImpl implements DeliveryDao {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<DeliveryVO> deliveryList() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("deliveryList");
-	}
-
-	@Override
 	public DeliveryVO deliveryDetail(int delivery_number) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("deliveryDetail", delivery_number);
+	}
+
+	@Override
+	public int deliveryListCnt(DeliveryVO dvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("deliveryListCnt", dvo);
+	}
+
+	@Override
+	public List<DeliveryVO> deliveryList(DeliveryVO dvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("deliveryList", dvo);
 	}
 
 }

@@ -4,7 +4,9 @@ import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class DeliveryVO {
+import com.parker.admin.paging.PagingVO;
+
+public class DeliveryVO extends PagingVO {
 
 	private int buy_number;
 	private Date buy_day;
@@ -16,6 +18,10 @@ public class DeliveryVO {
 	private int user_number;
 	private int product_number;
 	private String buy_image;
+
+	// 조건검색시 사용할 필드
+	private String search = "";
+	private String keyword = "";
 
 	public int getBuy_number() {
 		return buy_number;
@@ -95,6 +101,22 @@ public class DeliveryVO {
 
 	public void setBuy_image(String buy_image) {
 		this.buy_image = buy_image;
+	}
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
 	@Override

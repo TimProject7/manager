@@ -2,7 +2,9 @@ package com.parker.admin.vo;
 
 import java.sql.Date;
 
-public class UserVO {
+import com.parker.admin.paging.PagingVO;
+
+public class UserVO extends PagingVO {
 	private int user_number;
 	private String user_name;
 	private String user_id;
@@ -20,6 +22,26 @@ public class UserVO {
 	private String user_status;
 	private String zip_code;
 	private String detail_address;
+
+	// 조건검색시 사용할 필드
+	private String search = "";
+	private String keyword = "";
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	public int getUser_number() {
 		return user_number;

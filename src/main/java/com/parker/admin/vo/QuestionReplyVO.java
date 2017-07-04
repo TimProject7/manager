@@ -4,7 +4,9 @@ import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class QuestionReplyVO {
+import com.parker.admin.paging.PagingVO;
+
+public class QuestionReplyVO extends PagingVO {
 	private int questionReply_number;
 	private String questionReply_content;
 	private Date questionReply_writedate;
@@ -12,6 +14,26 @@ public class QuestionReplyVO {
 	private MultipartFile questionReply_photo;
 	private int question_number;
 	private int admin_number;
+
+	// 조건검색시 사용할 필드
+	private String search = "";
+	private String keyword = "";
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	public int getQuestionReply_number() {
 		return questionReply_number;

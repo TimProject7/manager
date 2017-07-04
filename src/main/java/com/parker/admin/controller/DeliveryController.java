@@ -2,13 +2,18 @@ package com.parker.admin.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.parker.admin.paging.Paging;
+import com.parker.admin.paging.Util;
 import com.parker.admin.service.DeliveryService;
 import com.parker.admin.vo.DeliveryVO;
 
@@ -20,10 +25,17 @@ public class DeliveryController {
 	DeliveryService deliveryService;
 
 	@RequestMapping("/deliverylist")
-	public ModelAndView deliveryList(ModelAndView mav) {
+	public ModelAndView deliveryList(ModelAndView mav, @ModelAttribute DeliveryVO dvo) {
 		logger.info("deliverlist 호출 성공");
-		List<DeliveryVO> deliveryList = deliveryService.deliveryList();
+		Paging.set(dvo);
+		int total = deliveryService.deliveryListCnt(dvo);
+
+		int count = total - (Util.nvl(dvo.getPage()) - 1) * Util.nvl(dvo.getPageSize());
+		List<DeliveryVO> deliveryList = deliveryService.deliveryList(dvo);
+		mav.addObject("count", count);
 		mav.addObject("deliveryList", deliveryList);
+		mav.addObject("data", dvo);
+		mav.addObject("total", total);
 		mav.setViewName("delivery/deliverylist");
 		return mav;
 	}

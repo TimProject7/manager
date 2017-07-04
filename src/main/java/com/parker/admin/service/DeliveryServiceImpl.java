@@ -14,16 +14,24 @@ public class DeliveryServiceImpl implements DeliveryService {
 	@Autowired
 	private DeliveryDao deilveryDao;
 
-	@Override
-	public List<DeliveryVO> deliveryList() {
-		// TODO Auto-generated method stub
-		return deilveryDao.deliveryList();
-	}
+	
 
 	@Override
 	public DeliveryVO deliveryDetail(int delivery_number) {
 		// TODO Auto-generated method stub
 		return deilveryDao.deliveryDetail(delivery_number);
+	}
+
+	@Override
+	public int deliveryListCnt(DeliveryVO dvo) {
+		// TODO Auto-generated method stub
+		return deilveryDao.deliveryListCnt(dvo);
+	}
+
+	@Override
+	public List<DeliveryVO> deliveryList(DeliveryVO dvo) {
+		// TODO Auto-generated method stub
+		return deilveryDao.deliveryList(dvo);
 	}
 
 }

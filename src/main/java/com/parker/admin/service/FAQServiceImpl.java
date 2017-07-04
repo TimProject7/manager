@@ -80,5 +80,10 @@ public class FAQServiceImpl implements FAQService{
             
         }
     }
+	@Override
+	public int listCnt(FAQVO fvo) {
+		// TODO Auto-generated method stub
+		return faqDao.listCnt(fvo);
+	}
 	
 }

@@ -2,7 +2,9 @@ package com.parker.admin.vo;
 
 import java.util.Date;
 
-public class NoticeVO {
+import com.parker.admin.paging.PagingVO;
+
+public class NoticeVO extends PagingVO{
 	private int notice_no; // 게시글 번호
 	private String notice_title; // 게시글 제목
 	private String notice_content; // 게시글 내용
@@ -11,6 +13,25 @@ public class NoticeVO {
 	private int notice_viewcnt; // 게시글 조회수
 	private String admin_id; // 관리자 ID
 
+	// 조건검색시 사용할 필드
+		private String search = "";
+		private String keyword = "";
+
+			public String getSearch() {
+			return search;
+		}
+
+		public void setSearch(String search) {
+			this.search = search;
+		}
+
+		public String getKeyword() {
+			return keyword;
+		}
+
+		public void setKeyword(String keyword) {
+			this.keyword = keyword;
+		}
 	public int getNotice_no() {
 		return notice_no;
 	}

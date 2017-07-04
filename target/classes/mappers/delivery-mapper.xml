@@ -3,11 +3,65 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.parker.admin.dao.DeliveryDao">
-	<select id="deliveryList" resultType="com.parker.admin.vo.DeliveryVO">
-		select * from buy_tb
+	<select id="deliveryList" resultType="com.parker.admin.vo.DeliveryVO"
+		parameterType="com.parker.admin.vo.DeliveryVO">
+		select *
+		from(
+		select
+		list.buy_image, list.buy_product,
+		list.buy_price,
+		list.buy_number,
+		list.buy_quantity, list.buy_day,
+		list.user_number,list.user_id,list.buy_address,list.buy_status, rownum
+		as rnum
+		from(
+		select
+		b.buy_image,
+		b.buy_product, b.buy_price,
+		b.buy_number,
+		b.buy_quantity, b.buy_day,b.buy_address,b.buy_status,
+		u.user_number, u.user_id
+		from
+		buy_tb b, users_tb u, products_tb p
+		where
+		u.user_number= b.user_number
+		and p.product_number = b.product_number
+
+
+		order by
+		b.buy_number
+		)list
+		)
+		where rnum between #{start_row} and
+		#{end_row}
 	</select>
 	<select id="deliveryDetail" resultType="com.parker.admin.vo.DeliveryVO">
 		select * from buy_tb
 		where buy_number = #{delivery_number}
 	</select>
+	<select id="deliveryListCnt" parameterType="com.parker.admin.vo.DeliveryVO"
+		resultType="int">
+		select
+		nvl(count(1),0)
+		from
+		(select
+		list.buy_image,
+		list.buy_product, list.buy_price, list.buy_number,
+		list.buy_quantity,
+		list.buy_day, list.user_number,list.user_id, rownum as rnum
+		from(
+		select
+		b.buy_image, b.buy_product, b.buy_price, b.buy_number,
+		b.buy_quantity, b.buy_day, u.user_number, u.user_id
+		from
+		buy_tb b,
+		users_tb u, products_tb p
+		where
+		u.user_number= b.user_number and
+		p.product_number = b.product_number
+		order by b.buy_number
+		)list
+		)
+	</select>
 </mapper>
+
