@@ -95,7 +95,7 @@ public class ProductController {
 			productService.insertProduct(pvo);
 		}
 
-		return "redirect:product/productlist";
+		return "redirect:/product/productlist";
 
 	}
 
