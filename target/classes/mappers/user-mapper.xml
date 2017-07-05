@@ -4,10 +4,32 @@
 
 <mapper namespace="com.parker.admin.dao.UserDao">
 
-	<select id="userList" resultType="com.parker.admin.vo.UserVO">
+	<select id="userList" resultType="com.parker.admin.vo.UserVO"
+		parameterType="com.parker.admin.vo.UserVO">
+		select *
+		from(
+		select list.*, rownum as rnum
+		from ( select
+		* from users_tb
+		)list
+		)
+		where
+		rnum between #{start_row} and #{end_row}
+	</select>
+
+	<select id="userListCnt" resultType="int" parameterType="com.parker.admin.vo.UserVO">
+		select
+		nvl(count(1),0)
+		from
+		(select
+		list.*
+		from(
 		select * from users_tb
+		)list
+		)
 
 	</select>
+
 	<select id="userDetail" resultType="com.parker.admin.vo.UserVO">
 		select * from users_tb
 		where

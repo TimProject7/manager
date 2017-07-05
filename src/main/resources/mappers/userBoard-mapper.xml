@@ -6,6 +6,27 @@
 
 	<select id="userBoardList" parameterType="com.parker.admin.vo.UserBoardVO"
 		resultType="com.parker.admin.vo.UserBoardVO">
-		select * from userboard_tb
+		select *
+		from(
+		select list.*, rownum as rnum
+		from ( select *
+		from userboard_tb )list
+		)
+		where
+		rnum between #{start_row} and #{end_row}
 	</select>
+	<select id="userBoardListCnt" resultType="int"
+		parameterType="com.parker.admin.vo.UserBoardVO">
+		select
+		nvl(count(1),0)
+		from
+		(select
+		list.*
+		from(
+		select * from
+		userboard_tb
+		)list
+		)
+	</select>
+
 </mapper>

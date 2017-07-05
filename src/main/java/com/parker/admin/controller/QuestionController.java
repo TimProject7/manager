@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.parker.admin.paging.Paging;
+import com.parker.admin.paging.Util;
 import com.parker.admin.service.QuestionReplyService;
 import com.parker.admin.service.QuestionService;
 import com.parker.admin.vo.QuestionReplyVO;
@@ -34,9 +36,15 @@ public class QuestionController {
 	QuestionReplyService questionReplyService;
 
 	@RequestMapping("/questionlist")
-	public ModelAndView questionList(ModelAndView mav) {
+	public ModelAndView questionList(ModelAndView mav, QuestionVO qvo) {
 		logger.info("1:1문의 리스트 호출 성공");
-		List<QuestionVO> questionList = questionService.questionList();
+		Paging.set(qvo);
+		List<QuestionVO> questionList = questionService.questionList(qvo);
+		int total = questionService.questionListCnt(qvo);
+		int count = total - (Util.nvl(qvo.getPage()) - 1) * Util.nvl(qvo.getPageSize());
+		mav.addObject("count", count);
+		mav.addObject("data", qvo);
+		mav.addObject("total", total);
 		mav.addObject("questionList", questionList);
 		mav.setViewName("/question/questionlist");
 

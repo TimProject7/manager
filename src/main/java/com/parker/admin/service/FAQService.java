@@ -16,7 +16,7 @@ public interface FAQService {
     // 04. 게시글 삭제
     public void delete(int faq_no) throws Exception;
     // 05. 게시글 전체 목록
-    public List<FAQVO> listAll() throws Exception;
+    public List<FAQVO> listAll( FAQVO fvo) throws Exception;
     // 06. 게시글 조회
     public void increaseViewcnt(int faq_no, HttpSession session) throws Exception;
     // 07. 게시물 갯수

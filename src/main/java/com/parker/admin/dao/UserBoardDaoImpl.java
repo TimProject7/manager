@@ -15,9 +15,17 @@ public class UserBoardDaoImpl implements UserBoardDao {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<UserBoardVO> userBoardList() {
+	public List<UserBoardVO> userBoardList(UserBoardVO ubvo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("userBoardList");
+		return sqlSession.selectList("userBoardList",ubvo);
+	}
+
+
+
+	@Override
+	public int userBoardListCnt(UserBoardVO ubvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("userBoardListCnt",ubvo);
 	}
 
 }

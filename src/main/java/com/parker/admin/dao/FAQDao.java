@@ -19,7 +19,7 @@ public interface FAQDao {
 	public void delete(int faq_no) throws Exception;
 
 	// 05. 게시글 전체 목록
-	public List<FAQVO> listAll() throws Exception;
+	public List<FAQVO> listAll( FAQVO fvo) throws Exception;
 
 	// 06. 게시글 조회 증가
 	public void increaseViewcnt(int faq_no) throws Exception;

@@ -12,7 +12,7 @@ public class ProductVO extends PagingVO {
 	private MultipartFile product_photo; // 이미지
 	private int product_price; // 가격
 	private String product_regdate;// 등록일자
-	private String admin_id; // 관리자 번호
+	private int admin_number; // 관리자 번호
 	private String product_content; // 내용
 	private String product_image; // 이미지 경로
 	private String product_status;
@@ -85,12 +85,12 @@ public class ProductVO extends PagingVO {
 		this.product_regdate = product_regdate;
 	}
 
-	public String getAdmin_id() {
-		return admin_id;
+	public int getAdmin_number() {
+		return admin_number;
 	}
 
-	public void setAdmin_id(String admin_id) {
-		this.admin_id = admin_id;
+	public void setAdmin_number(int admin_number) {
+		this.admin_number = admin_number;
 	}
 
 	public String getProduct_content() {
@@ -128,9 +128,10 @@ public class ProductVO extends PagingVO {
 	@Override
 	public String toString() {
 		return "ProductVO [product_number=" + product_number + ", product_name=" + product_name + ", product_company="
-				+ product_company + ", product_origin=" + product_origin + ", product_image=" + product_image
-				+ ", product_price=" + product_price + ", product_regdate=" + product_regdate + ", admin_id=" + admin_id
-				+ ", product_content=" + product_content + "]";
+				+ product_company + ", product_origin=" + product_origin + ", product_photo=" + product_photo
+				+ ", product_price=" + product_price + ", product_regdate=" + product_regdate + ", admin_number="
+				+ admin_number + ", product_content=" + product_content + ", product_image=" + product_image
+				+ ", product_status=" + product_status + ", search=" + search + ", keyword=" + keyword + "]";
 	}
 
 }

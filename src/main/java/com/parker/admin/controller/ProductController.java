@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.parker.admin.paging.Paging;
+import com.parker.admin.paging.Util;
 import com.parker.admin.service.ProductService;
 import com.parker.admin.vo.ProductVO;
 
@@ -30,10 +32,15 @@ public class ProductController {
 
 	// 1. 상품 목록보기
 	@RequestMapping("/productlist")
-	public ModelAndView productList(ModelAndView mav) {
+	public ModelAndView productList(ModelAndView mav, ProductVO pvo) {
 		logger.info("productList 호출 성공");
-
-		List<ProductVO> productList = productService.listProduct();
+		Paging.set(pvo);
+		List<ProductVO> productList = productService.listProduct(pvo);
+		int total = productService.productListCnt(pvo);
+		int count = total - (Util.nvl(pvo.getPage()) - 1) * Util.nvl(pvo.getPageSize());
+		mav.addObject("count", count);
+		mav.addObject("data", pvo);
+		mav.addObject("total", total);
 		mav.addObject("productList", productList);
 		mav.setViewName("product/productlist");
 
@@ -104,7 +111,7 @@ public class ProductController {
 			} else {
 				System.out.println("상품 상태 변경 실패");
 			}
-			return "redirect:product/productlist";
+			return "redirect:/product/productlist";
 		} else if (product_status.equals("Y")) {
 			System.out.println("상품 판매중지");
 			result = productService.salesStopProduct(product_number);
@@ -113,10 +120,10 @@ public class ProductController {
 			} else {
 				System.out.println("상품 상태 변경 실패");
 			}
-			return "redirect:product/productlist";
+			return "redirect:/product/productlist";
 		} else {
 			System.out.println("뭘 잘못누른거냐?");
-			return "redirect:product/productlist";
+			return "redirect:/product/productlist";
 
 		}
 	}

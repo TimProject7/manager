@@ -12,10 +12,10 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#deleteBtn").click(function() {
+		$("#regBtn").click(function() {
 
 			// 폼 내부의 데이터를 전송할 주소
-			document.form.action = "/product/productdelete"
+			document.form.action = "/admin/product/productdelete"
 			// 제출
 			document.form.submit();
 		});
@@ -60,8 +60,9 @@
 				</td>
 			</tr>
 		</table>
-		<button id=editBtn>수정</button>
-		<button id=deleteBtn>삭제</button>
+		<button id=regBtn>수정</button>
+		<a href="/admin/product/productlist"><button>목록</button></a>
+
 
 	</form>
 </body>

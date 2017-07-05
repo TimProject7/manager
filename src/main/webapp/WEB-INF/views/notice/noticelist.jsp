@@ -67,7 +67,7 @@
 		$("#page").val(page);
 		$("#f_search").attr({
 			"method" : "get",
-			"action" : "/myPage/buyList/buyList.do"
+			"action" : "/admin/notice/noticelist"
 		});
 		$("#f_search").submit();
 

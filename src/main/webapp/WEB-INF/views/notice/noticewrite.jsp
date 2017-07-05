@@ -51,8 +51,8 @@
 	<h2>게시글 작성</h2>
 	<form id="form1" name="form1" method="post"
 		action="/notice/Notice_insert">
-		<input type="hidden" id="admin_id" name="admin_id"
-			value="${ sessionScope.avo.admin_id}">
+		<input type="hidden" id="admin_number" name="admin_number"
+			value="${ sessionScope.avo.admin_number}">
 		<div>
 			제목 <input name="notice_title" id="notice_title" size="80"
 				placeholder="제목을 입력해주세요">

@@ -17,8 +17,8 @@ public class ProductServiceImpl implements ProductService {
 
 	// 01. 상품목록
 	@Override
-	public List<ProductVO> listProduct() {
-		return productDao.listProduct();
+	public List<ProductVO> listProduct(ProductVO pvo) {
+		return productDao.listProduct(pvo);
 	}
 
 	@Override
@@ -62,6 +62,12 @@ public class ProductServiceImpl implements ProductService {
 	public int nameChkProduct(ProductVO pvo) {
 		// TODO Auto-generated method stub
 		return productDao.nameChkProduct(pvo);
+	}
+
+	@Override
+	public int productListCnt(ProductVO pvo) {
+		// TODO Auto-generated method stub
+		return productDao.listProductCnt(pvo);
 	}
 
 }

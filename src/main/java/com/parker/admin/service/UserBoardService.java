@@ -6,6 +6,8 @@ import com.parker.admin.vo.UserBoardVO;
 
 public interface UserBoardService {
 
-	public List<UserBoardVO> userBoardList();
+	public List<UserBoardVO> userBoardList(UserBoardVO ubvo);
+
+	public int userBoardListCnt(UserBoardVO ubvo);
 
 }

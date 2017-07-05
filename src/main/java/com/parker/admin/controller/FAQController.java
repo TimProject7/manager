@@ -38,7 +38,7 @@ public class FAQController {
 		int total = faqService.listCnt(fvo);
 		int count = total - (Util.nvl(fvo.getPage()) - 1) * Util.nvl(fvo.getPageSize());
 
-		List<FAQVO> list = faqService.listAll();
+		List<FAQVO> list = faqService.listAll(fvo);
 
 		mav.addObject("count", count);
 		mav.addObject("data", fvo);

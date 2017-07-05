@@ -7,12 +7,14 @@ import com.parker.admin.vo.UserVO;
 
 public interface UserService {
 
-	public List<UserVO> userList();
+	public List<UserVO> userList(UserVO uvo);
 
 	public UserVO userDetail(int user_number);
 
 	public int userRestoration(int user_number);
 
 	public int userDropOut(int user_number);
+
+	public int userListCnt(UserVO uvo);
 
 }

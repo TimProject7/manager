@@ -4,17 +4,42 @@
 
 <mapper namespace="com.parker.admin.dao.ProductDao">
 
-	<select id="listProduct" resultType="com.parker.admin.vo.ProductVO">
+	<select id="listProduct" resultType="com.parker.admin.vo.ProductVO"
+		parameterType="com.parker.admin.vo.ProductVO">
+		select *
+		from(
+		select list.*, rownum as rnum
+		from (
 		SELECT
 		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
 		product_regdate,product_status
 		FROM products_tb
 		ORDER BY
-		product_number
+		product_number)list
+		)
+		where
+		rnum between #{start_row} and #{end_row}
+	</select>
+	
+	<select id="listProductCnt" resultType="int"
+		parameterType="com.parker.admin.vo.ProductVO">
+		select
+		nvl(count(1),0)
+		from
+		(select
+		list.*
+		from(
+		SELECT
+		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
+		product_regdate,product_status
+		FROM products_tb
+
+		)list
+		)
 	</select>
 
-	<!-- <select id="detailProduct" resultType="com.parker.admin.vo.ProductVO"> SELECT 
-		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD') 
+	<!-- <select id="detailProduct" resultType="com.parker.admin.vo.ProductVO"> 
+		SELECT product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD') 
 		product_regdate FROM products_tb where product_number=#{product_number} </select> -->
 
 	<select id="detailProduct" resultType="com.parker.admin.vo.ProductVO">
@@ -37,9 +62,7 @@
 		ADMIN_NUMBER,
 		PRODUCT_PRICE,
 		PRODUCT_REGDATE)
-		values(seq_product_tb.nextval,#{product_name},#{product_content},#{product_company},#{product_origin},#{product_image},(select
-		admin_number from admin_tb where
-		admin_id=#{admin_id}),#{product_price},sysdate)
+		values(seq_product_tb.nextval,#{product_name},#{product_content},#{product_company},#{product_origin},#{product_image},#{admin_number},#{product_price},sysdate)
 	</insert>
 	<update id="salesProduct">
 

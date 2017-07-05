@@ -45,8 +45,8 @@ public class FAQDaoImpl implements FAQDao {
 
 	// 05. 게시글 전체 목록
 	@Override
-	public List<FAQVO> listAll() throws Exception {
-		return SqlSession.selectList("faqlistAll");
+	public List<FAQVO> listAll( FAQVO fvo) throws Exception {
+		return SqlSession.selectList("faqlistAll",fvo);
 	}
 
 	// 게시글 조회수 증가

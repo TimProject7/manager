@@ -41,13 +41,18 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
     // 05. 게시글 전체 목록
 	@Override
-	public List<NoticeVO> listAll() throws Exception {
-		return SqlSession.selectList("noticelistAll");
+	public List<NoticeVO> listAll(NoticeVO nvo) throws Exception {
+		return SqlSession.selectList("noticelistAll", nvo);
 	}
-    // 게시글 조회수 증가
+    // 06.게시글 조회수 증가
 	@Override
 	public void increaseViewcnt(int notice_no) throws Exception {
 		SqlSession.update("noticeincreaseViewcnt", notice_no);		
+	}
+	@Override
+	public int noticeListCnt(NoticeVO nvo) {
+		// TODO Auto-generated method stub
+		return SqlSession.selectOne("noticeListCnt", nvo);
 	}
 	
 }

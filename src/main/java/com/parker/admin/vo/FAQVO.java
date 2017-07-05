@@ -12,13 +12,13 @@ public class FAQVO extends PagingVO {
 	private String faq_writer; // 게시글 작성자
 	private Date faq_regdate; // 게시글 작성일자 util.Date
 	private int faq_viewcnt; // 게시글 조회수
-	private String admin_id;
+	private int admin_number; 
 
 	// 조건검색시 사용할 필드
 	private String search = "";
 	private String keyword = "";
 
-		public String getSearch() {
+	public String getSearch() {
 		return search;
 	}
 
@@ -34,12 +34,12 @@ public class FAQVO extends PagingVO {
 		this.keyword = keyword;
 	}
 
-	public String getAdmin_id() {
-		return admin_id;
+	public int getAdmin_number() {
+		return admin_number;
 	}
 
-	public void setAdmin_id(String admin_id) {
-		this.admin_id = admin_id;
+	public void setAdmin_number(int admin_number) {
+		this.admin_number = admin_number;
 	}
 
 	public int getFaq_no() {

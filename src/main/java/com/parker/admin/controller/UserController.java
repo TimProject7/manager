@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.parker.admin.paging.Paging;
+import com.parker.admin.paging.Util;
 import com.parker.admin.service.UserService;
 import com.parker.admin.vo.UserVO;
 
@@ -21,8 +23,14 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping("/userlist")
-	public ModelAndView userList(ModelAndView mav) {
-		List<UserVO> userList = userService.userList();
+	public ModelAndView userList(ModelAndView mav, UserVO uvo) {
+		Paging.set(uvo);
+		List<UserVO> userList = userService.userList(uvo);
+		int total = userService.userListCnt(uvo);
+		int count = total - (Util.nvl(uvo.getPage()) - 1) * Util.nvl(uvo.getPageSize());
+		mav.addObject("count", count);
+		mav.addObject("data", uvo);
+		mav.addObject("total", total);
 		mav.addObject("userList", userList);
 		mav.setViewName("user/userlist");
 

@@ -16,8 +16,8 @@ public class ProductDAOImpl implements ProductDao {
 
 	// 01. 상품목록
 	@Override
-	public List<ProductVO> listProduct() {
-		return sqlSession.selectList("listProduct");
+	public List<ProductVO> listProduct(ProductVO pvo) {
+		return sqlSession.selectList("listProduct", pvo);
 	}
 
 	@Override
@@ -61,6 +61,13 @@ public class ProductDAOImpl implements ProductDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("productNameChk", pvo);
 
+	}
+
+
+	@Override
+	public int listProductCnt(ProductVO pvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("listProductCnt",pvo);
 	}
 
 }

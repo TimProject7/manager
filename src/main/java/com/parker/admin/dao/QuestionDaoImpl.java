@@ -17,9 +17,9 @@ public class QuestionDaoImpl implements QuestionDao {
 	SqlSession sqlSession;
 
 	@Override
-	public List<QuestionVO> questionList() {
+	public List<QuestionVO> questionList(QuestionVO qvo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("questionList");
+		return sqlSession.selectList("questionList", qvo);
 	}
 
 	@Override
@@ -31,8 +31,14 @@ public class QuestionDaoImpl implements QuestionDao {
 	@Override
 	public UserVO userInfo(int usernumber) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("userInfo",usernumber);
+		return sqlSession.selectOne("userInfo", usernumber);
 	}
 
+	@Override
+	public int questionListCnt(QuestionVO qvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("questionListCnt", qvo);
+	
+	}
 
 }

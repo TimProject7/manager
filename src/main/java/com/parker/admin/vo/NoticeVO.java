@@ -4,34 +4,35 @@ import java.util.Date;
 
 import com.parker.admin.paging.PagingVO;
 
-public class NoticeVO extends PagingVO{
+public class NoticeVO extends PagingVO {
 	private int notice_no; // 게시글 번호
 	private String notice_title; // 게시글 제목
 	private String notice_content; // 게시글 내용
 	private String notice_writer; // 게시글 작성자
 	private Date notice_regdate; // 게시글 작성일자 util.Date
 	private int notice_viewcnt; // 게시글 조회수
-	private String admin_id; // 관리자 ID
+	private int admin_number;
 
 	// 조건검색시 사용할 필드
-		private String search = "";
-		private String keyword = "";
+	private String search = "";
+	private String keyword = "";
 
-			public String getSearch() {
-			return search;
-		}
+	public String getSearch() {
+		return search;
+	}
 
-		public void setSearch(String search) {
-			this.search = search;
-		}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 
-		public String getKeyword() {
-			return keyword;
-		}
+	public String getKeyword() {
+		return keyword;
+	}
 
-		public void setKeyword(String keyword) {
-			this.keyword = keyword;
-		}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	public int getNotice_no() {
 		return notice_no;
 	}
@@ -80,19 +81,20 @@ public class NoticeVO extends PagingVO{
 		this.notice_viewcnt = notice_viewcnt;
 	}
 
-	public String getAdmin_id() {
-		return admin_id;
+	public int getAdmin_number() {
+		return admin_number;
 	}
 
-	public void setAdmin_id(String admin_id) {
-		this.admin_id = admin_id;
+	public void setAdmin_number(int admin_number) {
+		this.admin_number = admin_number;
 	}
 
 	@Override
 	public String toString() {
 		return "NoticeVO [notice_no=" + notice_no + ", notice_title=" + notice_title + ", notice_content="
 				+ notice_content + ", notice_writer=" + notice_writer + ", notice_regdate=" + notice_regdate
-				+ ", notice_viewcnt=" + notice_viewcnt + ", admin_id=" + admin_id + "]";
+				+ ", notice_viewcnt=" + notice_viewcnt + ", admin_number=" + admin_number + ", search=" + search
+				+ ", keyword=" + keyword + "]";
 	}
 
 }

@@ -16,9 +16,9 @@ public class UserDaoImpl implements UserDao {
 	SqlSession sqlSession;
 
 	@Override
-	public List<UserVO> userList() {
+	public List<UserVO> userList(UserVO uvo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("userList");
+		return sqlSession.selectList("userList",uvo);
 	}
 
 	@Override
@@ -37,6 +37,12 @@ public class UserDaoImpl implements UserDao {
 	public int userDropOut(int user_number) {
 		// TODO Auto-generated method stub
 		return  sqlSession.update("userDropOut",user_number);
+	}
+
+	@Override
+	public int userListCnt(UserVO uvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("userListCnt",uvo);
 	}
 
 }

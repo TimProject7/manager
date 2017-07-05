@@ -9,9 +9,16 @@
 		parameterType="com.parker.admin.vo.FAQVO">
 		select *
 		from(
-		select list.* rownum as rnum
+		select list.faq_no,
+		list.faq_title,
+		list.faq_content,
+		list.faq_writer,
+		list.faq_regdate,
+		list.faq_viewcnt,
+		list.admin_number,
+		rownum as rnum
 		from (
-		SELECT
+		select
 		faq_no,
 		faq_title,
 		faq_content,
@@ -19,15 +26,17 @@
 		faq_regdate,
 		faq_viewcnt,
 		admin_number
-		FROM
+		from
 		faq_tb
-		ORDER BY
+		order by
 		faq_no desc,
 		faq_regdate desc
 		)list
 		)
 		where
-		rnum between #{start_row} and #{end_row}
+		rnum between
+		#{start_row} and
+		#{end_row}
 	</select>
 	<!-- 02. 게시글 작성 -->
 	<insert id="faqinsert">
@@ -44,9 +53,7 @@
 		#{faq_title},
 		#{faq_content},
 		#{faq_writer},
-		( select admin_number from
-		admin_tb where
-		admin_id=#{admin_id}),
+		#{admin_number},
 		sysdate
 		)
 	</insert>

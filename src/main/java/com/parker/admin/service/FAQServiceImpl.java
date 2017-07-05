@@ -55,8 +55,8 @@ public class FAQServiceImpl implements FAQService{
     }
     // 05. 게시글 전체 목록
     @Override
-    public List<FAQVO> listAll() throws Exception {
-        return faqDao.listAll();
+    public List<FAQVO> listAll( FAQVO fvo) throws Exception {
+        return faqDao.listAll(fvo);
     }
     
     // 06. 게시글 조회수 증가

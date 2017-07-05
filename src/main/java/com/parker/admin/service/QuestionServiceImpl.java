@@ -16,9 +16,9 @@ public class QuestionServiceImpl implements QuestionService {
 	private QuestionDao questionDao;
 
 	@Override
-	public List<QuestionVO> questionList() {
+	public List<QuestionVO> questionList(QuestionVO qvo) {
 		// TODO Auto-generated method stub
-		return questionDao.questionList();
+		return questionDao.questionList(qvo);
 	}
 
 	@Override
@@ -33,6 +33,10 @@ public class QuestionServiceImpl implements QuestionService {
 		return questionDao.userInfo(usernumber);
 	}
 
-	
+	@Override
+	public int questionListCnt(QuestionVO qvo) {
+		// TODO Auto-generated method stub
+		return questionDao.questionListCnt(qvo);
+	}
 
 }

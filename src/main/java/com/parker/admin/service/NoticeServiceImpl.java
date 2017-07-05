@@ -63,9 +63,9 @@ public class NoticeServiceImpl implements NoticeService {
 
 	// 05. 게시글 전체 목록
 	@Override
-	public List<NoticeVO> listAll() throws Exception {
+	public List<NoticeVO> listAll(NoticeVO nvo) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDao.listAll();
+		return noticeDao.listAll(nvo);
 	}
 
 	// 06. 게시글 조회수 증가
@@ -90,6 +90,12 @@ public class NoticeServiceImpl implements NoticeService {
 
 		}
 
+	}
+
+	@Override
+	public int noticeListCnt(NoticeVO nvo) {
+		// TODO Auto-generated method stub
+		return noticeDao.noticeListCnt(nvo);
 	}
 
 }

@@ -6,7 +6,7 @@ import com.parker.admin.vo.ProductVO;
 
 public interface ProductService {
 
-	public List<ProductVO> listProduct();
+	public List<ProductVO> listProduct(ProductVO pvo);
 
 	public ProductVO detailProduct(int product_number);
 
@@ -21,5 +21,7 @@ public interface ProductService {
 	public int productName(ProductVO pvo);
 
 	public int nameChkProduct(ProductVO pvo);
+
+	public int productListCnt(ProductVO pvo);
 
 }

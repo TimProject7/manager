@@ -15,15 +15,18 @@
 		$("#salesBtn").click(function() {
 
 			// 폼 내부의 데이터를 전송할 주소
-			document.form.action = "/product/productsalesmanagement"
+			document.form.action = "/admin/product/productsalesmanagement"
 			// 제출
 			document.form.submit();
 		});
 
-		$("#product_name").keyup(function() {
+		$("#editBtn").click(function() {
 
-		})
-
+			// 폼 내부의 데이터를 전송할 주소
+			document.form.action = "/admin/product/productedit"
+			// 제출
+			document.form.submit();
+		});
 	});
 </script>
 </head>
@@ -79,7 +82,9 @@
 				</td>
 			</tr>
 		</table>
-		<button id=editBtn>수정</button>
+		<c:if test="${productDetail.product_status != 'Y' }">
+			<button id=editBtn>수정</button>
+		</c:if>
 		<button id=salesBtn>
 			<c:choose>
 

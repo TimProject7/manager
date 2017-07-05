@@ -80,8 +80,8 @@
 <body>
 	<%@include file="../include/header.jsp"%>
 	<form id="form" name="form" enctype="multipart/form-data" method="post">
-		<input type="hidden" id="admin_id" name="admin_id"
-			value="${sessionScope.avo.admin_id }">
+		<input type="hidden" id="admin_number" name="admin_number"
+			value="${sessionScope.avo.admin_number }">
 
 		<h2>상품목록</h2>
 		<table border="1">

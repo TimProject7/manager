@@ -8,12 +8,17 @@
 		select *
 		from(
 		select
-		list.buy_image, list.buy_product,
+		list.buy_image, 
+		list.buy_product,
 		list.buy_price,
 		list.buy_number,
-		list.buy_quantity, list.buy_day,
-		list.user_number,list.user_id,list.buy_address,list.buy_status, rownum
-		as rnum
+		list.buy_quantity,
+		 list.buy_day,
+		list.user_number,
+		list.user_id,
+		list.buy_address,
+		list.buy_status,
+		 rownum	as rnum
 		from(
 		select
 		b.buy_image,

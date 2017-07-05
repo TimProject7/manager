@@ -15,9 +15,9 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public List<UserVO> userList() {
+	public List<UserVO> userList(UserVO uvo) {
 		// TODO Auto-generated method stub
-		return userDao.userList();
+		return userDao.userList(uvo);
 	}
 
 	@Override
@@ -36,6 +36,12 @@ public class UserServiceImpl implements UserService {
 	public int userDropOut(int user_number) {
 		// TODO Auto-generated method stub
 		return userDao.userDropOut(user_number);
+	}
+
+	@Override
+	public int userListCnt(UserVO uvo) {
+		// TODO Auto-generated method stub
+		return userDao.userListCnt(uvo);
 	}
 
 }

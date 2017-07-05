@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.parker.admin.paging.Paging;
+import com.parker.admin.paging.Util;
 import com.parker.admin.service.NoticeService;
 import com.parker.admin.vo.NoticeVO;
 
@@ -27,12 +30,17 @@ public class NoticeController {
 
 	// 01. 게시글 목록
 	@RequestMapping("/noticelist")
-	public ModelAndView list() throws Exception {
+	public ModelAndView list(ModelAndView mav, @ModelAttribute NoticeVO nvo) throws Exception {
 		logger.info("Notice 리스트 호출 성공");
-		List<NoticeVO> list = noticeService.listAll();
-		System.out.println(list.toString());
+		Paging.set(nvo);
+		int total = noticeService.noticeListCnt(nvo);
+		int count = total - (Util.nvl(nvo.getPage()) - 1) * Util.nvl(nvo.getPageSize());
+		List<NoticeVO> list = noticeService.listAll(nvo);
+		
 		// ModelAndView - 모델과 뷰
-		ModelAndView mav = new ModelAndView();
+		mav.addObject("count", count);
+		mav.addObject("data", nvo);
+		mav.addObject("total", total);
 		mav.setViewName("notice/noticelist"); // 뷰를 list.jsp로 설정
 		mav.addObject("noticelist", list); // 데이터를 저장
 
