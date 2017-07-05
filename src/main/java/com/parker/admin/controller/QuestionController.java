@@ -73,6 +73,7 @@ public class QuestionController {
 		logger.info("1:1문의 답변 호출 성공");
 		String filename = "";
 		int result = 0;
+		
 		if (!qvo.getQuestionReply_photo().isEmpty()) {
 			filename = file.getOriginalFilename();
 

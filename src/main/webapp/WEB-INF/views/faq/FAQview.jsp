@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="true"%> 	
+<%@ page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,36 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>FAQ 게시물 보기</title>
+<style type="text/css">
+* {
+	margin: 0 auto;
+	padding: 0;
+}
 
+a {
+	text-decoration: none;
+	color: green;
+}
+
+a:HOVER {
+	font-size: 1.1em;
+	color: teal;
+}
+
+h2 {
+	text-align: center;
+}
+
+th {
+	text-align: left;
+	background-color: black;
+	color: white;
+}
+
+td {
+	padding-left: 2%;
+}
+</style>
 <script>
 	$(document).ready(function() {
 
@@ -28,7 +57,7 @@
 			document.form1.submit();
 
 		});
-		
+
 		$("#btnUpdete").click(function() {
 			//var title = document.form1.title.value; ==> name속성으로 처리할 경우
 			//var content = document.form1.content.value;
@@ -49,18 +78,16 @@
 			// 폼에 입력한 데이터를 서버로 전송
 			document.form1.submit();
 		});
-		
-	});
 
-	
+	});
 </script>
 
 </head>
 <body>
-	
-		<%@include file="../include/header.jsp"%>	
+
+	<%@include file="../include/header.jsp"%>
 	<h2>게시글 보기</h2>
-	
+
 	<form name="form1" method="post">
 		<div>
 			<!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->

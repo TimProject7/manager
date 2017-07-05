@@ -44,7 +44,7 @@ public class FAQController {
 		mav.addObject("data", fvo);
 		mav.setViewName("faq/FAQlist"); // 뷰를 list.jsp로 설정
 		mav.addObject("total", total);
-		mav.addObject("faq_list", list); // 데이터를 저장
+		mav.addObject("faqlist", list); // 데이터를 저장
 
 		return mav; // list.jsp로 List가 전달된다.
 	}
@@ -60,6 +60,7 @@ public class FAQController {
 	// 02_02. 게시글 작성처리
 	@RequestMapping(value = "/FAQinsert", method = RequestMethod.POST)
 	public String insertFAQ(@ModelAttribute FAQVO vo) throws Exception {
+		logger.info("FAQ insert 호출 성공");
 		faqService.create(vo);
 		return "redirect:FAQlist";
 	}

@@ -73,7 +73,7 @@ public class NoticeController {
 		// 모델(데이터)+뷰(화면)를 함께 전달하는 객체
 		ModelAndView mav = new ModelAndView();
 		// 뷰의 이름
-		mav.setViewName("admin/notice/noticeview");
+		mav.setViewName("notice/noticeview");
 		// 뷰에 전달할 데이터
 		mav.addObject("dto", noticeService.read(notice_no));
 		return mav;

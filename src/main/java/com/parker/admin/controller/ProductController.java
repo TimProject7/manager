@@ -32,7 +32,7 @@ public class ProductController {
 
 	// 1. 상품 목록보기
 	@RequestMapping("/productlist")
-	public ModelAndView productList(ModelAndView mav, ProductVO pvo) {
+	public ModelAndView productList(ModelAndView mav, ProductVO pvo, HttpServletRequest request) {
 		logger.info("productList 호출 성공");
 		Paging.set(pvo);
 		List<ProductVO> productList = productService.listProduct(pvo);
@@ -55,6 +55,40 @@ public class ProductController {
 		mav.setViewName("product/productdetail");
 		mav.addObject("productDetail", productService.detailProduct(product_number));
 		return mav;
+	}
+
+	@RequestMapping("/productedit/{product_number}")
+	public ModelAndView productEdit(@PathVariable int product_number, ModelAndView mav) {
+		logger.info("productEdit 호출 성공");
+		mav.addObject("productEdit", productService.productEdit(product_number));
+		mav.setViewName("product/productedit");
+		return mav;
+	}
+
+	@RequestMapping("/productreg")
+	public String productReg(@ModelAttribute ProductVO pvo, @RequestParam("product_photo") MultipartFile file,
+			HttpServletRequest request, Model model) {
+		logger.info("productReg 호출 성공");
+		String filename = "";
+		System.out.println(pvo.toString());
+		if (!pvo.getProduct_image().isEmpty()) {
+			filename = pvo.getProduct_photo().getOriginalFilename();
+			String path = request.getSession().getServletContext().getRealPath("/resources/images/");
+			try {
+				new File(path).mkdirs();
+				pvo.getProduct_photo().transferTo(new File(path + filename));
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			pvo.setProduct_image(filename);
+		} else {
+			ProductVO pvo2 = productService.detailProduct(pvo.getProduct_number());
+			pvo.setProduct_image(pvo2.getProduct_image());
+		}
+		productService.updateProduct(pvo);
+		return "redirect:product/productlist";
+
 	}
 
 	// 3. 상품 등록
@@ -83,7 +117,7 @@ public class ProductController {
 			filename = file.getOriginalFilename();
 
 			String path = request.getSession().getServletContext().getRealPath("/resources/images/");
-
+			System.out.println("path : " + path);
 			try {
 				new File(path).mkdirs();
 				pvo.getProduct_photo().transferTo(new File(path + filename));
@@ -122,36 +156,9 @@ public class ProductController {
 			}
 			return "redirect:/product/productlist";
 		} else {
-			System.out.println("뭘 잘못누른거냐?");
 			return "redirect:/product/productlist";
 
 		}
 	}
 
-	@RequestMapping("/productedit")
-	public String productEdit(@ModelAttribute ProductVO pvo, @RequestParam("product_photo") MultipartFile file,
-			HttpServletRequest request, Model model) {
-
-		String filename = "";
-
-		if (!pvo.getProduct_image().isEmpty()) {
-			filename = pvo.getProduct_photo().getOriginalFilename();
-
-			String path = request.getSession().getServletContext().getRealPath("/resources/images/");
-			try {
-				new File(path).mkdirs();
-				pvo.getProduct_photo().transferTo(new File(path + filename));
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-			pvo.setProduct_image(filename);
-		} else {
-			ProductVO pvo2 = productService.detailProduct(pvo.getProduct_number());
-			pvo.setProduct_image(pvo2.getProduct_image());
-		}
-		productService.updateProduct(pvo);
-		return "redirect:product/productlist";
-
-	}
 }

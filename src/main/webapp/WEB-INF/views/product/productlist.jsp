@@ -155,8 +155,8 @@ td {
 								<td class="no"><a
 									href="productdetail/${productList.product_number}">${productList.product_number}</a></td>
 								<td><a href="productdetail/${productList.product_number}">
-										<img src="/resources/images/${productList.product_image}"
-										width="120px" height="110px">
+										<img src="/admin/resources/images/${productList.product_image}" width="120px"
+										height="110px">
 								</a></td>
 								<td><a href="productdetail/${productList.product_number}">${productList.product_name}</a>
 								</td>

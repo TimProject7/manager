@@ -24,4 +24,6 @@ public interface ProductService {
 
 	public int productListCnt(ProductVO pvo);
 
+	public ProductVO productEdit(int product_number);
+
 }

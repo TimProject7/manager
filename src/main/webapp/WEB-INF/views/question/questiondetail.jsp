@@ -54,9 +54,10 @@
 			<tr>
 
 				<td><c:if test="${questionDetail.question_image != null }">
-						<a href="/resources/images/${questionDetail.question_image }"
+						<a
+							href="/admin/resources/images/${questionDetail.question_image }"
 							target="_blank"><img
-							src="/resources/images/${questionDetail.question_image }"
+							src="/admin/resources/images/${questionDetail.question_image }"
 							style="width: 200px; height: 200px;"></a>
 					</c:if></td>
 			</tr>
@@ -71,7 +72,9 @@
 			</c:when>
 
 			<c:otherwise>
-				<a href="02"> <button type="button">문의 삭제</button> </a>
+				<a href="02">
+					<button type="button">문의 삭제</button>
+				</a>
 				<form name="form1" id="form1" method="post"
 					enctype="multipart/form-data">
 					<hr>

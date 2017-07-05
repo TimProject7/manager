@@ -20,7 +20,7 @@
 		where
 		rnum between #{start_row} and #{end_row}
 	</select>
-	
+
 	<select id="listProductCnt" resultType="int"
 		parameterType="com.parker.admin.vo.ProductVO">
 		select
@@ -99,5 +99,10 @@
 		products_tb
 		where
 		product_name=#{product_name}
+	</select>
+
+	<select id="editProduct" resultType="com.parker.admin.vo.ProductVO">
+		select * from products_tb
+		where product_number = #{product_number}
 	</select>
 </mapper>

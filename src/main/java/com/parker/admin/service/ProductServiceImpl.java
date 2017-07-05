@@ -70,4 +70,10 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.listProductCnt(pvo);
 	}
 
+	@Override
+	public ProductVO productEdit(int product_number) {
+		// TODO Auto-generated method stub
+		return productDao.editProduct(product_number);
+	}
+
 }

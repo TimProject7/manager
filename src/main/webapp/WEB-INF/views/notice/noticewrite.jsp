@@ -15,7 +15,7 @@
 	$(document).ready(function() {
 
 		$("#btnList").click(function() {
-			document.form1.action = "noticelist";
+			document.form1.action = "/admin/notice/noticelist";
 			document.form1.submit();
 
 		});
@@ -37,7 +37,7 @@
 				return;
 			}
 			// 폼에 입력한 데이터를 서버로 전송
-			document.form1.action = "notice/noticeinsert"
+			document.form1.action = "/admin/notice/noticeinsert"
 			document.form1.submit();
 		});
 	});
@@ -47,7 +47,7 @@
 </head>
 <body>
 
-<%@include file="../include/header.jsp"%>
+	<%@include file="../include/header.jsp"%>
 	<h2>게시글 작성</h2>
 	<form id="form1" name="form1" method="post"
 		action="/notice/Notice_insert">

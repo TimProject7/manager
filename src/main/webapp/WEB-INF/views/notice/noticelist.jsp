@@ -146,14 +146,14 @@ th {
 				<th>조회수</th>
 			</tr>
 			<c:choose>
-				<c:when test="${empty Notice_list}">
+				<c:when test="${empty noticelist}">
 
 					<tr>
 						<td colspan="5">등록된 Notice가 없다</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<c:forEach var="row" items="${Notice_list}">
+					<c:forEach var="row" items="${noticelist}">
 						<tr>
 							<td class="no">${row.notice_no}</td>
 							<td style="width: 50%;"><a

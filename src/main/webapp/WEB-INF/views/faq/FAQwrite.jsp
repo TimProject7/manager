@@ -16,7 +16,7 @@
 	$(document).ready(function() {
 
 		$("#btnList").click(function() {
-			document.form1.action = "FAQlist";
+			document.form1.action = "/admin/faq/FAQlist";
 			document.form1.submit();
 
 		});
@@ -50,7 +50,7 @@
 	<%@include file="../include/header.jsp"%>
 
 	<h2>게시글 작성</h2>
-	<form name="form1" method="post" action="/faq/FAQ_insert">
+	<form name="form1" method="post" action="/admin/faq/FAQinsert">
 		<input type="hidden" id="admin_number" name="admin_number"
 			value="${ sessionScope.avo.admin_number}">
 		<div>

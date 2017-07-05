@@ -36,7 +36,8 @@
 		notice_content,
 		notice_writer,
 		admin_number,
-		notice_regdate
+		notice_regdate,
+		notice_viewcnt
 
 		) VALUES (
 		seq_notice_tb.nextval,
@@ -44,7 +45,7 @@
 		#{notice_content},
 		#{notice_writer},
 		#{admin_number},
-		sysdate
+		sysdate,0
 		)
 	</insert>
 

@@ -15,34 +15,28 @@
 		$("#salesBtn").click(function() {
 
 			// 폼 내부의 데이터를 전송할 주소
-			document.form.action = "/admin/product/productsalesmanagement"
+			document.form1.action = "/admin/product/productsalesmanagement"
 			// 제출
-			document.form.submit();
+			document.form1.submit();
 		});
 
-		$("#editBtn").click(function() {
-
-			// 폼 내부의 데이터를 전송할 주소
-			document.form.action = "/admin/product/productedit"
-			// 제출
-			document.form.submit();
-		});
 	});
 </script>
 </head>
 <body>
 	<%@include file="../include/header.jsp"%>
 	<h2>상품 상세정보</h2>
-	<a href="/product/productlist"><button>상품목록</button></a>
+	<a href="/admin/product/productlist"><button>상품목록</button></a>
 
-	<form id="form" name="form">
+	<form id="form1" name="form1" method="post">
 		<input type="hidden" id="product_number" name="product_number"
 			value="${productDetail.product_number }"> <input
 			type="hidden" id="product_status" name="product_status"
 			value="${productDetail.product_status }">
 		<table border="1">
 			<tr>
-				<td><img src="/resources/images/${productDetail.product_image}"
+				<td><img
+					src="/admin/resources/images/${productDetail.product_image}"
 					width="340" height="300"></td>
 				<td>
 					<table border="1" style="height: 300px; width: 400px;">
@@ -83,9 +77,11 @@
 			</tr>
 		</table>
 		<c:if test="${productDetail.product_status != 'Y' }">
-			<button id=editBtn>수정</button>
+
+			<a href="/admin/product/productedit/${productDetail.product_number }">
+				수정</a>
 		</c:if>
-		<button id=salesBtn>
+		<button id="salesBtn">
 			<c:choose>
 
 				<c:when test="${productDetail.product_status == 'Y' }">

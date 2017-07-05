@@ -24,4 +24,6 @@ public interface ProductDao {
 
 	public int listProductCnt(ProductVO pvo);
 
+	public ProductVO editProduct(int product_number);
+
 }

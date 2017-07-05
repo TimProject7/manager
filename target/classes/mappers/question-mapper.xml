@@ -56,7 +56,10 @@
 		values(
 		seq_questionreply_tb.nextval,
 		#{questionReply_content},
-		sysdate,#{questionReply_image},
+		sysdate,
+		#{questionReply_image}
+
+		,
 		#{question_number},
 		#{admin_number})
 
