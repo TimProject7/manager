@@ -7,9 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="../resources/js/common.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/admin/resources/js/common.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(
 			function() {
@@ -87,8 +88,8 @@
 		<table border="1">
 			<tr>
 				<th>상품 이미지</th>
-				<td colspan="3"><input type="file" id="product_photo"
-					name="product_photo"> <img
+				<td colspan="3"><input type="file" name="product_photo"
+					id="product_photo"> <img
 					src="/admin/resources/images/${productEdit.product_image }"></td>
 			</tr>
 			<tr>
@@ -119,8 +120,8 @@
 			</tr>
 		</table>
 		<button type="button" id="regBtn" name="regBtn">수정 등록</button>
-		<a href="/admin/product/productlist"><button type="button" id="listBtn"
-				name="listBtn">목록</button></a>
+		<a href="/admin/product/productlist"><button type="button"
+				id="listBtn" name="listBtn">목록</button></a>
 	</form>
 </body>
 </html>

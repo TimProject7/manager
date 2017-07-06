@@ -4,7 +4,7 @@
 <%@ page session="true"%>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-
+<title>ParKer 관리자모드</title>
 
 <!-- 일반 메뉴 -->
 <center>
@@ -18,8 +18,9 @@
 	<c:choose>
 		<c:when test="${not empty sessionScope.avo.admin_id}">&nbsp;&nbsp;&nbsp;&nbsp;
          ${sessionScope.avo.admin_id} 님이 로그인중입니다.
-         <input type="hidden" name="admin_number" value="${sessionScope.avo.admin_number }">
-        <a href="/admin/logout">로그아웃</a>
+         <input type="hidden" name="admin_number"
+				value="${sessionScope.avo.admin_number }">
+			<a href="/admin/logout">로그아웃</a>
 		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">

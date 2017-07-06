@@ -12,9 +12,7 @@
 		from
 		(
 		select
-		question_title,
-		question_number,question_writedate,
-		question_status,user_number
+		*
 		from
 		question_tb)list
 		)
@@ -32,9 +30,7 @@
 		(select
 		list.*
 		from(select
-		question_title,
-		question_number,question_writedate,
-		question_status,user_number
+		*
 		from
 		question_tb)list
 		)

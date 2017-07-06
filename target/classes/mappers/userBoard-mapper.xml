@@ -29,4 +29,27 @@
 		)
 	</select>
 
+	<select id="userBoardDetail" resultType="com.parker.admin.vo.UserBoardVO">
+		SELECT
+		userboard_number,
+		userboard_content,
+		userboard_title,
+		userboard_image,
+		to_char(userboard_writedate,'YYYY-mm-DD') userboard_writedate,
+		userboard_number,
+		user_number,
+		userboard_status
+		FROM userboard_tb
+		where
+		userboard_number =
+		#{userboard_number}
+
+	</select>
+	<select id="userBoardReply">
+		select * from
+		userboard_tb
+		where user_number =
+		#{user_number}
+	</select>
+
 </mapper>

@@ -7,6 +7,7 @@ import com.parker.admin.paging.PagingVO;
 public class UserBoardVO extends PagingVO {
 	private int userboard_number;
 	private String userboard_title;
+	private String userboard_name;
 	private String userboard_content;
 	private Date userboard_writedate;
 	private String userboard_image;
@@ -47,6 +48,14 @@ public class UserBoardVO extends PagingVO {
 
 	public void setUserboard_title(String userboard_title) {
 		this.userboard_title = userboard_title;
+	}
+
+	public String getUserboard_name() {
+		return userboard_name;
+	}
+
+	public void setUserboard_name(String userboard_name) {
+		this.userboard_name = userboard_name;
 	}
 
 	public String getUserboard_content() {
@@ -92,9 +101,10 @@ public class UserBoardVO extends PagingVO {
 	@Override
 	public String toString() {
 		return "UserBoardVO [userboard_number=" + userboard_number + ", userboard_title=" + userboard_title
-				+ ", userboard_content=" + userboard_content + ", userboard_writedate=" + userboard_writedate
-				+ ", userboard_image=" + userboard_image + ", user_number=" + user_number + ", userboard_viewcnt="
-				+ userboard_viewcnt + "]";
+				+ ", userboard_name=" + userboard_name + ", userboard_content=" + userboard_content
+				+ ", userboard_writedate=" + userboard_writedate + ", userboard_image=" + userboard_image
+				+ ", user_number=" + user_number + ", userboard_viewcnt=" + userboard_viewcnt + ", search=" + search
+				+ ", keyword=" + keyword + "]";
 	}
 
 }

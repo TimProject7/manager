@@ -2,8 +2,10 @@ package com.parker.admin.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,12 +17,13 @@ import com.parker.admin.vo.UserBoardVO;
 @Controller
 @RequestMapping("/userboard")
 public class UserBoardController {
+	Logger logger = Logger.getLogger(UserBoardController.class);
 
 	@Autowired
 	UserBoardService userBoardService;
 
 	@RequestMapping("/userboardlist")
-	public ModelAndView userBoardList(ModelAndView mav,UserBoardVO ubvo) {
+	public ModelAndView userBoardList(ModelAndView mav, UserBoardVO ubvo) {
 		Paging.set(ubvo);
 		List<UserBoardVO> userBoardList = userBoardService.userBoardList(ubvo);
 		int total = userBoardService.userBoardListCnt(ubvo);
@@ -33,4 +36,15 @@ public class UserBoardController {
 		return mav;
 
 	}
+
+	@RequestMapping("/userboarddetail/{userboard_number}")
+
+	public ModelAndView userBoardDetail(@PathVariable int userboard_number, ModelAndView mav) {
+		logger.info("userBoardDetail 호출 성공");
+		mav.setViewName("userboard/userboarddetail");
+		mav.addObject("userBoardReply", userBoardService.userBoardReply(userboard_number));
+		mav.addObject("userBoardDetail", userBoardService.userBoardDetail(userboard_number));
+		return mav;
+	}
+
 }

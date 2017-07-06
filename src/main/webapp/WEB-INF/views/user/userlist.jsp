@@ -120,10 +120,9 @@ th {
 		<br> <br>
 
 
-		<h2>회원 게시판 목록</h2>
+		<h2>회원 목록</h2>
 
 		<br>
-		<%@ include file="../include/boardheader.jsp"%>
 		<!-- 페이지 넘버 -->
 		<form id="f_search" name="f_search">
 			<input type="hidden" id="page" name="page" value="${data.page}" /> <input

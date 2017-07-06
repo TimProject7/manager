@@ -40,7 +40,7 @@
 				$("#keyword").val("");
 				$("#keyword").focus();
 			}
-			;
+
 		});
 
 		//검색버튼
@@ -134,43 +134,33 @@ th {
 			<div align="center">
 				<table border="1" style="width: 660px;">
 					<tr>
-						<Th>아이디</Th>
-						<Th>회원명</Th>
-						<Th>휴대전화</Th>
-						<Th>이메일</Th>
-						<Th>가입일자</Th>
-						<th>상태</th>
+						<th>글번호</th>
+						<th>글제목</th>
+						<th>작성자</th>
+						<th>조회수</th>
 					</tr>
-
 					<c:choose>
-						<c:when test="${not empty userList }">
-							<c:forEach var="userList" items="${userList}">
-								<input type="hidden" id="user_number" name="user_number"
-									value="${userList.user_number }">
+						<c:when test="${ not empty userBoardList }">
+							<c:forEach var="userBoardList" items="${userBoardList}">
 								<tr>
-
-									<td><a href="userdetail/${userList.user_number }">${userList.user_id }</a></td>
-									<td><a href="userdetail/${userList.user_number }">${userList.user_name }</a></td>
-									<td>${userList.user_phone }</td>
-									<td>${userList.user_email }</td>
-									<td>${userList.user_regdate }</td>
-									<td><c:choose>
-											<c:when test="${userList.user_status == 'Y'}">
-												<font style="color: black">일반회원</font>
-											</c:when>
-											<c:otherwise>
-												<font style="color: red"> 탈퇴회원</font>
-											</c:otherwise>
-										</c:choose></td>
+									<td><a
+										href="/admin/userboard/userboarddetail/${userBoardList.userboard_number }">${userBoardList.userboard_number }</a></td>
+									<td><a
+										href="/admin/userboard/userboarddetail/${userBoardList.userboard_number }">${userBoardList.userboard_title }</a></td>
+									<td><a
+										href="/admin/userboard/userboarddetail/${userBoardList.userboard_number }">${userBoardList.userboard_name }</a></td>
+									<td><a
+										href="/admin/userboard/userboarddetail/${userBoardList.userboard_number }">${userBoardList.userboard_viewcnt }</a></td>
 								</tr>
 							</c:forEach>
-
 						</c:when>
+
 						<c:otherwise>
-							<td colspan="5">등록된 회원이 없습니다.</td>
+							<tr align="center">
+								<td colspan="4">등록된 게시물이 없습니다.</td>
+							</tr>
 						</c:otherwise>
 					</c:choose>
-
 				</table>
 			</div>
 		</form>

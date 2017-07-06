@@ -66,27 +66,35 @@ public class ProductController {
 	}
 
 	@RequestMapping("/productreg")
-	public String productReg(@ModelAttribute ProductVO pvo, @RequestParam("product_photo") MultipartFile file,
-			HttpServletRequest request, Model model) {
+	public String productReg(@ModelAttribute ProductVO pvo1, @RequestParam("product_photo") MultipartFile file,
+			HttpServletRequest request) {
 		logger.info("productReg 호출 성공");
 		String filename = "";
-		System.out.println(pvo.toString());
-		if (!pvo.getProduct_image().isEmpty()) {
-			filename = pvo.getProduct_photo().getOriginalFilename();
-			String path = request.getSession().getServletContext().getRealPath("/resources/images/");
-			try {
-				new File(path).mkdirs();
-				pvo.getProduct_photo().transferTo(new File(path + filename));
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
+		System.out.println("asdasdasd : " + pvo1.getProduct_image());
+		try {
+			if (!pvo1.getProduct_image().isEmpty()) {
+				filename = pvo1.getProduct_photo().getOriginalFilename();
+				String path = request.getSession().getServletContext().getRealPath("/resources/images/");
+				try {
+					new File(path).mkdirs();
+					pvo1.getProduct_photo().transferTo(new File(path + filename));
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+				pvo1.setProduct_image(filename);
+			} else {
+				ProductVO pvo2 = productService.detailProduct(pvo1.getProduct_number());
+				pvo1.setProduct_image(pvo2.getProduct_image());
 			}
-			pvo.setProduct_image(filename);
-		} else {
-			ProductVO pvo2 = productService.detailProduct(pvo.getProduct_number());
-			pvo.setProduct_image(pvo2.getProduct_image());
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			ProductVO pvo2 = productService.detailProduct(pvo1.getProduct_number());
+			pvo1.setProduct_image(pvo2.getProduct_image());
+			System.out.println("아아 에러다");
 		}
-		productService.updateProduct(pvo);
+		productService.updateProduct(pvo1);
 		return "redirect:product/productlist";
 
 	}
@@ -112,12 +120,10 @@ public class ProductController {
 			HttpServletRequest request) {
 		logger.info("productinsert 호출 성공");
 		String filename = "";
-
 		if (!pvo.getProduct_photo().isEmpty()) {
 			filename = file.getOriginalFilename();
 
 			String path = request.getSession().getServletContext().getRealPath("/resources/images/");
-			System.out.println("path : " + path);
 			try {
 				new File(path).mkdirs();
 				pvo.getProduct_photo().transferTo(new File(path + filename));

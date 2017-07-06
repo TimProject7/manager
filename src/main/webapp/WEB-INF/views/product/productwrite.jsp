@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="../resources/js/common.js"></script>
+<script type="text/javascript" src="/admin/resources/js/common.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
@@ -17,7 +17,7 @@
 					var productName = $("#product_name").val();
 					var productPrice = $("#product_price").val();
 					var productContent = $("#product_content").val();
-					var productImage = $("#product_image").val();
+					var productImage = $("#product_photo").val();
 
 					if (productName == "") {
 						alert("상품명을 입력해주세요");
@@ -118,8 +118,8 @@
 			</tr>
 		</table>
 		<button type="button" id="addBtn" name="addBtn">등록</button>
-		<a href="/product/productlist"><button type="button" id="listBtn"
-				name="listBtn">목록</button></a>
+		<a href="/admin/product/productlist"><button type="button"
+				id="listBtn" name="listBtn">목록</button></a>
 	</form>
 </body>
 </html>
