@@ -77,6 +77,15 @@
 
 	</delete>
 
+	<update id="deliveryupdate">
+		UPDATE buy_tb SET
+		buy_status = '배송중'
+		where
+		buy_number=#{buynumber} and buy_status = '배송전'
+	</update>
+
+
+
 
 </mapper>
 

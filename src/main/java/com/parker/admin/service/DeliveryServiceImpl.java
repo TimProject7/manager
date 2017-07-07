@@ -32,4 +32,10 @@ public class DeliveryServiceImpl implements DeliveryService {
 		return deilveryDao.deliveryDelete(delivery_number);
 	}
 
+	@Override
+	public int delivery(int buynumber) {
+		// TODO Auto-generated method stub
+		return deilveryDao.delivery(buynumber);
+	}
+
 }

@@ -60,7 +60,7 @@ public class QuestionController {
 		mav.addObject("questionDetail", questionService.questionDetail(question_number));
 		mav.addObject("userInfo", questionService.questionUserInfo(usernumber));
 		System.out.println(usernumber);
-		mav.addObject("questionReplyDetail", questionReplyService.questionReplyDetail(question_number));
+		mav.addObject("questionReply", questionReplyService.questionReplyDetail(question_number));
 		mav.setViewName("question/questiondetail");
 
 		return mav;

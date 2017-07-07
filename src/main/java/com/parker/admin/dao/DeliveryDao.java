@@ -14,4 +14,6 @@ public interface DeliveryDao {
 
 	public int deliveryDelete(int buynumber);
 
+	public int delivery(int buynumber);
+
 }

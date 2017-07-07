@@ -68,7 +68,13 @@
 		=#{question_number}
 	</update>
 	<select id="questionReplyDetail" resultType="com.parker.admin.vo.QuestionReplyVO">
-		select * from
+		select
+		questionreply_number,
+		questionreply_content,
+		to_char(questionreply_writedate,'YYYY-mm-DD')as questionreply_writedate,
+		questionreply_image,
+		question_number,
+		admin_number from
 		questionreply_tb
 		where question_number =#{question_number}
 	</select>

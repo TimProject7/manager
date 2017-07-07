@@ -38,4 +38,10 @@ public class DeliveryDaoImpl implements DeliveryDao {
 		return sqlSession.delete("deliveryDelete", buynumber);
 	}
 
+	@Override
+	public int delivery(int buynumber) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("deliveryupdate", buynumber);
+	}
+
 }

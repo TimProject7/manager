@@ -12,4 +12,6 @@ public interface DeliveryService {
 
 	public int deliveryDelete(int buynumber);
 
+	public int delivery(int buynumber);
+
 }

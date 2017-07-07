@@ -53,36 +53,112 @@
 		});
 
 		//선택삭제 할때 아무것도 선택이안됬을시
-		$("#deleteBtn").click(
+		$("#deleteBtn")
+				.click(
 
-				function(e) {
-					e.preventDefault();
-					var chk = new Array();
+						function(e) {
+							e.preventDefault();
+							var chk = new Array();
 
-					if ($(":checkbox[name='chk']:checked").length == 0) {
-						alert("삭제할 항목을 하나이상 체크해주세요.");
-						return;
-					} else {
-
-						if (confirm("정말 삭제하시겠습니까??") == true) {
-							if ($(":checkbox[name=chk]:checked").val()) {
-
-								$("#listForm").attr("method", "POST");
-
-								$("#listForm").attr("action",
-										"/admin/delivery/deliverydelete");
-								$("#listForm").submit();
-
+							if ($(":checkbox[name='chk']:checked").length == 0) {
+								alert("삭제할 항목을 하나이상 체크해주세요.");
+								return;
 							} else {
 
+								if (confirm("정말 삭제하시겠습니까??") == true) {
+									if ($(":checkbox[name=chk]:checked").val()) {
+
+										/* 
+															 $("#listForm").attr("method", "POST");
+
+															 $("#listForm").attr("action",
+															 "/admin/delivery/deliverydelete");
+															 $("#listForm").submit();
+										 */
+										$
+												.ajax({
+													url : "/admin/delivery/deliverydelete", //전송url
+													type : "POST", //전송방식
+													data : $("#listForm")
+															.serialize(),
+													error : function(result) {
+														alert('시스템오류')
+													},
+													success : function(result) {
+														if (result == 0) {
+															alert('배송상태를 확인해주세요.')
+
+															$("#product_price")
+																	.select();
+														} else if (result == 1) {
+															alert('삭제가 완료되었습니다.');
+															location.href = "/admin/delivery/deliverylist";
+														}
+													}
+												});
+									} else {
+
+									}
+
+								} else {
+									alert("삭제가 취소되었습니다.");
+								}
+
 							}
+						});
 
-						} else {
-							alert("삭제가 취소되었습니다.");
-						}
+		$("#deliveryBtn")
+				.click(
 
-					}
-				});
+						function(e) {
+							e.preventDefault();
+							var chk = new Array();
+
+							if ($(":checkbox[name='chk']:checked").length == 0) {
+								alert("배송할 항목을 하나이상 체크해주세요.");
+								return;
+							} else {
+
+								if (confirm("배송상태를 배송중으로 바꾸시겠습니까?") == true) {
+									if ($(":checkbox[name=chk]:checked").val()) {
+
+										/* 
+															 $("#listForm").attr("method", "POST");
+
+															 $("#listForm").attr("action",
+															 "/admin/delivery/deliverydelete");
+															 $("#listForm").submit();
+										 */
+										$
+												.ajax({
+													url : "/admin/delivery/delivery", //전송url
+													type : "POST", //전송방식
+													data : $("#listForm")
+															.serialize(),
+													error : function(result) {
+														alert('시스템오류')
+													},
+													success : function(result) {
+														if (result == 0) {
+															alert('배송상태를 확인해주세요.')
+
+														} else if (result == 1) {
+															alert('배송중으로 상태가 바뀌었습니다.');
+															location.href = "/admin/delivery/deliverylist";
+
+														}
+													}
+												});
+									} else {
+
+									}
+
+								} else {
+									alert("배송상태 변경이 취소되었습니다.");
+								}
+
+							}
+						});
 		//체크박스 전체선택 
 		$("#checkAll").click(function() {
 			//클릭되었으면
@@ -242,15 +318,7 @@ th {
 				</div>
 				<!-- .tab_container -->
 			</div>
-			${msg }
-			<c:choose>
-				<c:when test="${msg =='success'}">
-			alter("삭제되었습니다.");
-			</c:when>
-				<c:when test="${msg == 'failed' }">
-				alter("배송 상태를 확인해주세요.");
-				</c:when>
-			</c:choose>
+
 			<!-- #container -->
 		</form>
 	</div>

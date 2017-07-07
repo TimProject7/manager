@@ -55,9 +55,9 @@
 
 				<td><c:if test="${questionDetail.question_image != null }">
 						<a
-							href="/admin/resources/images/${questionDetail.question_image }"
+							href="/resources/images/${questionDetail.question_image }"
 							target="_blank"><img
-							src="/admin/resources/images/${questionDetail.question_image }"
+							src="/resources/images/${questionDetail.question_image }"
 							style="width: 200px; height: 200px;"></a>
 					</c:if></td>
 			</tr>
@@ -71,12 +71,12 @@
 				<table border="1">
 					<tr align="center">
 						<th colspan="3">안녕하세요?${userInfo.user_id }님</th>
-						<td>답변일자 <br>${questionReply.questionreply_writedate }</td>
+						<td>답변일자 <br>${questionReply.questionReply_writedate }</td>
 					</tr>
 					<tr>
 						<td><img alt=""
-							src="/resources/images/${questionReply.questionreply_image }"></td>
-						<td colspan="3"><span style="width: 400px">${questionReply.questionreply_content }</span></td>
+							src="/admin/resources/images/${questionReply.questionReply_image }"></td>
+						<td colspan="3"><span style="width: 400px">${questionReply.questionReply_content }</span></td>
 					</tr>
 
 				</table>

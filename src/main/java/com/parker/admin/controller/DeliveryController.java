@@ -47,38 +47,50 @@ public class DeliveryController {
 	// 여러개 삭제
 	@RequestMapping(value = "/deliverydelete", method = RequestMethod.POST)
 	public String deliveryDeletePOST(@RequestParam("chk") int[] buy_number, Model model) {
-		logger.info("delete 호출 성공");
+		logger.info("deliverydelete 호출 성공");
 
 		int result = 0;
 
 		for (int buynumber : buy_number) {
 			result = deliveryService.deliveryDelete(buynumber);
-			System.out.println("asdasdasdasd =" + result);
-			if (result == 0) {
-				model.addAttribute("failed", "failed");
 
+			if (result == 0) {
+				model.addAttribute("result", result);
+				return "delivery/deliveryenter";
 			}
 
 		}
 		if (result != 0) {
-			model.addAttribute("msg", "success");
+			model.addAttribute("result", result);
 			System.out.println("좋아~ 지워지고있어~ 굿~");
+			return "delivery/deliveryenter";
 		}
 
-		return "redirect:/delivery/deliverylist";
+		return "delivery/deliveryenter";
 	}
 
 	// 여러개 배송
 	@RequestMapping(value = "/delivery", method = RequestMethod.POST)
-	public String delivery(@RequestParam("chk") int[] buy_number, @RequestParam String buy_status) {
-		logger.info("delete 호출 성공");
+	public String delivery(@RequestParam("chk") int[] buy_number, Model model) {
+		logger.info("delivery 호출 성공");
 
-		if (buy_status == "배송전")
-			for (int buynumber : buy_number) {
-				deliveryService.deliveryDelete(buynumber);
+		int result = 0;
+
+		for (int buynumber : buy_number) {
+			result = deliveryService.delivery(buynumber);
+
+			if (result == 0) {
+				model.addAttribute("result", result);
+				return "delivery/deliveryenter";
 			}
 
-		return "redirect:/delivery/deliverylist";
+		}
+		if (result != 0) {
+			model.addAttribute("result", result);
+			return "delivery/deliveryenter";
+		}
+
+		return "redirect:delivery/deliverylist";
 	}
 
 }
