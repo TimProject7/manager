@@ -11,7 +11,9 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	$(function() {
-
+		if ($("#msg") == "false1") {
+			alert("배송상태가 취소가 아닌 상품이 선택되어 있습니다.");
+		}
 		/* 검색후 검색 대상과 검색단어 출력 */
 		if ("<c:out value='${data.keyword}'/>" != "") {
 			$("#keyword").val("<c:out value='${data.keyword}'/>");
@@ -48,6 +50,49 @@
 				}
 			}
 			goPage(1);
+		});
+
+		//선택삭제 할때 아무것도 선택이안됬을시
+		$("#deleteBtn").click(
+
+				function(e) {
+					e.preventDefault();
+					var chk = new Array();
+
+					if ($(":checkbox[name='chk']:checked").length == 0) {
+						alert("삭제할 항목을 하나이상 체크해주세요.");
+						return;
+					} else {
+
+						if (confirm("정말 삭제하시겠습니까??") == true) {
+							if ($(":checkbox[name=chk]:checked").val()) {
+
+								$("#listForm").attr("method", "POST");
+
+								$("#listForm").attr("action",
+										"/admin/delivery/deliverydelete");
+								$("#listForm").submit();
+
+							} else {
+
+							}
+
+						} else {
+							alert("삭제가 취소되었습니다.");
+						}
+
+					}
+				});
+		//체크박스 전체선택 
+		$("#checkAll").click(function() {
+			//클릭되었으면
+
+			if ($("#chk").is(":checked")) {
+				$("input[name=chk]").prop("checked", false);
+			} else {
+				$("input[name=chk]").prop("checked", true);
+			}
+
 		});
 
 	});
@@ -127,71 +172,88 @@ th {
 				type="hidden" id="pageSize" name="pageSize" value="${data.pageSize}" />
 		</form>
 
+		<input type="hidden" name="msg" id="msg" value="${msg }">
+		<form id="listForm" name="listForm">
+			<div id="container">
+				<ul class="tabs">
+					<li class="active" rel="tab1">전체</li>
+					<li rel="tab2">배송전</li>
+					<li rel="tab3">배송중</li>
+					<li rel="tab4">배송완료</li>
+				</ul>
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<table border="1">
+							<tr>
+								<td><input type="button" id="checkAll" name="checkAll"
+									value="전체선택"></td>
+								<td>회원번호</td>
+								<td>상품명</td>
+								<td>상품이미지</td>
+								<td>가격</td>
+								<td>수량</td>
+								<td>구매신청일</td>
+								<td>배송지</td>
+								<td>배송상태</td>
 
+							</tr>
+							<c:choose>
+								<c:when test="${not empty deliveryList}">
+									<c:forEach var="deliveryList" items="${deliveryList }">
+										<tr>
+											<td><input type="checkbox" id="chk" name="chk"
+												value="${deliveryList.buy_number }"></td>
+											<td>${deliveryList.user_number }</td>
+											<td>${deliveryList.buy_product }</td>
+											<td>${deliveryList.buy_image }</td>
+											<td>${deliveryList.buy_price }</td>
+											<td>${deliveryList.buy_quantity }</td>
+											<td>${deliveryList.buy_day }</td>
+											<td>${deliveryList.buy_address}</td>
+											<td>${deliveryList.buy_status }<input type="hidden"
+												name="buy_status" id="buy_status"
+												value="${deliveryList.buy_status }"></td>
 
-		<div id="container">
-			<ul class="tabs">
-				<li class="active" rel="tab1">전체</li>
-				<li rel="tab2">배송전</li>
-				<li rel="tab3">배송중</li>
-				<li rel="tab4">배송완료</li>
-			</ul>
-			<div class="tab_container">
-				<div id="tab1" class="tab_content">
-					<table border="1">
-						<tr>
-							<td></td>
-							<td>회원번호</td>
-							<td>상품명</td>
-							<td>상품이미지</td>
-							<td>가격</td>
-							<td>수량</td>
-							<td>구매신청일</td>
-							<td>배송지</td>
-							<td>배송상태</td>
-
-						</tr>
-						<c:choose>
-							<c:when test="${not empty deliveryList}">
-								<c:forEach var="deliveryList" items="${deliveryList }">
+										</tr>
+									</c:forEach>
 									<tr>
-										<td><input type="checkbox" id="chk" name="chk"></td>
-										<td>${deliveryList.user_number }</td>
-										<td>${deliveryList.buy_product }</td>
-										<td>${deliveryList.buy_image }</td>
-										<td>${deliveryList.buy_price }</td>
-										<td>${deliveryList.buy_quantity }</td>
-										<td>${deliveryList.buy_day }</td>
-										<td>${deliveryList.buy_address}</td>
-										<td>${deliveryList.buy_status }</td>
+										<td><button type="button" name="deleteBtn" id="deleteBtn">선택
+												삭제</button>
+											<button type="button" name="deliveryBtn" id="deliveryBtn">선택
+												배송</button></td>
 									</tr>
-								</c:forEach>
-								<tr>
-									<td><button type="button" name="deleteBtn" id="deleteBtn">선택
-											삭제</button></td>
-								</tr>
-							</c:when>
-							<c:otherwise>
-								<tr>
-									<td colspan="9">등록된 배송요청이 없습니다.</td>
-								</tr>
-							</c:otherwise>
-						</c:choose>
-					</table>
-				</div>
-				<div id="buyListPage" align="center">
-					<tag:paging page="${param.page}" total="${total}"
-						list_size="${data.pageSize}" />
-				</div>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td colspan="9">등록된 배송요청이 없습니다.</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
+						</table>
+					</div>
+					<div id="buyListPage" align="center">
+						<tag:paging page="${param.page}" total="${total}"
+							list_size="${data.pageSize}" />
+					</div>
 
-				<br>
+					<br>
 
-				<!-- #tab1 -->
+					<!-- #tab1 -->
+				</div>
+				<!-- .tab_container -->
 			</div>
-			<!-- .tab_container -->
-		</div>
-		<!-- #container -->
-
+			${msg }
+			<c:choose>
+				<c:when test="${msg =='success'}">
+			alter("삭제되었습니다.");
+			</c:when>
+				<c:when test="${msg == 'failed' }">
+				alter("배송 상태를 확인해주세요.");
+				</c:when>
+			</c:choose>
+			<!-- #container -->
+		</form>
 	</div>
+
 </body>
 </html>

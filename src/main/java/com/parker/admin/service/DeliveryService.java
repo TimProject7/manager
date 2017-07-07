@@ -8,8 +8,8 @@ public interface DeliveryService {
 
 	public List<DeliveryVO> deliveryList(DeliveryVO dvo);
 
-	public DeliveryVO deliveryDetail(int delivery_number);
-
 	public int deliveryListCnt(DeliveryVO dvo);
+
+	public int deliveryDelete(int buynumber);
 
 }

@@ -8,17 +8,18 @@
 		select *
 		from(
 		select
-		list.buy_image, 
+		list.buy_image,
 		list.buy_product,
 		list.buy_price,
 		list.buy_number,
 		list.buy_quantity,
-		 list.buy_day,
+		list.buy_day,
 		list.user_number,
 		list.user_id,
 		list.buy_address,
 		list.buy_status,
-		 rownum	as rnum
+		rownum
+		as rnum
 		from(
 		select
 		b.buy_image,
@@ -68,5 +69,14 @@
 		)list
 		)
 	</select>
+	<delete id="deliveryDelete">
+		delete from buy_tb where
+		buy_number =
+		#{buynumber} and
+		buy_status = '취소'
+
+	</delete>
+
+
 </mapper>
 

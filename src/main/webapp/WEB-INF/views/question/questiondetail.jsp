@@ -68,7 +68,18 @@
 		</table>
 		<c:choose>
 			<c:when test="${questionDetail.question_status=='Y' }">
+				<table border="1">
+					<tr align="center">
+						<th colspan="3">안녕하세요?${userInfo.user_id }님</th>
+						<td>답변일자 <br>${questionReply.questionreply_writedate }</td>
+					</tr>
+					<tr>
+						<td><img alt=""
+							src="/resources/images/${questionReply.questionreply_image }"></td>
+						<td colspan="3"><span style="width: 400px">${questionReply.questionreply_content }</span></td>
+					</tr>
 
+				</table>
 			</c:when>
 
 			<c:otherwise>

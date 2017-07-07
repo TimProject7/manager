@@ -45,7 +45,7 @@
 		#{userboard_number}
 
 	</select>
-	<select id="userBoardReply">
+	<select id="userBoardReply" resultType="com.parker.admin.vo.UserBoardReplyVO">
 		select * from
 		userboard_tb
 		where user_number =

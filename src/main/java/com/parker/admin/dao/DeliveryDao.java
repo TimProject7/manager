@@ -12,4 +12,6 @@ public interface DeliveryDao {
 
 	public int deliveryListCnt(DeliveryVO dvo);
 
+	public int deliveryDelete(int buynumber);
+
 }

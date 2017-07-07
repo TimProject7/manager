@@ -42,7 +42,8 @@
 				</tr>
 				<tr>
 					<td>${userBoardDetail.userboard_content }</td>
-					<td>${userBoardDetail.userboard_image }</td>
+					<td><img
+						src="/resources/images/${userBoardDetail.userboard_image }"></td>
 				</tr>
 
 			</table>

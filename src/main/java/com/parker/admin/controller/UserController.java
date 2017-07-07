@@ -61,7 +61,7 @@ public class UserController {
 			} else {
 				System.out.println("회원 상태 변경 실패");
 			}
-			return "redirect:user/userlist";
+			return "redirect:/user/userlist";
 		} else if (user_status.equals("Y")) {
 			System.out.println("회원 탈퇴");
 			result = userService.userDropOut(user_number);
@@ -70,10 +70,10 @@ public class UserController {
 			} else {
 				System.out.println("회원 상태 변경 실패");
 			}
-			return "redirect:user/userlist";
+			return "redirect:/user/userlist";
 		} else {
 			System.out.println("뭘 잘못누른거냐?");
-			return "redirect:user/userlist";
+			return "redirect:/user/userlist";
 
 		}
 

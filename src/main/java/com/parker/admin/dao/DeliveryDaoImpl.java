@@ -32,4 +32,10 @@ public class DeliveryDaoImpl implements DeliveryDao {
 		return sqlSession.selectList("deliveryList", dvo);
 	}
 
+	@Override
+	public int deliveryDelete(int buynumber) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("deliveryDelete", buynumber);
+	}
+
 }

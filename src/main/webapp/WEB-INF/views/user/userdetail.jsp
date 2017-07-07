@@ -13,7 +13,7 @@
 		$("#userRNDBtn").click(function() {
 
 			// 폼 내부의 데이터를 전송할 주소
-			document.form.action = "user/userrnd"
+			document.form.action = "/admin/user/userrnd"
 			// 제출
 			document.form.submit();
 		});

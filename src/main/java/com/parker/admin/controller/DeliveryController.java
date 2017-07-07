@@ -1,16 +1,19 @@
 package com.parker.admin.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.parker.admin.paging.Paging;
 import com.parker.admin.paging.Util;
@@ -37,14 +40,45 @@ public class DeliveryController {
 		mav.addObject("data", dvo);
 		mav.addObject("total", total);
 		mav.setViewName("delivery/deliverylist");
+
 		return mav;
 	}
 
-	@RequestMapping("/deliverydetail/{delivery_number}")
-	public ModelAndView deliveryList(ModelAndView mav, @PathVariable("delivery_number") int delivery_number) {
-		logger.info("deliverDetail 호출 성공");
-		mav.addObject("deliveryDetail", deliveryService.deliveryDetail(delivery_number));
-		mav.setViewName("delivery/deliverydetail");
-		return mav;
+	// 여러개 삭제
+	@RequestMapping(value = "/deliverydelete", method = RequestMethod.POST)
+	public String deliveryDeletePOST(@RequestParam("chk") int[] buy_number, Model model) {
+		logger.info("delete 호출 성공");
+
+		int result = 0;
+
+		for (int buynumber : buy_number) {
+			result = deliveryService.deliveryDelete(buynumber);
+			System.out.println("asdasdasdasd =" + result);
+			if (result == 0) {
+				model.addAttribute("failed", "failed");
+
+			}
+
+		}
+		if (result != 0) {
+			model.addAttribute("msg", "success");
+			System.out.println("좋아~ 지워지고있어~ 굿~");
+		}
+
+		return "redirect:/delivery/deliverylist";
 	}
+
+	// 여러개 배송
+	@RequestMapping(value = "/delivery", method = RequestMethod.POST)
+	public String delivery(@RequestParam("chk") int[] buy_number, @RequestParam String buy_status) {
+		logger.info("delete 호출 성공");
+
+		if (buy_status == "배송전")
+			for (int buynumber : buy_number) {
+				deliveryService.deliveryDelete(buynumber);
+			}
+
+		return "redirect:/delivery/deliverylist";
+	}
+
 }
