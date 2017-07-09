@@ -74,7 +74,7 @@
 			});
 </script>
 <title>상품 목록</title>
-
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 
 <body>

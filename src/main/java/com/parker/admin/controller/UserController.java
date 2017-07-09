@@ -22,6 +22,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
+	// 1. 회원 목록
 	@RequestMapping("/userlist")
 	public ModelAndView userList(ModelAndView mav, UserVO uvo) {
 		Paging.set(uvo);
@@ -38,6 +39,7 @@ public class UserController {
 
 	}
 
+	// 2. 회원 정보 상세보기
 	@RequestMapping("/userdetail/{user_number}")
 	public ModelAndView userDetail(@PathVariable("user_number") int user_number, ModelAndView mav) {
 
@@ -47,7 +49,7 @@ public class UserController {
 
 	}
 
-	// 회원 삭제 , 복구
+	// 3. 회원 삭제 , 복구
 	@RequestMapping("/userrnd")
 	public String userDropOut(@RequestParam int user_number, @RequestParam String user_status) {
 		logger.info("userrnd 호출 성공");

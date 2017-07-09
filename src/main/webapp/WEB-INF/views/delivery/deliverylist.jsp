@@ -9,8 +9,20 @@
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/admin/resources/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
+
+		if ('${param.delivery}' == '전체') {
+			$("input[id=delivery_all]").prop("checked", true);
+		} else if ('${param.delivery}' == '배송전') {
+			$("input[id=delivery_before]").prop("checked", true);
+		} else if ('${param.delivery}' == '배송중') {
+			$("input[id=delivering]").prop("checked", true);
+		} else if ('${param.delivery}' == '배송완료') {
+			$("input[id=delivery_completed]").prop("checked", true);
+		}
+
 		if ($("#msg") == "false1") {
 			alert("배송상태가 취소가 아닌 상품이 선택되어 있습니다.");
 		}
@@ -141,6 +153,10 @@
 													success : function(result) {
 														if (result == 0) {
 															alert('배송상태를 확인해주세요.')
+															$("input[name=chk]")
+																	.prop(
+																			"checked",
+																			false);
 
 														} else if (result == 1) {
 															alert('배송중으로 상태가 바뀌었습니다.');
@@ -155,6 +171,7 @@
 
 								} else {
 									alert("배송상태 변경이 취소되었습니다.");
+									$("input[name=chk]").prop("checked", false);
 								}
 
 							}
@@ -170,6 +187,48 @@
 			}
 
 		});
+		//When page loads...
+		$(".tab_content").hide(); //Hide all content
+		$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+		$(".tab_content:first").show(); //Show first tab content
+
+		//On Click Event
+		$("ul.tabs li").click(function() {
+
+			$("ul.tabs li").removeClass("active"); //Remove any "active" class
+			$(this).addClass("active"); //Add "active" class to selected tab
+			$(".tab_content").hide(); //Hide all tab content
+
+			var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+			$(activeTab).fadeIn(); //Fade in the active ID content
+			return false;
+		});
+
+		// 리스트 전체
+		$("#delivery_all").click(function() {
+			$("#delivery_all").val()
+
+			goPage(1)
+		})
+
+		// 배송전
+		$("#delivery_before").click(function() {
+			$("#delivery_before").val()
+
+			goPage(1)
+		})
+		// 배송중
+		$("#delivering").click(function() {
+			$("#delivering").val()
+
+			goPage(1)
+		})
+
+		$("#delivery_completed").click(function() {
+			$("#delivery_completed").val()
+
+			goPage(1)
+		})
 
 	});
 
@@ -192,134 +251,171 @@
 
 
 <style type="text/css">
-* {
-	margin: 0 auto;
+body {
+	font-family: "Malgun Gothic";
+	font-size: 0.8em;
+}
+/*TAB CSS*/
+ul.tabs {
+	margin: 0;
 	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px; /*--Set height of tabs--*/
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	width: 100%;
 }
 
-h2 {
-	text-align: left;
+ul.tabs li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px;
+	/*--Subtract 1px from the height of the unordered list--*/
+	line-height: 31px; /*--Vertically aligns the text within the tab--*/
+	border: 1px solid #999;
+	border-left: none;
+	margin-bottom: -1px; /*--Pull the list item down 1px--*/
+	overflow: hidden;
+	position: relative;
+	background: #e0e0e0;
 }
 
-.div1 {
-	width: 43%;
-}
-
-.logout_table {
-	width: 55%;
-}
-
-a {
+ul.tabs li a {
 	text-decoration: none;
-	color: black;
-	padding: 2px;
+	color: #000;
+	display: block;
+	font-size: 1.2em;
+	padding: 0 20px;
+	/*--Gives the bevel look with a 1px white border inside the list item--*/
+	border: 1px solid #fff;
+	outline: none;
 }
 
-a:HOVER {
-	font-size: 1.1em;
-	color: teal;
+ul.tabs li a:hover {
+	background: #ccc;
 }
 
-label {
-	padding-left: 3%;
-	padding-right: 3%;
+html ul.tabs li.active, html ul.tabs li.active a:hover {
+	/*--Makes sure that the active tab does not listen to the hover properties--*/
+	background: #fff;
+	/*--Makes the active tab look like it's connected with its content--*/
+	border-bottom: 1px solid #fff;
 }
 
-th {
-	color: white;
-	background-color: black;
+/*Tab Conent CSS*/
+.tab_container {
+	border: 1px solid #999;
+	border-top: none;
+	overflow: hidden;
+	clear: both;
+	float: left;
+	width: 100%;
+	background: #fff;
 }
 
-.no {
-	text-align: center;
+.tab_content {
+	padding: 20px;
+	font-size: 1.2em;
 }
 </style>
+
+
+
 
 </head>
 <body>
 
-	<div class="div1">
-
+	<div class="div1" align="center">
 		<%@include file="../include/header.jsp"%>
-		<br> <br>
+
+
 		<!-- 페이지 넘버 -->
 		<form id="f_search" name="f_search">
 			<input type="hidden" id="page" name="page" value="${data.page}" /> <input
 				type="hidden" id="pageSize" name="pageSize" value="${data.pageSize}" />
-		</form>
 
+			<label for="delivery_all">전체<input type="radio"
+				id="delivery_all" name="delivery" value="전체"></label> <label
+				for="delivery_before">배송전<input type="radio"
+				id="delivery_before" name="delivery" value="배송전"></label> <label
+				for="delivering">배송중<input type="radio" id="delivering"
+				name="delivery" value="배송중"></label><label for="delivery_completed">배송완료<input
+				type="radio" id="delivery_completed" name="delivery" value="배송완료"></label>
+			<!--검색-->
+			<table summary="검색" style="width: 1100px;">
+				<tr align="left">
+					<td width="300px"><select name="search" id="search">
+
+							<option value="all">전체</option>
+							<option value="user_name">회원명</option>
+
+					</select> <input type="text" name="keyword" id="keyword"
+						placeholder="검색어를 입력하세요" value="" /> <input type="button"
+						value="검색" id="searchData"></td>
+				</tr>
+			</table>
+		</form>
 		<input type="hidden" name="msg" id="msg" value="${msg }">
 		<form id="listForm" name="listForm">
-			<div id="container">
-				<ul class="tabs">
-					<li class="active" rel="tab1">전체</li>
-					<li rel="tab2">배송전</li>
-					<li rel="tab3">배송중</li>
-					<li rel="tab4">배송완료</li>
-				</ul>
-				<div class="tab_container">
-					<div id="tab1" class="tab_content">
-						<table border="1">
-							<tr>
-								<td><input type="button" id="checkAll" name="checkAll"
-									value="전체선택"></td>
-								<td>회원번호</td>
-								<td>상품명</td>
-								<td>상품이미지</td>
-								<td>가격</td>
-								<td>수량</td>
-								<td>구매신청일</td>
-								<td>배송지</td>
-								<td>배송상태</td>
+			<table border="1" style="width: 1100px;">
+				<tr align="center">
+					<td><input type="button" id="checkAll" name="checkAll"
+						value="전체선택"></td>
+					<td style="width: 7%;">배송번호</td>
+					<td style="width: 7%;">회원명</td>
+					<td style="width: 7%;">상품명</td>
+					<td style="width: 8%;">상품이미지</td>
+					<td style="width: 7%;">가격</td>
+					<td style="width: 7%;">수량</td>
+					<td style="width: 8%;">구매신청일</td>
+					<td style="width: 40%;">배송지</td>
+					<td style="width: 7%;">배송상태</td>
+				</tr>
+				<c:choose>
+					<c:when test="${not empty deliveryList}">
+						<c:forEach var="deliveryList" items="${deliveryList }">
 
+							<tr align="center">
+								<td><input type="checkbox" id="chk" name="chk"
+									value="${deliveryList.buy_number }"></td>
+								<td>${deliveryList.buy_number }</td>
+								<td>${deliveryList.user_name }</td>
+								<td>${deliveryList.buy_product }</td>
+								<td>${deliveryList.buy_image }</td>
+								<td>${deliveryList.buy_price }</td>
+								<td>${deliveryList.buy_quantity }</td>
+								<td>${deliveryList.buy_day }</td>
+								<td>${deliveryList.buy_address}</td>
+								<td>${deliveryList.buy_status }<input type="hidden"
+									name="buy_status" id="buy_status"
+									value="${deliveryList.buy_status }"></td>
 							</tr>
-							<c:choose>
-								<c:when test="${not empty deliveryList}">
-									<c:forEach var="deliveryList" items="${deliveryList }">
-										<tr>
-											<td><input type="checkbox" id="chk" name="chk"
-												value="${deliveryList.buy_number }"></td>
-											<td>${deliveryList.user_number }</td>
-											<td>${deliveryList.buy_product }</td>
-											<td>${deliveryList.buy_image }</td>
-											<td>${deliveryList.buy_price }</td>
-											<td>${deliveryList.buy_quantity }</td>
-											<td>${deliveryList.buy_day }</td>
-											<td>${deliveryList.buy_address}</td>
-											<td>${deliveryList.buy_status }<input type="hidden"
-												name="buy_status" id="buy_status"
-												value="${deliveryList.buy_status }"></td>
+						</c:forEach>
+						<tr>
+							<td colspan="10"><button type="button" name="deleteBtn"
+									id="deleteBtn">선택 삭제</button>
+								<button type="button" name="deliveryBtn" id="deliveryBtn">선택
+									배송</button></td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="9">등록된 배송요청이 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</table>
 
-										</tr>
-									</c:forEach>
-									<tr>
-										<td><button type="button" name="deleteBtn" id="deleteBtn">선택
-												삭제</button>
-											<button type="button" name="deliveryBtn" id="deliveryBtn">선택
-												배송</button></td>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<tr>
-										<td colspan="9">등록된 배송요청이 없습니다.</td>
-									</tr>
-								</c:otherwise>
-							</c:choose>
-						</table>
-					</div>
-					<div id="buyListPage" align="center">
-						<tag:paging page="${param.page}" total="${total}"
-							list_size="${data.pageSize}" />
-					</div>
-
-					<br>
-
-					<!-- #tab1 -->
-				</div>
-				<!-- .tab_container -->
+			<div id="buyListPage" align="center">
+				<tag:paging page="${param.page}" total="${total}"
+					list_size="${data.pageSize}" />
 			</div>
 
-			<!-- #container -->
+			<br>
+
+
 		</form>
 	</div>
 

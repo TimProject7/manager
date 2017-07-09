@@ -11,6 +11,25 @@ public class UserBoardReplyVO {
 	private String user_name; // 회원이름
 	private String user_id; // 회원아이디
 
+	// 조건검색시 사용할 필드
+		private String search = "";
+		private String keyword = "";
+
+		public String getSearch() {
+			return search;
+		}
+
+		public void setSearch(String search) {
+			this.search = search;
+		}
+
+		public String getKeyword() {
+			return keyword;
+		}
+
+		public void setKeyword(String keyword) {
+			this.keyword = keyword;
+		}
 	public String getUser_name() {
 		return user_name;
 	}

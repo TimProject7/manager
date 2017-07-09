@@ -22,6 +22,7 @@ public class UserBoardController {
 	@Autowired
 	UserBoardService userBoardService;
 
+	// 1. 회원 게시판 리스트
 	@RequestMapping("/userboardlist")
 	public ModelAndView userBoardList(ModelAndView mav, UserBoardVO ubvo) {
 		Paging.set(ubvo);
@@ -37,8 +38,8 @@ public class UserBoardController {
 
 	}
 
+	// 2. 회원 게시판 상세보기
 	@RequestMapping("/userboarddetail/{userboard_number}")
-
 	public ModelAndView userBoardDetail(@PathVariable int userboard_number, ModelAndView mav) {
 		logger.info("userBoardDetail 호출 성공");
 		mav.setViewName("userboard/userboarddetail");

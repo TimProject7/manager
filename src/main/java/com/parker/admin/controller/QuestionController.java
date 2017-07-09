@@ -35,6 +35,7 @@ public class QuestionController {
 	@Autowired
 	QuestionReplyService questionReplyService;
 
+	// 1. 1:1문의 리스트
 	@RequestMapping("/questionlist")
 	public ModelAndView questionList(ModelAndView mav, QuestionVO qvo) {
 		logger.info("1:1문의 리스트 호출 성공");
@@ -52,6 +53,7 @@ public class QuestionController {
 
 	}
 
+	// 2. 1:1 문의 상세보기
 	@RequestMapping("/questiondetail/{question_number}")
 	public ModelAndView questionDetail(ModelAndView mav, @PathVariable("question_number") int question_number,
 			@RequestParam int usernumber) {
@@ -67,13 +69,14 @@ public class QuestionController {
 
 	}
 
+	// 3. 1:1 문의 관리자 답변
 	@RequestMapping("/questionreply")
 	public String questionReply(@ModelAttribute QuestionReplyVO qvo, Model model,
 			@RequestParam("questionReply_photo") MultipartFile file, HttpServletRequest request) {
 		logger.info("1:1문의 답변 호출 성공");
 		String filename = "";
 		int result = 0;
-		
+
 		if (!qvo.getQuestionReply_photo().isEmpty()) {
 			filename = file.getOriginalFilename();
 

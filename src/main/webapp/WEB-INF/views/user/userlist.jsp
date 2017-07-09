@@ -11,7 +11,7 @@
 <title>회원 목록</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-
+<script type="text/javascript" src="/admin/resources/js/common.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#btnWrite").click(function() {
@@ -71,48 +71,7 @@
 
 	}
 </script>
-<style type="text/css">
-* {
-	margin: 0 auto;
-	padding: 0;
-}
-
-h2 {
-	text-align: left;
-}
-
-.div1 {
-	width: 43%;
-}
-
-.logout_table {
-	width: 55%;
-}
-
-a {
-	text-decoration: none;
-	color: black;
-}
-
-a:HOVER {
-	font-size: 1.1em;
-	color: teal;
-}
-
-label {
-	padding-left: 3%;
-	padding-right: 3%;
-}
-
-th {
-	color: white;
-	background-color: black;
-}
-
-.no {
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 <body>
 	<div class="div1">
@@ -127,6 +86,18 @@ th {
 		<form id="f_search" name="f_search">
 			<input type="hidden" id="page" name="page" value="${data.page}" /> <input
 				type="hidden" id="pageSize" name="pageSize" value="${data.pageSize}" />
+			<!--검색-->
+			<table summary="검색">
+				<tr>
+					<td width="300px"><select name="search" id="search">
+
+							<option value="all">전체</option>
+							<option value="user_name">회원명</option>
+					</select> <input type="text" name="keyword" id="keyword"
+						placeholder="검색어를 입력하세요" value="" /> <input type="button"
+						value="검색" id="searchData"></td>
+				</tr>
+			</table>
 		</form>
 
 		<form name="form" id="form">

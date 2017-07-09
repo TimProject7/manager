@@ -15,25 +15,51 @@
 		list.buy_quantity,
 		list.buy_day,
 		list.user_number,
+		list.user_name,
 		list.user_id,
 		list.buy_address,
 		list.buy_status,
+		list.product_number,
 		rownum
-		as rnum
+		as
+		rnum
 		from(
 		select
 		b.buy_image,
-		b.buy_product, b.buy_price,
+		b.buy_product,
+		b.buy_price,
 		b.buy_number,
-		b.buy_quantity, b.buy_day,b.buy_address,b.buy_status,
-		u.user_number, u.user_id
+		b.buy_quantity,
+		b.buy_day,b.buy_address,
+		b.buy_status,
+		b.product_number,
+		u.user_number,
+		u.user_name,
+		u.user_id
 		from
-		buy_tb b, users_tb u, products_tb p
+		buy_tb b, users_tb u,
+		products_tb p
 		where
-		u.user_number= b.user_number
-		and p.product_number = b.product_number
-
-
+		u.user_number=
+		b.user_number
+		and
+		p.product_number =
+		b.product_number
+		<if test="search=='user_name'">
+			and (user_name Like '%'||#{keyword}||'%')
+		</if>
+		<if test="delivery == '배송중'">
+			and buy_status = '배송중'
+		</if>
+		<if test="delivery == '배송전'">
+			and buy_status = '배송전'
+		</if>
+		<if test="delivery == '배송완료'">
+			and buy_status = '배송완료'
+		</if>
+		<if test="delivery == '전체'">
+			and buy_status = buy_status
+		</if>
 		order by
 		b.buy_number
 		)list

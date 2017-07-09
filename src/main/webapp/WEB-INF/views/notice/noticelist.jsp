@@ -13,6 +13,7 @@
 <title>Notice 글 리스트</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/admin/resources/js/common.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -75,48 +76,7 @@
 </script>
 
 
-<style type="text/css">
-* {
-	margin: 0 auto;
-	padding: 0;
-}
-
-h2 {
-	text-align: left;
-}
-
-.div1 {
-	width: 43%;
-}
-
-.logout_table {
-	width: 55%;
-}
-
-a {
-	text-decoration: none;
-	color: black;
-}
-
-a:HOVER {
-	font-size: 1.1em;
-	color: teal;
-}
-
-label {
-	padding-left: 3%;
-	padding-right: 3%;
-}
-
-th {
-	color: white;
-	background-color: black;
-}
-
-.no {
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 
 </head>
 <body>
@@ -147,7 +107,6 @@ th {
 			</tr>
 			<c:choose>
 				<c:when test="${empty noticelist}">
-
 					<tr>
 						<td colspan="5">등록된 Notice가 없다</td>
 					</tr>

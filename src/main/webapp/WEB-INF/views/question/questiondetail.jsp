@@ -29,6 +29,7 @@
 		});
 	});
 </script>
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 <body>
 	<div align="center">

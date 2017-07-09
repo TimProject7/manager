@@ -11,7 +11,7 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>FAQ 글 작성</title>
-
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 <script>
 	$(document).ready(function() {
 

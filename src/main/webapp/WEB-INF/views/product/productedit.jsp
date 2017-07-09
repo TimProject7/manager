@@ -75,7 +75,7 @@
 			});
 </script>
 <title>상품 수정</title>
-
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 
 <body>

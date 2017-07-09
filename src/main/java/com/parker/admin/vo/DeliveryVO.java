@@ -16,12 +16,24 @@ public class DeliveryVO extends PagingVO {
 	private int buy_price;
 	private String buy_status;
 	private int user_number;
+	private String user_name;
 	private int product_number;
 	private String buy_image;
 
 	// 조건검색시 사용할 필드
 	private String search = "";
 	private String keyword = "";
+
+	// 배송 분류
+	private String delivery = "";
+
+	public String getDelivery() {
+		return delivery;
+	}
+
+	public void setDelivery(String delivery) {
+		this.delivery = delivery;
+	}
 
 	public int getBuy_number() {
 		return buy_number;
@@ -85,6 +97,14 @@ public class DeliveryVO extends PagingVO {
 
 	public void setUser_number(int user_number) {
 		this.user_number = user_number;
+	}
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
 	public int getProduct_number() {

@@ -11,6 +11,9 @@
 		select list.*, rownum as rnum
 		from ( select
 		* from users_tb
+		<if test="search=='user_name'">
+			where (user_name Like '%'||#{keyword}||'%')
+		</if>
 		)list
 		)
 		where

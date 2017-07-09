@@ -9,6 +9,7 @@
 <head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/admin/resources/js/common.js"></script>
 <meta http-equiv="Content_Type" content="text/html; charset=UTF-8">
 <title>FAQ 글 리스트</title>
 
@@ -23,49 +24,7 @@
 	});
 </script>
 
-<style type="text/css">
-* {
-	margin: 0 auto;
-	padding: 0;
-}
-
-h2 {
-	text-align: left;
-}
-
-.div1 {
-	width: 43%;
-}
-
-.logout_table {
-	width: 55%;
-}
-
-a {
-	text-decoration: none;
-	color: black;
-}
-
-a:HOVER {
-	font-size: 1.1em;
-	color: teal;
-}
-
-label {
-	padding-left: 3%;
-	padding-right: 3%;
-}
-
-th {
-	color: white;
-	background-color: black;
-}
-
-.no {
-	text-align: center;
-}
-</style>
-
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 <body>
 

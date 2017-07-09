@@ -27,6 +27,7 @@ public class DeliveryController {
 	@Autowired
 	DeliveryService deliveryService;
 
+	// 1. 배송 리스트
 	@RequestMapping("/deliverylist")
 	public ModelAndView deliveryList(ModelAndView mav, @ModelAttribute DeliveryVO dvo) {
 		logger.info("deliverlist 호출 성공");
@@ -44,7 +45,7 @@ public class DeliveryController {
 		return mav;
 	}
 
-	// 여러개 삭제
+	// 2. 배송 리스트 선택삭제
 	@RequestMapping(value = "/deliverydelete", method = RequestMethod.POST)
 	public String deliveryDeletePOST(@RequestParam("chk") int[] buy_number, Model model) {
 		logger.info("deliverydelete 호출 성공");
@@ -69,7 +70,7 @@ public class DeliveryController {
 		return "delivery/deliveryenter";
 	}
 
-	// 여러개 배송
+	// 3. 배송 리스트 선택배송
 	@RequestMapping(value = "/delivery", method = RequestMethod.POST)
 	public String delivery(@RequestParam("chk") int[] buy_number, Model model) {
 		logger.info("delivery 호출 성공");

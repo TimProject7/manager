@@ -20,6 +20,7 @@
 
 	});
 </script>
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 <body>
 	<%@include file="../include/header.jsp"%>

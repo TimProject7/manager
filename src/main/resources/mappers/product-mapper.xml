@@ -14,11 +14,15 @@
 		product_number,product_name,product_content,product_company,product_origin,product_image,product_price,to_char(product_regdate,'YYYY-mm-DD')
 		product_regdate,product_status
 		FROM products_tb
+		<if test="search=='product_name'">
+			where (product_name Like '%'||#{keyword}||'%')
+		</if>
 		ORDER BY
 		product_number)list
 		)
 		where
-		rnum between #{start_row} and #{end_row}
+		rnum between #{start_row} and
+		#{end_row}
 	</select>
 
 	<select id="listProductCnt" resultType="int"

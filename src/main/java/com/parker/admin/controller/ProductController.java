@@ -48,7 +48,6 @@ public class ProductController {
 	}
 
 	// 2. 상품 상세보기
-
 	@RequestMapping("/productdetail/{product_number}")
 	public ModelAndView productDetail(@PathVariable int product_number, ModelAndView mav) {
 		logger.info("productDetail 호출 성공");
@@ -57,54 +56,13 @@ public class ProductController {
 		return mav;
 	}
 
-	@RequestMapping("/productedit/{product_number}")
-	public ModelAndView productEdit(@PathVariable int product_number, ModelAndView mav) {
-		logger.info("productEdit 호출 성공");
-		mav.addObject("productEdit", productService.productEdit(product_number));
-		mav.setViewName("product/productedit");
-		return mav;
-	}
-
-	@RequestMapping("/productreg")
-	public String productReg(@ModelAttribute ProductVO pvo1, @RequestParam("product_photo") MultipartFile file,
-			HttpServletRequest request) {
-		logger.info("productReg 호출 성공");
-		String filename = "";
-		System.out.println("asdasdasd : " + pvo1.getProduct_image());
-		try {
-			if (!pvo1.getProduct_image().isEmpty()) {
-				filename = pvo1.getProduct_photo().getOriginalFilename();
-				String path = request.getSession().getServletContext().getRealPath("/resources/images/");
-				try {
-					new File(path).mkdirs();
-					pvo1.getProduct_photo().transferTo(new File(path + filename));
-				} catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}
-				pvo1.setProduct_image(filename);
-			} else {
-				ProductVO pvo2 = productService.detailProduct(pvo1.getProduct_number());
-				pvo1.setProduct_image(pvo2.getProduct_image());
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			ProductVO pvo2 = productService.detailProduct(pvo1.getProduct_number());
-			pvo1.setProduct_image(pvo2.getProduct_image());
-			System.out.println("아아 에러다");
-		}
-		productService.updateProduct(pvo1);
-		return "redirect:product/productlist";
-
-	}
-
 	// 3. 상품 등록
 	@RequestMapping("/productwrite")
 	public String write() {
 		return "product/productwrite";
 	}
 
+	// 4. 상품 이름 중복 검색용(ajax return 용)
 	@RequestMapping(value = "/productNameChk", method = RequestMethod.POST)
 	public String productNameChk(@ModelAttribute ProductVO pvo, Model model) {
 		logger.info("productNameChk 호출 성공");
@@ -115,6 +73,7 @@ public class ProductController {
 		return "product/productNameChk";
 	}
 
+	// 5. 상품 등록
 	@RequestMapping("/productinsert")
 	public String productInsert(@ModelAttribute ProductVO pvo, @RequestParam("product_photo") MultipartFile file,
 			HttpServletRequest request) {
@@ -139,6 +98,7 @@ public class ProductController {
 
 	}
 
+	// 6. 상품 판매 & 판매중지
 	@RequestMapping("/productsalesmanagement")
 	public String productDelete(@RequestParam int product_number, @RequestParam String product_status) {
 		int result = 0;
@@ -167,4 +127,31 @@ public class ProductController {
 		}
 	}
 
+	/*
+	 * @RequestMapping("/productedit/{product_number}") public ModelAndView
+	 * productEdit(@PathVariable int product_number, ModelAndView mav) {
+	 * logger.info("productEdit 호출 성공"); mav.addObject("productEdit",
+	 * productService.productEdit(product_number));
+	 * mav.setViewName("product/productedit"); return mav; }
+	 * 
+	 * @RequestMapping("/productreg") public String productReg(@ModelAttribute
+	 * ProductVO pvo1, @RequestParam("product_photo") MultipartFile file,
+	 * HttpServletRequest request) { logger.info("productReg 호출 성공"); String
+	 * filename = ""; System.out.println("asdasdasd : " +
+	 * pvo1.getProduct_image()); try { if (!pvo1.getProduct_image().isEmpty()) {
+	 * filename = pvo1.getProduct_photo().getOriginalFilename(); String path =
+	 * request.getSession().getServletContext().getRealPath("/resources/images/"
+	 * ); try { new File(path).mkdirs(); pvo1.getProduct_photo().transferTo(new
+	 * File(path + filename)); } catch (Exception e) { // TODO: handle exception
+	 * e.printStackTrace(); } pvo1.setProduct_image(filename); } else {
+	 * ProductVO pvo2 = productService.detailProduct(pvo1.getProduct_number());
+	 * pvo1.setProduct_image(pvo2.getProduct_image()); } } catch (Exception e) {
+	 * // TODO: handle exception e.printStackTrace(); ProductVO pvo2 =
+	 * productService.detailProduct(pvo1.getProduct_number());
+	 * pvo1.setProduct_image(pvo2.getProduct_image());
+	 * System.out.println("아아 에러다"); } productService.updateProduct(pvo1);
+	 * return "redirect:product/productlist";
+	 * 
+	 * }
+	 */
 }

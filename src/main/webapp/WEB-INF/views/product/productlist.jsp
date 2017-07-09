@@ -10,6 +10,7 @@
 <title>상품 목록</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/admin/resources/js/common.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#deleteBtn").click(function() {
@@ -80,40 +81,7 @@
 	}
 </script>
 
-<style type="text/css">
-* {
-	margin: 0 auto;
-	padding: 0;
-}
-
-a:HOVER {
-	font-size: 1.1em;
-	color: teal;
-}
-
-a {
-	text-decoration: none;
-	color: black;
-}
-
-h2 {
-	text-align: center;
-}
-
-.div1 {
-	width: 43%;
-}
-
-th {
-	color: white;
-	background-color: black;
-}
-
-td {
-	text-align: center;
-}
-</style>
-
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 <body>
 
@@ -126,8 +94,22 @@ td {
 		<form id="f_search" name="f_search">
 			<input type="hidden" id="page" name="page" value="${data.page}" /> <input
 				type="hidden" id="pageSize" name="pageSize" value="${data.pageSize}" />
+			<!--검색-->
+			<table summary="검색">
+				<tr>
+					<td width="300px"><select name="search" id="search">
+
+							<option value="all">전체</option>
+							<option value="product_name">상품명</option>
+
+					</select> <input type="text" name="keyword" id="keyword"
+						placeholder="검색어를 입력하세요" value="" /> <input type="button"
+						value="검색" id="searchData"></td>
+				</tr>
+			</table>
 		</form>
 
+		<br>
 		<form id="form" name="form">
 			<table border="1" style="width: 660px;">
 				<tr>
@@ -155,8 +137,9 @@ td {
 								<td class="no"><a
 									href="productdetail/${productList.product_number}">${productList.product_number}</a></td>
 								<td><a href="productdetail/${productList.product_number}">
-										<img src="/admin/resources/images/${productList.product_image}" width="120px"
-										height="110px">
+										<img
+										src="/admin/resources/images/${productList.product_image}"
+										width="120px" height="110px">
 								</a></td>
 								<td><a href="productdetail/${productList.product_number}">${productList.product_name}</a>
 								</td>

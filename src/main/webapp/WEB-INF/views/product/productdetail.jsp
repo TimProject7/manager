@@ -22,6 +22,7 @@
 
 	});
 </script>
+<link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 <body>
 	<%@include file="../include/header.jsp"%>
@@ -77,9 +78,8 @@
 			</tr>
 		</table>
 		<c:if test="${productDetail.product_status != 'Y' }">
-
-			<a href="/admin/product/productedit/${productDetail.product_number }">
-				수정</a>
+			<%-- <a href="/admin/product/productedit/${productDetail.product_number }">
+				수정</a> --%>
 		</c:if>
 		<button id="salesBtn">
 			<c:choose>
