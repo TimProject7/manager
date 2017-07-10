@@ -112,6 +112,14 @@ table {
 
 							$("#adminmain").submit();
 						})
+						// 통계 버튼
+						$("#btn_statistics_main").click(function() {
+							/* window.location.href = "/status/status.do" */
+							$("#adminmain").attr({
+								"action" : "status/statususer"
+							});
+							$("#adminmain").submit();
+						});
 
 					});
 </script>

@@ -109,4 +109,49 @@
 		select * from products_tb
 		where product_number = #{product_number}
 	</select>
+
+	<select id="listProductQna" resultType="com.parker.admin.vo.ProductQnaVO">
+		select * from
+		productqna_tb
+		where product_number =
+		#{product_number}
+	</select>
+
+	<select id="qnaDetailProduct" resultType="com.parker.admin.vo.ProductQnaVO">
+		select
+		u.user_id,u.user_number,q.*
+		from
+		productqna_tb q,
+		users_tb u
+		where
+		q.user_number =u.user_number and
+		q.productQna_number =
+		#{productQna_number}
+	</select>
+
+	<select id="qnaReplyProduct" resultType="com.parker.admin.vo.ProductQnaReplyVO">
+		select * from
+		productqnareply_tb
+		where
+		productqna_number=#{productQna_number}
+	</select>
+
+	<insert id="qnaReplyInsertProduct">
+		insert into
+		productqnareply_tb(
+		productqnareply_number,
+		productQnaReply_content,
+		admin_number,
+		productqna_number)
+		values(seq_productqnareply_tb.nextval,#{productQnaReply_content},#{admin_number},#{productQna_number}
+		)
+
+	</insert>
+
+	<update id="productQnaStatusUpdate">
+		update productqna_tb
+		set productqna_status = '답변완료'
+		where productqna_number = #{productQna_number}
+	</update>
+
 </mapper>

@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.parker.admin.paging.Paging;
 import com.parker.admin.paging.Util;
 import com.parker.admin.service.ProductService;
+import com.parker.admin.vo.ProductQnaReplyVO;
+import com.parker.admin.vo.ProductQnaVO;
 import com.parker.admin.vo.ProductVO;
 
 @Controller
@@ -41,6 +44,7 @@ public class ProductController {
 		mav.addObject("count", count);
 		mav.addObject("data", pvo);
 		mav.addObject("total", total);
+
 		mav.addObject("productList", productList);
 		mav.setViewName("product/productlist");
 
@@ -49,9 +53,11 @@ public class ProductController {
 
 	// 2. 상품 상세보기
 	@RequestMapping("/productdetail/{product_number}")
-	public ModelAndView productDetail(@PathVariable int product_number, ModelAndView mav) {
+	public ModelAndView productDetail(@PathVariable int product_number, ModelAndView mav, RedirectAttributes red) {
 		logger.info("productDetail 호출 성공");
+		List<ProductQnaVO> productQnaList = productService.listProductQna(product_number);
 		mav.setViewName("product/productdetail");
+		mav.addObject("ProductQnaList", productQnaList);
 		mav.addObject("productDetail", productService.detailProduct(product_number));
 		return mav;
 	}
@@ -125,6 +131,30 @@ public class ProductController {
 			return "redirect:/product/productlist";
 
 		}
+	}
+
+	@RequestMapping("/productQnaDetail/{productQna_number}")
+	public ModelAndView productQnaDetail(ModelAndView mav, @PathVariable int productQna_number) {
+		mav.addObject("productQnaDetail", productService.qnaDetailProduct(productQna_number));
+		mav.addObject("productQnaReplyDetail", productService.qnaReplyProduct(productQna_number));
+		mav.setViewName("product/productQnaDetail");
+
+		return mav;
+	}
+
+	@RequestMapping("/productqnareply")
+	public String productQnaReplyInsert(@ModelAttribute ProductQnaReplyVO pqrvo, RedirectAttributes red) {
+		int result = 0;
+		result = productService.productQnaReplyInsert(pqrvo);
+		System.out.println("asdasdasdasd" + pqrvo.getProduct_number());
+		if (result != 0) {
+			System.out.println("성공!!");
+			productService.productQnaStatusUpdate(pqrvo);
+			return "redirect:/product/productdetail/" + pqrvo.getProduct_number();
+		} else {
+			return "redirect:/product/productdetail/" + pqrvo.getProduct_number();
+		}
+
 	}
 
 	/*

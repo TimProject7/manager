@@ -44,4 +44,16 @@ public class UserServiceImpl implements UserService {
 		return userDao.userListCnt(uvo);
 	}
 
+	/* 통계-일반회원 */
+	@Override
+	public int userStatisticeY(UserVO uvo) {
+		return userDao.userStatisticeY(uvo);
+	}
+
+	/* 통계-탈퇴회원 */
+	@Override
+	public int userStatisticeN(UserVO uvo) {
+		return userDao.userStatisticeN(uvo);
+	}
+
 }

@@ -2,6 +2,8 @@ package com.parker.admin.dao;
 
 import java.util.List;
 
+import com.parker.admin.vo.ProductQnaReplyVO;
+import com.parker.admin.vo.ProductQnaVO;
 import com.parker.admin.vo.ProductVO;
 
 public interface ProductDao {
@@ -25,5 +27,15 @@ public interface ProductDao {
 	public int listProductCnt(ProductVO pvo);
 
 	public ProductVO editProduct(int product_number);
+
+	public List<ProductQnaVO> listProductQna(int product_number);
+
+	public ProductQnaVO qnaDetailProduct(int productQna_number);
+
+	public ProductQnaReplyVO qnaReplyProduct(int productQna_number);
+
+	public int productQnaReplyInsert(ProductQnaReplyVO pqrvo);
+
+	public int productQnaStatusUpdate(ProductQnaReplyVO pqrvo);
 
 }

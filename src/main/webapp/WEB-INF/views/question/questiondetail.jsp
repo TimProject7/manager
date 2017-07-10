@@ -55,8 +55,7 @@
 			<tr>
 
 				<td><c:if test="${questionDetail.question_image != null }">
-						<a
-							href="/resources/images/${questionDetail.question_image }"
+						<a href="/resources/images/${questionDetail.question_image }"
 							target="_blank"><img
 							src="/resources/images/${questionDetail.question_image }"
 							style="width: 200px; height: 200px;"></a>
@@ -79,7 +78,6 @@
 							src="/admin/resources/images/${questionReply.questionReply_image }"></td>
 						<td colspan="3"><span style="width: 400px">${questionReply.questionReply_content }</span></td>
 					</tr>
-
 				</table>
 			</c:when>
 

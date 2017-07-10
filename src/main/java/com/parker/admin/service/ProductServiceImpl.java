@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.parker.admin.dao.ProductDao;
+import com.parker.admin.vo.ProductQnaReplyVO;
+import com.parker.admin.vo.ProductQnaVO;
 import com.parker.admin.vo.ProductVO;
 
 @Service
@@ -74,6 +76,36 @@ public class ProductServiceImpl implements ProductService {
 	public ProductVO productEdit(int product_number) {
 		// TODO Auto-generated method stub
 		return productDao.editProduct(product_number);
+	}
+
+	@Override
+	public List<ProductQnaVO> listProductQna(int product_number) {
+		// TODO Auto-generated method stub
+		return productDao.listProductQna(product_number);
+	}
+
+	@Override
+	public ProductQnaVO qnaDetailProduct(int productQna_number) {
+		// TODO Auto-generated method stub
+		return productDao.qnaDetailProduct(productQna_number);
+	}
+
+	@Override
+	public ProductQnaReplyVO qnaReplyProduct(int productQna_number) {
+		// TODO Auto-generated method stub
+		return productDao.qnaReplyProduct(productQna_number);
+	}
+
+	@Override
+	public int productQnaReplyInsert(ProductQnaReplyVO pqrvo) {
+		// TODO Auto-generated method stub
+		return productDao.productQnaReplyInsert(pqrvo);
+	}
+
+	@Override
+	public int productQnaStatusUpdate(ProductQnaReplyVO pqrvo) {
+		// TODO Auto-generated method stub
+		return productDao.productQnaStatusUpdate(pqrvo);
 	}
 
 }

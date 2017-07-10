@@ -16,5 +16,10 @@ public interface UserDao {
 	public int userDropOut(int user_number);
 
 	public int userListCnt(UserVO uvo);
+	
+	/*통계-일반회원*/
+	public int userStatisticeY(UserVO uvo);
+	/*통계-탈퇴회원*/
+	public int userStatisticeN(UserVO uvo);
 
 }

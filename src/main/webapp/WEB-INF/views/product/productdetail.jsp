@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,6 +91,45 @@
 				</c:otherwise>
 			</c:choose>
 		</button>
+		<br>
+		<hr>
+		<br>
+		<c:choose>
+
+			<c:when test="${not empty ProductQnaList }">
+				<table border="1">
+					<tr align="center">
+						<td>QNA 번호</td>
+						<td>카테고리</td>
+						<td>제목</td>
+						<td>회원명</td>
+						<td>작성일</td>
+						<td>답변상태</td>
+					</tr>
+					<c:forEach var="ProductQnaList" items="${ProductQnaList}">
+						<tr align="center">
+
+							<td id="center">${ProductQnaList.productQna_number}</td>
+
+							<td>${ProductQnaList.productQna_type}</td>
+							<td id="title"><a
+								href="/admin/product/productQnaDetail/${ProductQnaList.productQna_number}">${ProductQnaList.productQna_content}</a></td>
+							<td id="writer">${ProductQnaList.productQna_name}</td>
+							<td id="center">${ProductQnaList.productQna_writedate}</td>
+							<td id="center">${ProductQnaList.productQna_status}</td>
+						</tr>
+
+
+
+					</c:forEach>
+				</table>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td>등록된 게시물이 존재하지않습니다.</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
 
 	</form>
 </body>

@@ -51,4 +51,16 @@
 		where
 		user_number=#{user_number}
 	</update>
+
+	<!-- 통계-일반회원 -->
+	<select parameterType="com.parker.admin.vo.UserVO" resultType="int"
+		id="userStatisticeY"> select count(user_status) from users_tb where user_status = 'Y'
+	</select>
+
+	<!-- 통계-탈퇴회원 -->
+	<select parameterType="com.parker.admin.vo.UserVO" resultType="int"
+		id="userStatisticeN"> select count(user_status) from users_tb where user_status = 'N'
+	</select>
+
+
 </mapper>

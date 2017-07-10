@@ -18,7 +18,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<UserVO> userList(UserVO uvo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("userList",uvo);
+		return sqlSession.selectList("userList", uvo);
 	}
 
 	@Override
@@ -30,19 +30,30 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int userRestoration(int user_number) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("userRestoration",user_number);
+		return sqlSession.update("userRestoration", user_number);
 	}
 
 	@Override
 	public int userDropOut(int user_number) {
 		// TODO Auto-generated method stub
-		return  sqlSession.update("userDropOut",user_number);
+		return sqlSession.update("userDropOut", user_number);
 	}
 
 	@Override
 	public int userListCnt(UserVO uvo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("userListCnt",uvo);
+		return sqlSession.selectOne("userListCnt", uvo);
 	}
 
+	/* 통계-일반회원 */
+	@Override
+	public int userStatisticeY(UserVO uvo) {
+		return sqlSession.selectOne("userStatisticeY", uvo);
+	}
+
+	/* 통계-탈퇴회원 */
+	@Override
+	public int userStatisticeN(UserVO uvo) {
+		return sqlSession.selectOne("userStatisticeN", uvo);
+	}
 }
