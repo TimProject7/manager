@@ -10,10 +10,13 @@
 		from(
 		select list.*, rownum as rnum
 		from ( select *
-		from userboard_tb )list
+		from userboard_tb
+		where userboard_status2 = 'Y'
+		)list
 		)
 		where
-		rnum between #{start_row} and #{end_row}
+		rnum between
+		#{start_row} and #{end_row}
 	</select>
 	<select id="userBoardListCnt" resultType="int"
 		parameterType="com.parker.admin.vo.UserBoardVO">
@@ -25,6 +28,7 @@
 		from(
 		select * from
 		userboard_tb
+		where userboard_status2 = 'Y'
 		)list
 		)
 	</select>
@@ -51,5 +55,9 @@
 		where user_number =
 		#{user_number}
 	</select>
-
+	<update id="userBoardDelete">
+		update userboard_tb set
+		userboard_status2='N'
+		userboard_number= #{userboard_number}
+	</update>
 </mapper>

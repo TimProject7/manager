@@ -13,7 +13,7 @@
 		$("#deleteBtn").click(function() {
 
 			// 폼 내부의 데이터를 전송할 주소
-			document.form.action = "user/userboarddelete"
+			document.form.action = "/admin/userboard/userboarddelete"
 			// 제출
 			document.form.submit();
 		});
@@ -25,30 +25,35 @@
 	<%@include file="../include/header.jsp"%>
 	<div align="center">
 		<form name="form" id="form">
-
+			<input type="hidden" id="userboard_number" name="userboard_number"
+				value="${userBoardDetail.userboard_number }">
+			<button>LIST</button>
+			<button type="button" id="deleteBtn" name="deleteBtn">DEL</button>
 			<table border="1">
-
 				<tr>
-					<th colspan="3">제목</th>
-					<th>등록일자</th>
+					<th>제 목</th>
+					<td>${userBoardDetail.userboard_title }</td>
 				</tr>
 				<tr>
-					<td colspan="3">${userBoardDetail.userboard_title }</td>
+					<th>등록일자</th>
 					<td>${userBoardDetail.userboard_writedate}</td>
 				</tr>
 				<tr>
-					<th colspan="3">내용</th>
-					<th>이미지</th>
+					<th>내 용</th>
+					<td>${userBoardDetail.userboard_content }</td>
 				</tr>
 				<tr>
-					<td>${userBoardDetail.userboard_content }</td>
+					<th>이미지</th>
 					<td><img
-						src="/resources/images/${userBoardDetail.userboard_image }"></td>
+						src="/resources/images/${userBoardDetail.userboard_image }"
+						style="width: 250px; height: 200px;"></td>
 				</tr>
-
 			</table>
-			<button type="button" id="deleteBtn" name="deleteBtn">삭제</button>
+
 		</form>
+		<br>
+		<hr>
+		<br>
 	</div>
 </body>
 

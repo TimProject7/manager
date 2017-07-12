@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.parker.admin.paging.Paging;
@@ -46,6 +47,14 @@ public class UserBoardController {
 		mav.addObject("userBoardReply", userBoardService.userBoardReply(userboard_number));
 		mav.addObject("userBoardDetail", userBoardService.userBoardDetail(userboard_number));
 		return mav;
+	}
+
+	@RequestMapping("/userboarddelete")
+	public String userBoardDelete(@RequestParam int userboard_number) {
+		int result = 0;
+		result = userBoardService.userBoardDelete(userboard_number);
+		return "redirect:/userboard/userboardlist";
+
 	}
 
 }

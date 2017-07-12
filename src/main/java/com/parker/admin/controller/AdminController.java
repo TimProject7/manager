@@ -47,7 +47,7 @@ public class AdminController {
 	public ModelAndView loginCheck(HttpSession session, @ModelAttribute AdminVO avo, ModelAndView mav) {
 
 		// 로그인 성공
-		
+
 		if (adminService.loginCheck(avo) != null) {
 			session.setAttribute("avo", adminService.loginCheck(avo));
 			mav.setViewName("/admin/adminmain"); // 관리자 페이지 이동

@@ -39,4 +39,10 @@ public class UserBoardDaoImpl implements UserBoardDao {
 		return sqlSession.selectOne("userBoardReply", userboard_number);
 	}
 
+	@Override
+	public int userBoardDelete(int userboard_number) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("userBoardDelete", userboard_number);
+	}
+
 }

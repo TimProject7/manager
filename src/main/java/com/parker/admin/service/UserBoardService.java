@@ -15,4 +15,6 @@ public interface UserBoardService {
 
 	public UserBoardReplyVO userBoardReply(int userboard_number);
 
+	public int userBoardDelete(int userboard_number);
+
 }

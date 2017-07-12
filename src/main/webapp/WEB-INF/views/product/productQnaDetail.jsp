@@ -56,10 +56,10 @@
 			<table>
 				<tr>
 					<td>안녕하세요. ${productQnaDetail.productQna_name }님</td>
-					<td>${productQnaReply_writedate}</td>
+					<td>${productQnaReplyDetail.productQnaReply_writedate}</td>
 				</tr>
 				<tr>
-					<td colspan="2">${productQnaReply_content}</td>
+					<td colspan="2">${productQnaReplyDetail.productQnaReply_content}</td>
 				</tr>
 			</table>
 		</c:when>

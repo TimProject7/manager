@@ -38,4 +38,10 @@ public class UserBoardServiceImpl implements UserBoardService {
 		// TODO Auto-generated method stub
 		return userBoardDao.userBoardReply(userboard_number);
 	}
+
+	@Override
+	public int userBoardDelete(int userboard_number) {
+		// TODO Auto-generated method stub
+		return userBoardDao.userBoardDelete(userboard_number);
+	}
 }

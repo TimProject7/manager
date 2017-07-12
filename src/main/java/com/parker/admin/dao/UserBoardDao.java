@@ -15,4 +15,6 @@ public interface UserBoardDao {
 
 	public UserBoardReplyVO userBoardReply(int userboard_number);
 
+	public int userBoardDelete(int userboard_number);
+
 }
