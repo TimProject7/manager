@@ -81,12 +81,12 @@
 </head>
 <body>
 
-	<div class="div1">
+	<div style="width: 60%;">
 
 		<%@include file="../include/header.jsp"%>
 		<br> <br>
 
-		<h2>Notice 게시글 목록</h2>
+		<h2>공지사항 게시글 목록</h2>
 
 		<br>
 
@@ -97,7 +97,7 @@
 				type="hidden" id="pageSize" name="pageSize" value="${data.pageSize}" />
 		</form>
 
-		<table border="1" width="660px">
+		<table border="1" width="100%">
 			<tr>
 				<th>번호</th>
 				<th>제목</th>

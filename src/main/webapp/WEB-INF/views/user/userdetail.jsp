@@ -24,9 +24,13 @@
 </head>
 <body>
 	<%@include file="../include/header.jsp"%>
-	<div align="center">
-		<form name="form" id="form">
+	<br>
 
+	<div align="center">
+
+		<h2>회원 정보 상세보기</h2>
+		<form name="form" id="form">
+			<br>
 			<table border="1">
 
 				<tr>
@@ -46,11 +50,11 @@
 					<th>약관3</th>
 
 				</tr>
-				<tr>
-					<td><input type="text" name="user_number"
+				<tr align="center">
+					<td><input type="hidden" name="user_number"
 						value="${userDetail.user_number }" readonly="readonly"> <input
 						type="hidden" name="user_status"
-						value="${userDetail.user_status }"></td>
+						value="${userDetail.user_status }">${userDetail.user_number }</td>
 					<td>${userDetail.user_name }</td>
 					<td>${userDetail.user_id }</td>
 					<td>${userDetail.user_email }</td>

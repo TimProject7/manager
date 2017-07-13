@@ -9,6 +9,7 @@ public class BuyVO {
 	private int buy_quantity;
 	private int buy_price;
 	private int buy_status2;
+	private int total;
 
 	public int getBuy_number() {
 		return buy_number;
@@ -49,5 +50,15 @@ public class BuyVO {
 	public void setBuy_status2(int buy_status2) {
 		this.buy_status2 = buy_status2;
 	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	
+	
 
 }

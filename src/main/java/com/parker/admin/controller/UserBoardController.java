@@ -50,11 +50,13 @@ public class UserBoardController {
 	}
 
 	@RequestMapping("/userboarddelete")
-	public String userBoardDelete(@RequestParam int userboard_number) {
+	public String userBoardDelete(int userboard_number) {
 		int result = 0;
 		result = userBoardService.userBoardDelete(userboard_number);
 		return "redirect:/userboard/userboardlist";
 
+		
+	
 	}
 
 }

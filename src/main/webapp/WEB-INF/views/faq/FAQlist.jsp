@@ -25,10 +25,11 @@
 </script>
 
 <link rel="stylesheet" href="/admin/resources/css/style.css">
+</style>
 </head>
 <body>
 
-	<div class="div1">
+	<div style="width: 60%;"">
 
 		<%@include file="../include/header.jsp"%>
 		<br> <br>
@@ -40,7 +41,7 @@
 		<%@ include file="../include/boardheader.jsp"%>
 
 
-		<table border="1" width="660px">
+		<table border="1" width="100%;">
 			<tr>
 				<th>번호</th>
 				<th>제목</th>

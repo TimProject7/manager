@@ -10,7 +10,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Notice 게시물 보기</title>
+<title>공지사항 게시물 보기</title>
 
 <style type="text/css">
 * {
@@ -28,20 +28,19 @@ a:HOVER {
 	color: teal;
 }
 
-h2{
+h2 {
 	text-align: center;
 }
 
-th{
+th {
 	text-align: left;
 	background-color: black;
 	color: white;
 }
 
-td{
+td {
 	padding-left: 2%;
 }
-
 </style>
 
 <script>
@@ -88,11 +87,11 @@ td{
 
 <body>
 	<%@include file="../include/header.jsp"%>
-
-	<h2>게시글 보기</h2>
-	
 	<br>
+	<h2>공지사항 게시글 보기</h2>
 
+	<br>
+	<br>
 	<form name="form1" method="post">
 		<table>
 			<tr>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.parker.admin.dao.AdminDao">
+
+
+	<!-- 통계-일반회원 -->
+	<!-- <select id="buyList" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+		<![CDATA[
+		select nvl(sum(buy_price*buy_quantity),0)total,
+    to_char(buy_day, 'YYYY-MM-DD') as buy_day
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and buy_day >= sysdate-15 AND buy_day <sysdate
+    GROUP BY
+    to_char(buy_day, 'YYYY-MM-DD')]]>
+	</select> -->
+
+<select id="today" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today1" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-1, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today2" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-2, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today3" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-3, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today4" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-4, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today5" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-5, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today6" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-6, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today7" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-7, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today8" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-8, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today9" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-9, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today10" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-10, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today11" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-11, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today12" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-12, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today13" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-13, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+<select id="today14" resultType="int" parameterType="com.parker.admin.vo.BuyVO">
+select nvl(sum(buy_price*buy_quantity),0)total
+    from buy_tb
+    where buy_status2 = '결제완료'
+    and to_char(buy_day, 'YYYY-MM-DD') = to_char(sysdate-14, 'YYYY-MM-DD')
+    GROUP BY to_char(buy_day, 'YYYY-MM-DD')
+</select>
+
+</mapper>

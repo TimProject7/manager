@@ -24,6 +24,8 @@
 </head>
 <body>
 	<div align="center">
+		<%@include file="../include/header.jsp"%>
+		<br>
 		<h2>상품Q&A 상세보기</h2>
 	</div>
 

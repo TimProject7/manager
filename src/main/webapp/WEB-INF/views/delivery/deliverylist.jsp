@@ -81,11 +81,11 @@
 									if ($(":checkbox[name=chk]:checked").val()) {
 
 										/* 
-															 $("#listForm").attr("method", "POST");
+										                $("#listForm").attr("method", "POST");
 
-															 $("#listForm").attr("action",
-															 "/admin/delivery/deliverydelete");
-															 $("#listForm").submit();
+										                $("#listForm").attr("action",
+										                "/admin/delivery/deliverydelete");
+										                $("#listForm").submit();
 										 */
 										$
 												.ajax({
@@ -135,11 +135,11 @@
 									if ($(":checkbox[name=chk]:checked").val()) {
 
 										/* 
-															 $("#listForm").attr("method", "POST");
+										                $("#listForm").attr("method", "POST");
 
-															 $("#listForm").attr("action",
-															 "/admin/delivery/deliverydelete");
-															 $("#listForm").submit();
+										                $("#listForm").attr("action",
+										                "/admin/delivery/deliverydelete");
+										                $("#listForm").submit();
 										 */
 										$
 												.ajax({
@@ -330,6 +330,7 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	<div class="div1" align="center">
 		<%@include file="../include/header.jsp"%>
 
+		<h2>배송목록</h2>
 
 		<!-- 페이지 넘버 -->
 		<form id="f_search" name="f_search">
@@ -363,15 +364,15 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 				<tr align="center">
 					<td><input type="button" id="checkAll" name="checkAll"
 						value="전체선택"></td>
-					<td style="width: 7%;">배송번호</td>
-					<td style="width: 7%;">회원명</td>
-					<td style="width: 7%;">상품명</td>
-					<td style="width: 8%;">상품이미지</td>
-					<td style="width: 7%;">가격</td>
-					<td style="width: 7%;">수량</td>
-					<td style="width: 8%;">구매신청일</td>
-					<td style="width: 40%;">배송지</td>
-					<td style="width: 7%;">배송상태</td>
+					<th style="width: 7%;">배송번호</th>
+					<th style="width: 8%;">상품이미지</th>
+					<th style="width: 7%;">회원명</th>
+					<th style="width: 7%;">상품명</th>
+					<th style="width: 7%;">가격</th>
+					<th style="width: 7%;">수량</th>
+					<th style="width: 8%;">구매신청일</th>
+					<th style="width: 40%;">배송지</th>
+					<th style="width: 7%;">배송상태</th>
 				</tr>
 				<c:choose>
 					<c:when test="${not empty deliveryList}">
@@ -381,9 +382,11 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 								<td><input type="checkbox" id="chk" name="chk"
 									value="${deliveryList.buy_number }"></td>
 								<td>${deliveryList.buy_number }</td>
+								<td><img
+									src="/admin/resources/images/${deliveryList.buy_image}"
+									width="100" height="100" /></td>
 								<td>${deliveryList.user_name }</td>
 								<td>${deliveryList.buy_product }</td>
-								<td>${deliveryList.buy_image }</td>
 								<td>${deliveryList.buy_price }</td>
 								<td>${deliveryList.buy_quantity }</td>
 								<td>${deliveryList.buy_day }</td>

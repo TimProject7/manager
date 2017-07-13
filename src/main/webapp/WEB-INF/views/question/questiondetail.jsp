@@ -30,31 +30,39 @@
 	});
 </script>
 <link rel="stylesheet" href="/admin/resources/css/style.css">
+<style type="text/css">
+#center {
+	text-align: center;
+}
+</style>
 </head>
 <body>
+
 	<div align="center">
 		<%@include file="../include/header.jsp"%>
-		<%@ include file="../include/boardheader.jsp"%>
+		<br>
+
+		<h2>1:1문의 게시글 상세보기</h2>
+		<br>
 		<table style="width: 500px;">
 
 			<tr>
-				<th>${questionDetail.question_title }</th>
-				<td colspan="3" align="right">${questionDetail.question_writedate }</td>
+				<th>제목</th>
+				<td>${questionDetail.question_title }</td>
+				<td align="right">${questionDetail.question_writedate }</td>
 			</tr>
 			<tr>
-				<td><hr></td>
-
+				<th>문의ID</th>
+				<td colspan="2">${userInfo.user_id }님</td>
 			</tr>
 			<tr>
-				<td>${userInfo.user_id }님</td>
+				<th>문의내용</th>
+				<td colspan="2">${questionDetail.question_content }</td>
 			</tr>
 			<tr>
-
-				<td colspan="4">${questionDetail.question_content }</td>
-			</tr>
-			<tr>
-
-				<td><c:if test="${questionDetail.question_image != null }">
+				<th>이미지</th>
+				<td colspan="3"><c:if
+						test="${questionDetail.question_image != null }">
 						<a href="/resources/images/${questionDetail.question_image }"
 							target="_blank"><img
 							src="/resources/images/${questionDetail.question_image }"
@@ -62,21 +70,29 @@
 					</c:if></td>
 			</tr>
 			<tr align="right">
-				<td align="right"><a href="/admin/question/questionlist"><button
-							type="button" name="listBtn" id="listBtn">목록</button></a></td>
+				<td align="right" colspan="3"><a
+					href="/admin/question/questionlist"><button type="button"
+							name="listBtn" id="listBtn">목록</button></a></td>
 			</tr>
 		</table>
+		<br>
+		<hr>
+		<br>
+		<h2 id="center">관리자 1:1문의 답변글</h2>
+		<br>
 		<c:choose>
 			<c:when test="${questionDetail.question_status=='Y' }">
-				<table border="1">
+				<table border="1" style="width: 700px;">
 					<tr align="center">
-						<th colspan="3">안녕하세요?${userInfo.user_id }님</th>
-						<td>답변일자 <br>${questionReply.questionReply_writedate }</td>
+						<th>제목</th>
+						<td>${userInfo.user_id }님이&nbsp;문의하신&nbsp;내용에&nbsp;대한&nbsp;답변글입니다.</td>
+						<td>${questionReply.questionReply_writedate }</td>
 					</tr>
 					<tr>
-						<td><img alt=""
-							src="/admin/resources/images/${questionReply.questionReply_image }"></td>
-						<td colspan="3"><span style="width: 400px">${questionReply.questionReply_content }</span></td>
+						<th>답변내용</th>
+						<td colspan="2"><img alt=""
+							src="/admin/resources/images/${questionReply.questionReply_image }">
+							<p style="width: 400px">${questionReply.questionReply_content }</p></td>
 					</tr>
 				</table>
 			</c:when>
@@ -92,7 +108,7 @@
 						value="${questionDetail.question_number }"> <input
 						type="hidden" name="admin_number" id="admin_number"
 						value="${sessionScope.avo.admin_number }">
-					<table style="width: 500px;">
+					<table style="width: 700px;">
 
 						<tr>
 							<td>답변</td>

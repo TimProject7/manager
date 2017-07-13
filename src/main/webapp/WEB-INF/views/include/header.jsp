@@ -12,7 +12,7 @@
 		href="/admin/user/userlist">회원관리</a> |<a
 		href="/admin/delivery/deliverylist">배송관리</a> | <a
 		href="/admin/notice/noticelist">게시판관리</a> | <a
-		href="/admin/status/status">통계</a> |
+		href="/admin/status/statususer">통계</a> |
 
 	<!-- 로그인, 로그아웃 -->
 	<c:choose>

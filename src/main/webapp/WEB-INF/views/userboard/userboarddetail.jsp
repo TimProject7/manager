@@ -13,47 +13,62 @@
 		$("#deleteBtn").click(function() {
 
 			// 폼 내부의 데이터를 전송할 주소
-			document.form.action = "/admin/userboard/userboarddelete"
+			document.form.action = "user/userboarddelete"
 			// 제출
 			document.form.submit();
 		});
 
 	});
 </script>
+<style type="text/css">
+#usertb {
+	width: 500px;
+	height: 600px;
+}
+
+#usertb th {
+	background: black;
+	color: white;
+}
+
+#user td {
+	
+}
+</style>
 </head>
 <body>
 	<%@include file="../include/header.jsp"%>
 	<div align="center">
 		<form name="form" id="form">
-			<input type="hidden" id="userboard_number" name="userboard_number"
-				value="${userBoardDetail.userboard_number }">
-			<button>LIST</button>
-			<button type="button" id="deleteBtn" name="deleteBtn">DEL</button>
-			<table border="1">
+			<h2 align="center">회원게시판 게시글 상세보기</h2>
+			<table border="1" id="usertb">
+
 				<tr>
-					<th>제 목</th>
+					<th height="5%;">제목</th>
 					<td>${userBoardDetail.userboard_title }</td>
 				</tr>
+
 				<tr>
-					<th>등록일자</th>
+					<th height="5%;">등록일자</th>
 					<td>${userBoardDetail.userboard_writedate}</td>
 				</tr>
+
 				<tr>
-					<th>내 용</th>
+					<th>내용</th>
 					<td>${userBoardDetail.userboard_content }</td>
 				</tr>
+
 				<tr>
 					<th>이미지</th>
 					<td><img
-						src="/resources/images/${userBoardDetail.userboard_image }"
-						style="width: 250px; height: 200px;"></td>
+						src="/admin/resources/images/${userBoardDetail.userboard_image }"></td>
 				</tr>
 			</table>
-
+			<button type="button" id="deleteBtn" name="deleteBtn">삭제</button>
+			<a href="/admin/userboard/userboardlist">
+				<button type="button" id="btnlist" name="btnlist">목록보기</button>
+			</a>
 		</form>
-		<br>
-		<hr>
-		<br>
 	</div>
 </body>
 

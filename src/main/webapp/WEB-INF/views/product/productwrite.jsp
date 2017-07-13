@@ -73,7 +73,7 @@
 
 			});
 </script>
-<title>상품 목록</title>
+<title>상품 상세보기</title>
 <link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 
@@ -83,7 +83,7 @@
 		<input type="hidden" id="admin_number" name="admin_number"
 			value="${sessionScope.avo.admin_number }">
 
-		<h2>상품목록</h2>
+	<div></div>	<h2>상품 상세보기</h2>
 		<table border="1">
 			<tr>
 				<th>상품 이미지</th>
@@ -117,9 +117,11 @@
 						name="product_content"></textarea></td>
 			</tr>
 		</table>
-		<button type="button" id="addBtn" name="addBtn">등록</button>
-		<a href="/admin/product/productlist"><button type="button"
-				id="listBtn" name="listBtn">목록</button></a>
+		<div align="center">
+			<button type="button" id="addBtn" name="addBtn">등록</button>
+			<a href="/admin/product/productlist"><button type="button"
+					id="listBtn" name="listBtn">목록</button></a>
+		</div>
 	</form>
 </body>
 </html>

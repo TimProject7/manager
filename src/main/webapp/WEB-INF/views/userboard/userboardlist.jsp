@@ -77,9 +77,6 @@
 	padding: 0;
 }
 
-h2 {
-	text-align: left;
-}
 
 .div1 {
 	width: 43%;
@@ -115,12 +112,12 @@ th {
 </style>
 </head>
 <body>
-	<div class="div1">
+	<div style="width: 60%;">
 		<%@include file="../include/header.jsp"%>
 		<br> <br>
 
 
-		<h2>회원 게시판 목록</h2>
+		<h2 align="center">회원 게시판 목록</h2>
 
 		<br>
 		<%@ include file="../include/boardheader.jsp"%>
@@ -132,7 +129,7 @@ th {
 
 		<form name="form" id="form">
 			<div align="center">
-				<table border="1" style="width: 660px;">
+				<table border="1" style="width: 100%;">
 					<tr>
 						<th>글번호</th>
 						<th>글제목</th>

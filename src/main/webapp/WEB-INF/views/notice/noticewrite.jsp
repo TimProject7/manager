@@ -9,7 +9,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Notice 글 작성</title>
+<title>공지사항 글 작성</title>
 
 <script>
 	$(document).ready(function() {
@@ -48,7 +48,8 @@
 <body>
 
 	<%@include file="../include/header.jsp"%>
-	<h2>게시글 작성</h2>
+	<br>
+	<h2>공지사항 게시글 작성</h2>
 	<form id="form1" name="form1" method="post"
 		action="/notice/Notice_insert">
 		<input type="hidden" id="admin_number" name="admin_number"

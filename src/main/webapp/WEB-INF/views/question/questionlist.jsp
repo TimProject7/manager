@@ -83,7 +83,7 @@
 <link rel="stylesheet" href="/admin/resources/css/style.css">
 </head>
 <body>
-	<div class="div1">
+	<div style="width: 60%;">
 		<%@include file="../include/header.jsp"%>
 		<br> <br>
 
@@ -101,7 +101,7 @@
 
 		<form>
 			<div align="center">
-				<table border="1" style="width: 660px;">
+				<table border="1" style="width: 100%;">
 					<tr>
 						<Th>문의번호</Th>
 						<Th>제목</Th>

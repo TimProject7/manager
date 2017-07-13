@@ -25,8 +25,11 @@
 </head>
 <body>
 	<%@include file="../include/header.jsp"%>
+	<br>
 	<h2>상품 상세정보</h2>
-	<a href="/admin/product/productlist"><button>상품목록</button></a>
+	<p align="center">
+		<a href="/admin/product/productlist"><button>상품목록</button></a>
+	</p>
 
 	<form id="form1" name="form1" method="post">
 		<input type="hidden" id="product_number" name="product_number"
@@ -80,23 +83,27 @@
 			<%-- <a href="/admin/product/productedit/${productDetail.product_number }">
 				수정</a> --%>
 		</c:if>
-		<button id="salesBtn">
-			<c:choose>
+		<p align="center">
+			<button id="salesBtn">
+				<c:choose>
 
-				<c:when test="${productDetail.product_status == 'Y' }">
-					<font style="color: red;">판매중지</font>
-				</c:when>
-				<c:otherwise>
-					<font style="color: black;">판매</font>
-				</c:otherwise>
-			</c:choose>
-		</button>
+					<c:when test="${productDetail.product_status == 'Y' }">
+
+						<font style="color: red;">판매중지</font>
+					</c:when>
+					<c:otherwise>
+						<font style="color: black;">판매</font>
+					</c:otherwise>
+				</c:choose>
+			</button>
+		</p>
 		<br>
 		<hr>
 		<br>
 		<c:choose>
 
 			<c:when test="${not empty ProductQnaList }">
+
 				<table border="1">
 					<tr align="center">
 						<td>QNA 번호</td>
@@ -125,10 +132,15 @@
 				</table>
 			</c:when>
 			<c:otherwise>
-				<tr>
-					<td>등록된 게시물이 존재하지않습니다.</td>
-				</tr>
+				<div align="center">
+					<table>
+						<tr align="center">
+							<td>등록된 게시물이 존재하지않습니다.</td>
+						</tr>
+					</table>
+				</div>
 			</c:otherwise>
+
 		</c:choose>
 
 	</form>

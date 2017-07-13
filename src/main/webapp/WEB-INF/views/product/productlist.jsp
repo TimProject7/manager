@@ -88,8 +88,9 @@
 	<div class="div1">
 
 		<%@include file="../include/header.jsp"%>
+		<br>
 		<h2>상품목록</h2>
-		<a href="/admin/product/productwrite"><button>상품등록</button></a>
+
 		<!-- 페이지 넘버 -->
 		<form id="f_search" name="f_search">
 			<input type="hidden" id="page" name="page" value="${data.page}" /> <input
@@ -108,64 +109,71 @@
 				</tr>
 			</table>
 		</form>
-
+		</div>
+		
 		<br>
+		<div style="width: 60%;">
+			<a href="/admin/product/productwrite"><button>상품등록</button></a>
 		<form id="form" name="form">
-			<table border="1" style="width: 660px;">
-				<tr>
-					<th>상품번호</th>
-					<th>상품이미지</th>
-					<th>상품명</th>
-					<th>제조사</th>
-					<th>원산지</th>
-					<th>등록일자</th>
-					<th>가격</th>
-					<th>상태</th>
-				</tr>
+				
+			
+		
+				<table border="1" style="width: 100%;">
+					<tr>
+						<th>상품번호</th>
+						<th>상품이미지</th>
+						<th>상품명</th>
+						<th>제조사</th>
+						<th>원산지</th>
+						<th>등록일자</th>
+						<th>가격</th>
+						<th>상태</th>
+					</tr>
 
-				<c:choose>
-					<c:when test="${empty productList }">
-						<tr>
-							<td colspan="7" align="center">등록된 상품이 없습니다.</td>
-						</tr>
-
-					</c:when>
-					<c:otherwise>
-
-						<c:forEach var="productList" items="${productList}">
+					<c:choose>
+						<c:when test="${empty productList }">
 							<tr>
-								<td class="no"><a
-									href="productdetail/${productList.product_number}">${productList.product_number}</a></td>
-								<td><a href="productdetail/${productList.product_number}">
-										<img
-										src="/admin/resources/images/${productList.product_image}"
-										width="120px" height="110px">
-								</a></td>
-								<td><a href="productdetail/${productList.product_number}">${productList.product_name}</a>
-								</td>
-								<td>${productList.product_company}</td>
-								<td>${productList.product_origin}</td>
-								<td>${productList.product_regdate}</td>
-								<td><fmt:formatNumber value="${productList.product_price}"
-										pattern="###,###,###" />원</td>
-								<td><c:choose>
-
-										<c:when test="${productList.product_status == 'Y' }">
-											<font style="color: black;">판매중</font>
-										</c:when>
-										<c:otherwise>
-											<font style="color: red;">판매중지</font>
-										</c:otherwise>
-
-									</c:choose></td>
+								<td colspan="7" align="center">등록된 상품이 없습니다.</td>
 							</tr>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
-			</table>
-		</form>
 
-	</div>
+						</c:when>
+						<c:otherwise>
+
+							<c:forEach var="productList" items="${productList}">
+								<tr>
+									<td class="no"><a
+										href="productdetail/${productList.product_number}">${productList.product_number}</a></td>
+									<td><a href="productdetail/${productList.product_number}">
+											<img
+											src="/admin/resources/images/${productList.product_image}"
+											width="120px" height="110px">
+									</a></td>
+									<td><a href="productdetail/${productList.product_number}">${productList.product_name}</a>
+									</td>
+									<td>${productList.product_company}</td>
+									<td>${productList.product_origin}</td>
+									<td>${productList.product_regdate}</td>
+									<td><fmt:formatNumber value="${productList.product_price}"
+											pattern="###,###,###" />원</td>
+									<td><c:choose>
+
+											<c:when test="${productList.product_status == 'Y' }">
+												<font style="color: black;">판매중</font>
+											</c:when>
+											<c:otherwise>
+												<font style="color: red;">판매중지</font>
+											</c:otherwise>
+
+										</c:choose></td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</table>
+		</form>
+			</div>
+
+	
 	<!-- 페이지출력 -->
 	<div id="buyListPage" align="center">
 		<tag:paging page="${param.page}" total="${total}"

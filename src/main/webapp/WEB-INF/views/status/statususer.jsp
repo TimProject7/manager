@@ -22,7 +22,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
 		//차트의 시작
 		google.charts.load("current",{packages:['corechart']});
 		google.charts.setOnLoadCallback(drawChart);
@@ -31,8 +30,7 @@
 				["Element", "인원수(명)", {role: "style"}],
 				["총가입회원", ${total}, "gold"],
 				["일반회원", ${yongho}, "#b87333"],
-				["탈퇴회원", ${yongho1}, "silver"],
-			
+				["탈퇴회원", ${yongho1}, "silver"]
 				]);
 			
 			var view = new google.visualization.DataView(data);
@@ -124,14 +122,11 @@
 		var data = google.visualization.arrayToDataTable([
 			['Task', 'Hours per Day'],
 			['일반회원수', ${yongho}],
-			['탈퇴회원수', ${yongho1}],
-			
+			['탈퇴회원수', ${yongho1}]
 		]);
-		
 		var options = {
 				title: '회원통계',
 				is3D: true,
-				
 		};
 		
 		var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -151,95 +146,246 @@
       //현재날짜 가져오기
 
    
-   
+   //오늘
       var today = new Date();
+      var year = today.getFullYear();
+      var month = today.getMonth()+1;
        var day = today.getDate();
+       if((day+"").length<2){
+    	   day ="0"+day;
+       }
+       var getToday = year+","+month+","+day;
        
-       var today1 = new Date();
+    //1일전
+     /*   var today1 = new Date();
+       var year = today.getFullYear();
+       var month = today.getMonth()+1;
       today1.setDate(today1.getDate()-1);
       var day1 = today1.getDate();
+      if((day1+"").length<2){
+   	   day1 ="0"+day1;
+      }
+      var getToday1 = year+","+month+","+day1;
       
-      
-      var today2 = new Date();
+       */
+       var today1 = new Date();
+       var day1 = 1;
+       var getToday1 = new Date(today1-(3600000*24*day1));
+      //2일전
+     /*  var today2 = new Date();
+      var year = today.getFullYear();
+      var month = today.getMonth()+1;
     today2.setDate(today2.getDate()-2);
     var day2 = today2.getDate();
-    
-    var today3 = new Date();
+    if((day2+"").length<2){
+ 	   day2 ="0"+day2;
+    }
+    var getToday2 = year+","+month+","+day2;
+     */
+     var today2 = new Date();
+     var day2 = 2;
+     var getToday2 = new Date(today2-(3600000*24*day2));
+    //3일전
+    /* var today3 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
    today3.setDate(today3.getDate()-3);
    var day3 = today3.getDate();
-   
-    var today4 = new Date();
+   if((day3+"").length<2){
+	   day3 ="0"+day3;
+    }
+    var getToday3 = year+","+month+","+day3;
+    */
+    var today3 = new Date();
+    var day3 = 3;
+    var getToday3 = new Date(today3-(3600000*24*day3));
+    //4일전
+    /* var today4 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today4.setDate(today4.getDate()-4);
     var day4 = today4.getDate();
-    
-    var today5 = new Date();
+    if((day4+"").length<2){
+    	day4 ="0"+day4;
+     }
+     var getToday4 = year+","+month+","+day4;
+     */
+     var today4 = new Date();
+     var day4 = 4;
+     var getToday4 = new Date(today4-(3600000*24*day4));
+    //5일전
+    /* var today5 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today5.setDate(today5.getDate()-5);
     var day5 = today5.getDate();
-    
-    var today6 = new Date();
+    if((day5+"").length<2){
+    	day5 ="0"+day5;
+     }
+     var getToday5 = year+","+month+","+day5; */
+     var today5 = new Date();
+     var day5 = 5;
+     var getToday5 = new Date(today5-(3600000*24*day5));
+     //6일전
+   /*  var today6 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today6.setDate(today6.getDate()-6);
     var day6 = today6.getDate();
-    
-    var today7 = new Date();
+    if((day6+"").length<2){
+    	day6 ="0"+day6;
+     }
+     var getToday6 = year+","+month+","+day6;
+     */
+     var today6 = new Date();
+     var day6 = 6;
+     var getToday6 = new Date(today6-(3600000*24*day6));
+     
+     //7일전
+    /* var today7 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today7.setDate(today7.getDate()-7);
     var day7 = today7.getDate();
-    
-    var today8 = new Date();    
+    if((day7+"").length<2){
+    	day7 ="0"+day7;
+     }
+     var getToday7 = year+","+month+","+day7; */
+     var today7 = new Date();
+     var day7 = 7;
+     var getToday7 = new Date(today7-(3600000*24*day7));
+     
+     //8일전
+    /* var today8 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today8.setDate(today8.getDate()-8);
     var day8 = today8.getDate();
-    
-    var today9 = new Date();
+    if((day8+"").length<2){
+    	day8 ="0"+day8;
+     }
+     var getToday8 = year+","+month+","+day8;
+     */
+     
+     var today8 = new Date();
+     var day8 = 8;
+     var getToday8 = new Date(today8-(3600000*24*day8));
+     //9일전
+   /*  var today9 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today9.setDate(today9.getDate()-9);
     var day9 = today9.getDate();
-    
-    var today10 = new Date();
+    if((day9+"").length<2){
+    	day9 ="0"+day9;
+     }
+     var getToday9 = year+","+month+","+day9;
+     */
+     var today9 = new Date();
+     var day9 = 9;
+     var getToday9 = new Date(today9-(3600000*24*day9));
+     //10일전
+    /* var today10 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today10.setDate(today10.getDate()-10);
     var day10 = today10.getDate();
-    
-    var today11 = new Date();
+    if((day10+"").length<2){
+    	day10 ="0"+day10;
+     }
+     var getToday10 = year+","+month+","+day10; */
+     var today10 = new Date();
+     var day10 = 10;
+     var getToday10 = new Date(today10-(3600000*24*day10));
+     //11일전
+  /*   var today11 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today11.setDate(today11.getDate()-11);
     var day11 = today11.getDate();
-    
-    var today12 = new Date();
+    if((day11+"").length<2){
+    	day11 ="0"+day11;
+     }
+     var getToday11 = year+","+month+","+day11; */
+     var today11 = new Date();
+     var day11 = 11;
+     var getToday11 = new Date(today11-(3600000*24*day11));
+     
+     //12일전
+    /* var today12 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today12.setDate(today12.getDate()-12);
     var day12 = today12.getDate();
-    
-    var today13 = new Date();
+    if((day12+"").length<2){
+    	day12 ="0"+day12;
+     }
+     var getToday12 = year+","+month+","+day12;
+     */
+     var today12 = new Date();
+     var day12 = 12;
+     var getToday12 = new Date(today12-(3600000*24*day12));
+     //13일전
+    /* var today13 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today13.setDate(today13.getDate()-13);
     var day13 = today13.getDate();
-    
-    var today14 = new Date();
+    if((day13+"").length<2){
+    	day13 ="0"+day13;
+     }
+     var getToday13 = year+","+month+","+day13;
+     */
+     var today13 = new Date();
+     var day13 = 13;
+     var getToday13 = new Date(today13-(3600000*24*day13));
+     
+     //14일전
+    /* var today14 = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
     today14.setDate(today14.getDate()-14);  
     var day14 = today14.getDate();
-    
+    if((day14+"").length<2){
+    	day14 ="0"+day14;
+     }
+     var getToday14 = year+","+month+","+day14;
+     */
+     var today14 = new Date();
+     var day14 = 14;
+     var getToday14 = new Date(today14-(3600000*24*day14));
+     
+     
     function drawChart() {
 
       var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Day');
+      data.addColumn('date', 'Start Date');
       data.addColumn('number', '매출');
 
       data.addRows([
-        [day14,  900000],
-        [day13,  1380000],
-        [day12,  1220000],
-        [day11,  20000],
-        [day10,  1000000],
-        [day9,   1000000],
-        [day8,   1000000],
-        [day7,  1000000],
-        [day6,  1000000],
-        [day5, 1000000],
-        [day4,  1000000],
-        [day3,  1000000],
-        [day2,  1000000], 
-        [day2,  1000000],
-        [day, 800000]
+        [new Date(getToday14),  ${to14}],
+        [new Date(getToday13),  ${to13}],
+        [new Date(getToday12),  ${to12}],
+        [new Date(getToday11),  ${to11}],
+        [new Date(getToday10),  ${to10}],
+        [new Date(getToday9),   ${to9}],
+        [new Date(getToday8),   ${to8}],
+        [new Date(getToday7),  ${to7}],
+        [new Date(getToday6),  ${to6}],
+        [new Date(getToday5), ${to5}],
+        [new Date(getToday4),  ${to4}],
+        [new Date(getToday3),  ${to3}],
+        [new Date(getToday2),  ${to2}], 
+        [new Date(getToday1),  ${to1}],
+        [new Date(getToday), ${to}]
       ]);
 
+      
+      
       var options = {
         chart: {
           title: '파커 만년필 매출통계',
-          subtitle: '최근 7일간'
+          subtitle: '최근 14일간'
         },
     	height:400,
         axes: {
@@ -263,7 +409,7 @@
 }
 
 #chart {
-	width: 100%
+	width: 95%
 }
 
 #barChart {
@@ -274,6 +420,10 @@
 #pieChart {
 	width: 50%;
 	float: right;
+}
+
+#form {
+	width: 95%
 }
 </style>
 </head>
@@ -298,7 +448,7 @@
 		</form> --%>
 		<form name="form" id="form">
 			<div>
-				<table border="1"">
+				<table border="1" style="width: 65%">
 					<tr>
 						<Th>아이디</Th>
 						<Th>회원명</Th>
@@ -314,7 +464,6 @@
 								<input type="hidden" id="user_number" name="user_number"
 									value="${statusUserList.user_number }">
 								<tr>
-
 									<td>${statusUserList.user_id }</td>
 									<td>${statusUserList.user_name }</td>
 									<td>${statusUserList.user_phone }</td>
@@ -348,7 +497,9 @@
 	</div> --%>
 
 	<div>
-		<div id="line_top_x" style="width: 100% top-padding=100px;"></div>
+		<div id="line_top_x" style="width: 95%"></div>
 	</div>
+	<p style="color: red" align="center"><b>※1k = 1,000 원 1m = 1,000,000원</b></p>
+	<br><br>
 </body>
 </html>

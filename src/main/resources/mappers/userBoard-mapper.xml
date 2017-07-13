@@ -58,6 +58,12 @@
 	<update id="userBoardDelete">
 		update userboard_tb set
 		userboard_status2='N'
+		where
 		userboard_number= #{userboard_number}
 	</update>
+	<delete id="userBoardReplyDelete">
+		delete from userboardreply_tb
+		where
+		userboardreply_number = #{userboardreply_number}
+	</delete>
 </mapper>
